@@ -1,0 +1,4225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outfit Studio — My Digital Wardrobe ✨</title>
+  
+  <!-- Aesthetic Google Fonts: Playfair Display for editorial elegance & Plus Jakarta Sans for clean modern UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES & DESIGN SYSTEM (Pinterest / Digital Scrapbook Aesthetic)
+       ========================================================================== */
+    :root {
+      /* Palette: Soft cream, blush pink, lavender, warm chocolate brown */
+      --bg-cream: #FAF6F0;
+      --bg-surface: #FFFFFF;
+      --bg-card: #FFFDF9;
+      --bg-alt: #F5EFEB;
+      
+      --blush-100: #FDF0EE;
+      --blush-200: #FADCD7;
+      --blush-300: #F5C2BA;
+      --blush-500: #E68A7D;
+      --blush-600: #D36E60;
+
+      --lavender-100: #F4F0FA;
+      --lavender-200: #E8DEF5;
+      --lavender-300: #D3C4E9;
+      --lavender-500: #9B82C4;
+
+      --brown-900: #2C2018; /* Primary deep warm text */
+      --brown-800: #423226;
+      --brown-700: #614D3E; /* Secondary text */
+      --brown-500: #8E7765; /* Muted text */
+      --brown-300: #C4B5A5; /* Border soft */
+      --brown-200: #E6DDD4; /* Border delicate */
+      --brown-100: #F1ECE6;
+
+      --accent-gold: #E2A03F;
+      --accent-sage: #8DA68E;
+      --accent-sky: #95B8D1;
+      --danger: #D9534F;
+
+      /* Shadows & Radii */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --radius-pill: 9999px;
+
+      --shadow-sm: 0 2px 6px rgba(66, 50, 38, 0.05);
+      --shadow-md: 0 8px 20px rgba(66, 50, 38, 0.07);
+      --shadow-lg: 0 16px 36px rgba(66, 50, 38, 0.1);
+      --shadow-hover: 0 12px 28px rgba(230, 138, 125, 0.18);
+
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-script: 'Caveat', cursive;
+
+      --transition-fast: 0.18s ease;
+      --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Base Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-cream);
+      color: var(--brown-800);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(245, 194, 186, 0.18) 0%, transparent 35%),
+        radial-gradient(circle at 90% 70%, rgba(211, 196, 233, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 110%, rgba(250, 220, 215, 0.25) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    a, button {
+      font-family: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ==========================================================================
+       2. TYPOGRAPHY & SCRAPBOOK ACCENTS
+       ========================================================================== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      color: var(--brown-900);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .script-font {
+      font-family: var(--font-script);
+      font-weight: 700;
+      color: var(--blush-600);
+      display: inline-block;
+    }
+
+    .tape-accent {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 80px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.75);
+      border-left: 2px dashed rgba(200, 180, 160, 0.5);
+      border-right: 2px dashed rgba(200, 180, 160, 0.5);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .pin-accent {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--blush-500);
+      box-shadow: inset 0 -2px 3px rgba(0,0,0,0.3), 0 2px 4px rgba(66, 50, 38, 0.2);
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       3. NAVIGATION BAR & HEADER
+       ========================================================================== */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 246, 240, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--brown-200);
+      padding: 0.85rem 1.5rem;
+      transition: all var(--transition-normal);
+    }
+
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .brand-icon-box {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--blush-200), var(--lavender-200));
+      border: 1.5px solid var(--blush-300);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition-normal);
+    }
+
+    .brand-logo:hover .brand-icon-box {
+      transform: rotate(-6deg) scale(1.05);
+    }
+
+    .brand-text h1 {
+      font-size: 1.35rem;
+      line-height: 1.1;
+      color: var(--brown-900);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .brand-text span.sub {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brown-500);
+      font-weight: 600;
+    }
+
+    /* Desktop Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      background: var(--bg-surface);
+      padding: 0.35rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--brown-200);
+      box-shadow: var(--shadow-sm);
+      gap: 0.25rem;
+    }
+
+    .nav-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brown-700);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--brown-900);
+      background: var(--bg-alt);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--brown-900);
+      color: #FFFDF9;
+      box-shadow: 0 3px 10px rgba(44, 32, 24, 0.2);
+    }
+
+    .nav-tab-badge {
+      background: var(--blush-200);
+      color: var(--brown-900);
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      transition: all var(--transition-fast);
+    }
+
+    .nav-tab-btn.active .nav-tab-badge {
+      background: var(--blush-500);
+      color: #fff;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* ==========================================================================
+       4. BUTTONS & INTERACTIVE ELEMENTS
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid transparent;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: var(--blush-500);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(230, 138, 125, 0.35);
+    }
+    .btn-primary:hover {
+      background: var(--blush-600);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--brown-800);
+      border-color: var(--brown-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-secondary:hover {
+      background: var(--bg-alt);
+      border-color: var(--brown-300);
+      transform: translateY(-1px);
+    }
+
+    .btn-dark {
+      background: var(--brown-900);
+      color: #FFFDF9;
+      box-shadow: 0 4px 14px rgba(44, 32, 24, 0.2);
+    }
+    .btn-dark:hover {
+      background: var(--brown-800);
+      transform: translateY(-1px);
+    }
+
+    .btn-lavender {
+      background: var(--lavender-200);
+      color: var(--brown-900);
+      border-color: var(--lavender-300);
+    }
+    .btn-lavender:hover {
+      background: var(--lavender-300);
+      transform: translateY(-1px);
+    }
+
+    .btn-sm {
+      padding: 0.4rem 0.85rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    .badge-blush { background: var(--blush-100); color: var(--blush-600); border: 1px solid var(--blush-200); }
+    .badge-lavender { background: var(--lavender-100); color: var(--lavender-500); border: 1px solid var(--lavender-200); }
+    .badge-cream { background: var(--bg-alt); color: var(--brown-700); border: 1px solid var(--brown-200); }
+
+    /* ==========================================================================
+       5. MAIN CONTAINER & SECTION VISIBILITY
+       ========================================================================== */
+    .main-content {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem;
+      flex: 1;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       6. HOME VIEW (Dashboard & Welcome Hub)
+       ========================================================================== */
+    .home-hero {
+      position: relative;
+      background: linear-gradient(135deg, #FFFDFB 0%, #FAF0EC 50%, #F5ECF8 100%);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem 3rem;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-decor-star {
+      position: absolute;
+      color: var(--accent-gold);
+      font-size: 1.5rem;
+      animation: floatSlow 4s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    .hero-decor-star.s1 { top: 25px; right: 40px; font-size: 1.8rem; }
+    .hero-decor-star.s2 { bottom: 35px; right: 120px; font-size: 1.3rem; animation-delay: 1.5s; }
+    .hero-decor-star.s3 { top: 60px; left: 55%; font-size: 1.1rem; color: var(--blush-500); }
+
+    @keyframes floatSlow {
+      from { transform: translateY(0) rotate(0deg); }
+      to { transform: translateY(-8px) rotate(15deg); }
+    }
+
+    .home-hero-content {
+      max-width: 640px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--blush-300);
+      color: var(--blush-600);
+      padding: 0.35rem 0.95rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .home-hero h2 {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--brown-900);
+    }
+
+    .home-hero p.desc {
+      font-size: 1.05rem;
+      color: var(--brown-700);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    /* Stats Grid */
+    .stats-shelf {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--blush-300);
+    }
+
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .stat-icon.pink { background: var(--blush-100); border: 1px solid var(--blush-200); }
+    .stat-icon.lavender { background: var(--lavender-100); border: 1px solid var(--lavender-200); }
+    .stat-icon.cream { background: var(--bg-alt); border: 1px solid var(--brown-200); }
+
+    .stat-meta .stat-val {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--brown-900);
+      line-height: 1.1;
+    }
+    .stat-meta .stat-label {
+      font-size: 0.82rem;
+      color: var(--brown-500);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Home Features Showcase */
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition-normal);
+    }
+
+    .feature-card:hover {
+      border-color: var(--blush-300);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--brown-700);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    .category-breakdown-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .chip-counter {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.65rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--brown-200);
+      border-radius: var(--radius-pill);
+      color: var(--brown-700);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .chip-counter strong { color: var(--brown-900); }
+
+    /* ==========================================================================
+       7. MY WARDROBE VIEW (Gallery, Filter & Search)
+       ========================================================================== */
+    .wardrobe-header {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .wardrobe-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .wardrobe-title-group h2 {
+      font-size: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .wardrobe-title-group p {
+      font-size: 0.9rem;
+      color: var(--brown-500);
+    }
+
+    .filter-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Search Box */
+    .search-input-wrapper {
+      position: relative;
+      flex: 1;
+      max-width: 320px;
+      min-width: 220px;
+    }
+
+    .search-input-wrapper svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--brown-500);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.55rem 1rem 0.55rem 2.4rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--brown-200);
+      background: var(--bg-alt);
+      font-size: 0.9rem;
+      color: var(--brown-900);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .search-input:focus {
+      background: #FFFFFF;
+      border-color: var(--blush-500);
+      box-shadow: 0 0 0 3px rgba(230, 138, 125, 0.15);
+    }
+
+    /* Category Filter Tabs */
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .cat-pill {
+      border: 1.5px solid var(--brown-200);
+      background: var(--bg-surface);
+      color: var(--brown-700);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all var(--transition-fast);
+    }
+
+    .cat-pill:hover {
+      background: var(--bg-alt);
+      border-color: var(--brown-300);
+    }
+
+    .cat-pill.active {
+      background: var(--blush-100);
+      border-color: var(--blush-500);
+      color: var(--blush-600);
+      font-weight: 700;
+    }
+
+    .cat-pill-count {
+      font-size: 0.7rem;
+      padding: 1px 6px;
+      border-radius: 99px;
+      background: rgba(0,0,0,0.06);
+    }
+
+    /* Clothing Cards Gallery */
+    .clothes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Polaroid & Scrapbook style item card */
+    .item-card {
+      background: #FFFDFB;
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.75rem 1rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-normal);
+      user-select: none;
+    }
+
+    .item-card:hover {
+      transform: translateY(-4px) rotate(0.4deg);
+      box-shadow: var(--shadow-md);
+      border-color: var(--blush-300);
+    }
+
+    .item-card-pin {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--blush-500);
+      border: 1.5px solid #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+      z-index: 2;
+    }
+
+    .item-img-container {
+      width: 100%;
+      aspect-ratio: 1/1.1;
+      background: linear-gradient(180deg, #F9F6F0 0%, #F3ECE2 100%);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .item-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform var(--transition-normal);
+    }
+
+    .item-card:hover .item-img-container img {
+      transform: scale(1.04);
+    }
+
+    .item-badge-category {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(4px);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--brown-800);
+      border: 1px solid var(--brown-200);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    .item-details {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .item-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--brown-900);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item-meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.75rem;
+      min-height: 20px;
+    }
+
+    .item-card-actions {
+      display: flex;
+      gap: 0.4rem;
+      border-top: 1px dashed var(--brown-200);
+      padding-top: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .item-card-actions .btn {
+      flex: 1;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    .btn-delete-item {
+      color: var(--danger) !important;
+      border-color: rgba(217, 83, 79, 0.2) !important;
+      background: #FFF5F5 !important;
+      flex: 0 0 34px !important;
+      padding: 0 !important;
+    }
+    .btn-delete-item:hover {
+      background: #FEE2E2 !important;
+    }
+
+    /* ==========================================================================
+       8. MIX & MATCH STUDIO VIEW (Flat-Lay Canvas & Wardrobe Selector)
+       ========================================================================== */
+    .studio-container {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 980px) {
+      .studio-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left: The Flat-Lay Collage Canvas */
+    .canvas-panel {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .canvas-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1.5px dashed var(--brown-200);
+    }
+
+    .canvas-title-box h2 {
+      font-size: 1.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .canvas-title-box p {
+      font-size: 0.88rem;
+      color: var(--brown-500);
+    }
+
+    .canvas-controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    /* The Collage Pinboard itself */
+    .flatlay-board {
+      background: #FAF7F2;
+      border: 2px dashed var(--brown-300);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.5rem;
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      box-shadow: inset 0 2px 8px rgba(66, 50, 38, 0.04);
+      background-image: 
+        radial-gradient(#E8DFC8 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Flatlay Slots Layout */
+    .flatlay-row {
+      display: grid;
+      gap: 1.25rem;
+      justify-content: center;
+    }
+
+    .flatlay-row.top-row {
+      grid-template-columns: repeat(2, minmax(180px, 220px));
+    }
+
+    .flatlay-row.middle-row {
+      grid-template-columns: repeat(2, minmax(180px, 220px));
+    }
+
+    .flatlay-row.middle-row.dress-mode {
+      grid-template-columns: minmax(220px, 280px);
+    }
+
+    .flatlay-row.bottom-row {
+      grid-template-columns: minmax(180px, 220px);
+    }
+
+    /* Single Slot Card */
+    .flatlay-slot {
+      position: relative;
+      background: rgba(255, 255, 255, 0.85);
+      border: 2px dashed var(--brown-300);
+      border-radius: var(--radius-md);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem;
+      text-align: center;
+      transition: all var(--transition-normal);
+      cursor: pointer;
+    }
+
+    .flatlay-slot:hover {
+      border-color: var(--blush-500);
+      background: rgba(255, 255, 255, 0.98);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flatlay-slot.has-item {
+      border-style: solid;
+      border-color: var(--brown-200);
+      background: #FFFDF9;
+      box-shadow: var(--shadow-sm);
+      cursor: default;
+      transform: rotate(0deg);
+      transition: all var(--transition-fast);
+    }
+
+    .flatlay-slot.has-item:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--blush-300);
+    }
+
+    /* Slot Empty State */
+    .slot-empty-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--brown-500);
+      pointer-events: none;
+    }
+
+    .slot-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+    }
+
+    .slot-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brown-700);
+    }
+
+    .slot-hint {
+      font-size: 0.75rem;
+      color: var(--blush-600);
+      background: var(--blush-100);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+    }
+
+    /* Slot Filled State */
+    .slot-filled-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slot-img-wrap {
+      width: 100%;
+      aspect-ratio: 1/1.05;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: transparent;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slot-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .slot-item-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .slot-item-title {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--brown-900);
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    .slot-actions {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .slot-btn {
+      border: none;
+      background: var(--bg-alt);
+      color: var(--brown-700);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--brown-200);
+      font-weight: 600;
+      transition: all var(--transition-fast);
+    }
+
+    .slot-btn:hover {
+      background: var(--brown-900);
+      color: #fff;
+    }
+
+    .slot-btn.remove-btn {
+      color: var(--danger);
+      border-color: rgba(217, 83, 79, 0.3);
+    }
+    .slot-btn.remove-btn:hover {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    /* Canvas Helper Banner */
+    .canvas-helper-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--lavender-100);
+      border: 1px solid var(--lavender-200);
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      color: var(--brown-800);
+    }
+
+    /* Right: Wardrobe Picker Drawer */
+    .studio-sidebar {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 90px;
+      max-height: calc(100vh - 120px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-header {
+      margin-bottom: 1rem;
+    }
+    .sidebar-header h3 {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .sidebar-header p {
+      font-size: 0.8rem;
+      color: var(--brown-500);
+    }
+
+    .sidebar-cat-nav {
+      display: flex;
+      gap: 0.35rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.85rem;
+      scrollbar-width: thin;
+    }
+
+    .sidebar-cat-pill {
+      white-space: nowrap;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--brown-200);
+      background: var(--bg-alt);
+      color: var(--brown-700);
+      font-weight: 600;
+    }
+    .sidebar-cat-pill.active {
+      background: var(--brown-900);
+      color: #fff;
+      border-color: var(--brown-900);
+    }
+
+    .sidebar-items-list {
+      flex: 1;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      padding-right: 0.25rem;
+    }
+
+    .picker-item-card {
+      background: #FFFDFB;
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-sm);
+      padding: 0.4rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+
+    .picker-item-card:hover {
+      border-color: var(--blush-500);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .picker-item-card.is-active-on-canvas {
+      border-color: var(--accent-sage);
+      background: #F4F8F4;
+    }
+
+    .picker-item-card.is-active-on-canvas::after {
+      content: '✓ On Canvas';
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: var(--accent-sage);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: var(--radius-pill);
+    }
+
+    .picker-img {
+      width: 100%;
+      aspect-ratio: 1/1.05;
+      border-radius: 4px;
+      object-fit: cover;
+      background: var(--bg-alt);
+    }
+
+    .picker-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--brown-900);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ==========================================================================
+       9. SAVED LOOKS VIEW (Outfits Gallery)
+       ========================================================================== */
+    .looks-header {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .looks-title-group h2 {
+      font-size: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .looks-title-group p {
+      font-size: 0.9rem;
+      color: var(--brown-500);
+    }
+
+    .looks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+
+    .look-card {
+      background: #FFFDF9;
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-normal);
+    }
+
+    .look-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--blush-300);
+    }
+
+    /* Collage mini preview */
+    .look-collage-preview {
+      width: 100%;
+      height: 240px;
+      background: #FAF7F2;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--brown-200);
+      padding: 0.75rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0.4rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .look-preview-item {
+      background: #fff;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--brown-100);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .look-preview-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .look-card-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .look-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--brown-900);
+      margin-bottom: 0.35rem;
+    }
+
+    .look-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.15rem;
+    }
+
+    .look-date {
+      font-size: 0.78rem;
+      color: var(--brown-500);
+    }
+
+    .look-card-actions {
+      display: flex;
+      gap: 0.5rem;
+      border-top: 1px dashed var(--brown-200);
+      padding-top: 0.9rem;
+      margin-top: auto;
+    }
+
+    .look-card-actions .btn {
+      flex: 1;
+    }
+
+    /* ==========================================================================
+       10. EMPTY STATES & ALERT BANNERS
+       ========================================================================== */
+    .empty-state {
+      background: var(--bg-surface);
+      border: 2px dashed var(--brown-300);
+      border-radius: var(--radius-xl);
+      padding: 4rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 580px;
+      margin: 2rem auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .empty-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--blush-100);
+      border: 2px solid var(--blush-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .empty-state h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+      color: var(--brown-700);
+      font-size: 0.95rem;
+      max-width: 400px;
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       11. MODALS & POPUPS
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 32, 24, 0.45);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #FFFDFB;
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-xl);
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px) scale(0.98);
+      transition: all var(--transition-normal);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--brown-200);
+      background: var(--bg-alt);
+      color: var(--brown-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all var(--transition-fast);
+    }
+    .modal-close-btn:hover {
+      background: var(--brown-900);
+      color: #fff;
+    }
+
+    .modal-header {
+      margin-bottom: 1.5rem;
+    }
+    .modal-header h3 {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .modal-header p {
+      font-size: 0.88rem;
+      color: var(--brown-500);
+    }
+
+    /* Form Inputs */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 0.4rem;
+      color: var(--brown-800);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.65rem 0.95rem;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--brown-200);
+      background: #FFFFFF;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--brown-900);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .form-control:focus {
+      border-color: var(--blush-500);
+      box-shadow: 0 0 0 3px rgba(230, 138, 125, 0.15);
+    }
+
+    /* File Drop Area */
+    .file-dropzone {
+      border: 2px dashed var(--brown-300);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      background: var(--bg-alt);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .file-dropzone:hover, .file-dropzone.dragover {
+      border-color: var(--blush-500);
+      background: var(--blush-100);
+    }
+
+    .dropzone-icon {
+      font-size: 2.2rem;
+    }
+
+    /* Batch Upload Items Preview in Modal */
+    .upload-queue {
+      max-height: 240px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-right: 0.25rem;
+    }
+
+    .queue-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      background: var(--bg-alt);
+      border: 1px solid var(--brown-200);
+      border-radius: var(--radius-md);
+      padding: 0.5rem 0.75rem;
+    }
+
+    .queue-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .queue-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    /* Mood selection pills */
+    .mood-selector-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .mood-chip {
+      font-size: 0.82rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--brown-200);
+      background: var(--bg-surface);
+      color: var(--brown-700);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      user-select: none;
+    }
+
+    .mood-chip:hover {
+      border-color: var(--brown-300);
+    }
+
+    .mood-chip.selected {
+      background: var(--lavender-200);
+      border-color: var(--lavender-500);
+      color: var(--brown-900);
+      font-weight: 700;
+    }
+
+    /* Toast Notifications */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: var(--brown-900);
+      color: #FFFDF9;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: slideToast 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      pointer-events: auto;
+      max-width: 360px;
+      border: 1px solid var(--brown-700);
+    }
+
+    @keyframes slideToast {
+      from { transform: translateY(16px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ==========================================================================
+       12. MOBILE BOTTOM NAVIGATION (Responsive)
+       ========================================================================== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 253, 249, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--brown-200);
+      z-index: 99;
+      padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
+      justify-content: space-around;
+      box-shadow: 0 -4px 16px rgba(44, 32, 24, 0.05);
+    }
+
+    .mobile-nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      background: none;
+      border: none;
+      color: var(--brown-500);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      transition: color var(--transition-fast);
+    }
+
+    .mobile-nav-btn.active {
+      color: var(--blush-600);
+      font-weight: 700;
+    }
+
+    .mobile-nav-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ==========================================================================
+       13. FAVORITES STYLING
+       ========================================================================== */
+    .btn-fav-toggle {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--brown-200);
+      color: var(--brown-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      transition: all var(--transition-fast);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .btn-fav-toggle:hover {
+      transform: scale(1.1);
+      color: var(--blush-600);
+      background: #FFFFFF;
+    }
+    .btn-fav-toggle.is-fav {
+      background: var(--blush-100);
+      border-color: var(--blush-300);
+      color: var(--blush-600);
+    }
+    .btn-fav-toggle.is-fav svg {
+      fill: var(--blush-600);
+    }
+
+    .favorites-subnav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-surface);
+      padding: 0.35rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--brown-200);
+      display: inline-flex;
+    }
+    .fav-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 0.45rem 1.15rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brown-700);
+      transition: all var(--transition-fast);
+    }
+    .fav-tab-btn.active {
+      background: var(--brown-900);
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       14. OUTFIT CALENDAR STYLING
+       ========================================================================== */
+    .calendar-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 980px) {
+      .calendar-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .calendar-main-panel {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .calendar-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .calendar-month-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      color: var(--brown-900);
+      font-weight: 600;
+    }
+    .calendar-controls-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .calendar-weekdays-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--brown-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .calendar-month-cells {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .cal-cell {
+      min-height: 82px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-md);
+      padding: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+    .cal-cell:hover {
+      border-color: var(--blush-500);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .cal-cell.is-other-month {
+      opacity: 0.4;
+      background: var(--bg-alt);
+    }
+    .cal-cell.is-today .cal-day-num {
+      background: var(--brown-900);
+      color: #fff;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cal-cell.is-selected {
+      border-color: var(--blush-600);
+      background: #FFFBF9;
+      box-shadow: 0 0 0 3px rgba(230, 138, 125, 0.25);
+    }
+    .cal-cell.has-outfit {
+      background: linear-gradient(135deg, #FFFDFB 0%, #FBF3F0 100%);
+      border-color: var(--blush-300);
+    }
+
+    .cal-day-num {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brown-800);
+    }
+
+    .cal-outfit-mini-badge {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--blush-300);
+      border-radius: var(--radius-sm);
+      padding: 2px 4px;
+      margin-top: 4px;
+      font-size: 0.65rem;
+      color: var(--brown-800);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .cal-mini-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .calendar-sidebar-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 90px;
+    }
+
+    /* ==========================================================================
+       15. COLOR PALETTE MATCHING STYLING
+       ========================================================================== */
+    .color-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+    .color-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-alt);
+      border: 1px solid var(--brown-200);
+      color: var(--brown-800);
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    .color-harmony-box {
+      background: linear-gradient(135deg, #FFFDFB 0%, #F5ECF8 100%);
+      border: 1.5px solid var(--lavender-300);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 1100px) {
+      .nav-tab-btn {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-tabs {
+        display: none;
+      }
+      .mobile-nav {
+        display: flex;
+      }
+      .mobile-nav-btn {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.2rem;
+      }
+      .mobile-nav-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+      .app-header {
+        padding: 0.75rem 1rem;
+      }
+      .main-content {
+        padding: 1.25rem 1rem 5.5rem;
+      }
+      .home-hero {
+        padding: 2.25rem 1.5rem;
+      }
+      .flatlay-row.top-row,
+      .flatlay-row.middle-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       APPLICATION HEADER
+       ========================================================================== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <a href="#home" class="brand-logo" onclick="App.navigateTo('home'); return false;">
+        <div class="brand-icon-box">
+          <!-- Hanger & Heart SVG Icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--brown-900);">
+            <path d="M12 2a3 3 0 0 0-3 3c0 .8.4 1.4 1 1.8L2 14v1a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1L14 6.8c.6-.4 1-1 1-1.8a3 3 0 0 0-3-3z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Outfit Studio <span class="script-font" style="font-size: 1.3rem;">✨</span></h1>
+          <span class="sub">My Digital Wardrobe</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-tabs" aria-label="Main Navigation">
+        <button class="nav-tab-btn active" data-tab="home" onclick="App.navigateTo('home')">
+          <span>🏠 Home</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="wardrobe" onclick="App.navigateTo('wardrobe')">
+          <span>👗 My Wardrobe</span>
+          <span class="nav-tab-badge" id="nav-wardrobe-count">0</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="studio" onclick="App.navigateTo('studio')">
+          <span>🎨 Mix & Match</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="looks" onclick="App.navigateTo('looks')">
+          <span>💖 Saved Looks</span>
+          <span class="nav-tab-badge" id="nav-looks-count">0</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="calendar" onclick="App.navigateTo('calendar')">
+          <span>📅 Calendar</span>
+          <span class="nav-tab-badge" id="nav-calendar-count">0</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="favorites" onclick="App.navigateTo('favorites')">
+          <span>♡ Favorites</span>
+          <span class="nav-tab-badge" id="nav-fav-count">0</span>
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-primary btn-sm" onclick="App.openUploadModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Add Piece</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="main-content">
+
+    <!-- ========================================================================
+         VIEW 1: HOME
+         ======================================================================== -->
+    <section id="view-home" class="view-section active">
+      <!-- Scrapbook Hero -->
+      <div class="home-hero">
+        <div class="tape-accent"></div>
+        <div class="hero-decor-star s1">✦</div>
+        <div class="hero-decor-star s2">✧</div>
+        <div class="hero-decor-star s3">✨</div>
+
+        <div class="home-hero-content">
+          <div class="hero-tagline">
+            <span>♡ Personal Style Sanctuary</span>
+          </div>
+          <h2>Curate, Style & Dream Up Your Perfect Outfits</h2>
+          <p class="desc">
+            Welcome to your digital flat-lay studio! Upload snapshots of your favorite clothes, 
+            mix and match pieces effortlessly without tearing through your closet, and save your daily style mood boards.
+          </p>
+          <div class="hero-cta-group">
+            <button class="btn btn-primary" onclick="App.navigateTo('studio')">
+              <span>🎨 Open Mix & Match Studio</span>
+            </button>
+            <button class="btn btn-secondary" onclick="App.openUploadModal()">
+              <span>📸 Add New Clothes</span>
+            </button>
+            <button class="btn btn-lavender" onclick="App.seedSampleWardrobe()">
+              <span>🧺 Load Capsule Wardrobe</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Counters -->
+      <div class="stats-shelf">
+        <div class="stat-card">
+          <div class="stat-icon pink">👗</div>
+          <div class="stat-meta">
+            <div class="stat-val" id="stat-total-clothes">0</div>
+            <div class="stat-label">Wardrobe Pieces</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon lavender">💖</div>
+          <div class="stat-meta">
+            <div class="stat-val" id="stat-total-looks">0</div>
+            <div class="stat-label">Saved Outfits</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon cream">✨</div>
+          <div class="stat-meta">
+            <div class="stat-val" id="stat-active-slots">0 / 6</div>
+            <div class="stat-label">Studio Canvas Styled</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Jump Cards -->
+      <div class="home-grid">
+        <div class="feature-card">
+          <div>
+            <h3>👗 My Digital Closet</h3>
+            <p>Organize your tops, bottoms, dresses, outerwear, shoes, and jewelry in one neat, searchable catalog.</p>
+            <div class="category-breakdown-chips" id="home-category-breakdown">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="App.navigateTo('wardrobe')">
+            <span>Browse Wardrobe →</span>
+          </button>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <h3>🎨 Flat-Lay Studio</h3>
+            <p>Assemble head-to-toe combinations on an aesthetic collage board. No overlapping clutter, just clean style harmony.</p>
+            <div class="canvas-helper-banner" style="margin-top:0; margin-bottom:1.25rem;">
+              <span>💡 Tip: Try the <strong>"Surprise Me!"</strong> generator when you don't know what to wear!</span>
+            </div>
+          </div>
+          <button class="btn btn-dark btn-sm" onclick="App.navigateTo('studio')">
+            <span>Enter Studio →</span>
+          </button>
+        </div>
+
+        <div class="feature-card">
+          <div>
+            <h3>✨ Daily Mood Stylist</h3>
+            <p>Pick your vibe for the day: Campus Day, Casual Hangout, Date Night, Cozy Day, or Smart & Chic.</p>
+            <div class="mood-selector-chips" style="margin-bottom:1.25rem;">
+              <span class="mood-chip" onclick="App.generateMoodOutfit('Campus Day')">🎓 Campus</span>
+              <span class="mood-chip" onclick="App.generateMoodOutfit('Casual Hangout')">☕ Casual</span>
+              <span class="mood-chip" onclick="App.generateMoodOutfit('Date Night')">🍷 Date Night</span>
+              <span class="mood-chip" onclick="App.generateMoodOutfit('Cozy Day')">🧸 Cozy</span>
+              <span class="mood-chip" onclick="App.generateMoodOutfit('Smart & Chic')">💼 Smart & Chic</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="App.navigateTo('studio')">
+            <span>Style by Mood →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 2: MY WARDROBE
+         ======================================================================== -->
+    <section id="view-wardrobe" class="view-section">
+      <div class="wardrobe-header">
+        <div class="wardrobe-topbar">
+          <div class="wardrobe-title-group">
+            <h2>My Wardrobe <span class="script-font" style="font-size: 1.4rem;">collection</span></h2>
+            <p>Manage, search, and curate all your individual clothing pieces.</p>
+          </div>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+            <button class="btn btn-secondary btn-sm" onclick="App.seedSampleWardrobe()">
+              <span>🧺 Add Starter Pieces</span>
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="App.openUploadModal()">
+              <span>📸 Upload Clothes</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-controls-row">
+          <!-- Search -->
+          <div class="search-input-wrapper">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="wardrobe-search" class="search-input" placeholder="Search by name, color, or mood..." oninput="WardrobeUI.handleSearch(this.value)">
+          </div>
+
+          <!-- Color Filter Dropdown -->
+          <div style="min-width: 150px;">
+            <select id="wardrobe-color-filter" class="form-control" style="padding: 0.55rem 0.85rem; font-size: 0.85rem;" onchange="WardrobeUI.setColorFilter(this.value)">
+              <option value="all">🎨 All Colors</option>
+              <option value="black">⚫ Black</option>
+              <option value="white">⚪ White</option>
+              <option value="cream">🍦 Cream</option>
+              <option value="gray">🌫️ Gray</option>
+              <option value="brown">🪵 Brown</option>
+              <option value="beige">🌾 Beige</option>
+              <option value="red">🍒 Red</option>
+              <option value="pink">🌸 Pink</option>
+              <option value="orange">🍊 Orange</option>
+              <option value="yellow">🍋 Yellow</option>
+              <option value="green">🍃 Green</option>
+              <option value="blue">🫐 Blue</option>
+              <option value="purple">🍇 Purple</option>
+              <option value="other">✨ Other</option>
+            </select>
+          </div>
+
+          <!-- Category Pills -->
+          <div class="category-pills" id="category-filter-pills">
+            <button class="cat-pill active" data-category="all" onclick="WardrobeUI.setCategory('all')">
+              <span>All Pieces</span>
+              <span class="cat-pill-count" id="count-all">0</span>
+            </button>
+            <button class="cat-pill" data-category="favorites" onclick="WardrobeUI.setCategory('favorites')">
+              <span>♡ Favorites</span>
+              <span class="cat-pill-count" id="count-fav-clothes">0</span>
+            </button>
+            <button class="cat-pill" data-category="tops" onclick="WardrobeUI.setCategory('tops')">
+              <span>👚 Tops</span>
+              <span class="cat-pill-count" id="count-tops">0</span>
+            </button>
+            <button class="cat-pill" data-category="bottoms" onclick="WardrobeUI.setCategory('bottoms')">
+              <span>👖 Bottoms</span>
+              <span class="cat-pill-count" id="count-bottoms">0</span>
+            </button>
+            <button class="cat-pill" data-category="dresses" onclick="WardrobeUI.setCategory('dresses')">
+              <span>👗 Dresses</span>
+              <span class="cat-pill-count" id="count-dresses">0</span>
+            </button>
+            <button class="cat-pill" data-category="outerwear" onclick="WardrobeUI.setCategory('outerwear')">
+              <span>🧥 Outerwear</span>
+              <span class="cat-pill-count" id="count-outerwear">0</span>
+            </button>
+            <button class="cat-pill" data-category="shoes" onclick="WardrobeUI.setCategory('shoes')">
+              <span>👞 Shoes</span>
+              <span class="cat-pill-count" id="count-shoes">0</span>
+            </button>
+            <button class="cat-pill" data-category="accessories" onclick="WardrobeUI.setCategory('accessories')">
+              <span>👜 Accessories</span>
+              <span class="cat-pill-count" id="count-accessories">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clothes Gallery Grid -->
+      <div class="clothes-grid" id="wardrobe-items-grid">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="wardrobe-empty-state" class="empty-state" style="display: none;">
+        <div class="empty-icon-wrap">🧺</div>
+        <h3>Your wardrobe is waiting!</h3>
+        <p>No clothing items found in this section. Upload your own outfit photos or click below to load a starter capsule collection!</p>
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="App.openUploadModal()">
+            <span>📸 Upload Clothes</span>
+          </button>
+          <button class="btn btn-secondary" onclick="App.seedSampleWardrobe()">
+            <span>🧺 Load Starter Capsule</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 3: MIX & MATCH STUDIO
+         ======================================================================== -->
+    <section id="view-studio" class="view-section">
+      <div class="studio-container">
+        
+        <!-- Left: Flat-Lay Canvas -->
+        <div class="canvas-panel">
+          <div class="tape-accent"></div>
+          
+          <div class="canvas-topbar">
+            <div class="canvas-title-box">
+              <h2>Outfit Canvas <span class="script-font" style="font-size: 1.35rem;">flat-lay</span></h2>
+              <p>Curate your look piece-by-piece or let serendipity take over.</p>
+            </div>
+
+            <!-- Toolbar buttons -->
+            <div class="canvas-controls">
+              <!-- Mood Dropdown -->
+              <select id="studio-mood-select" class="form-control" style="width: auto; padding: 0.45rem 0.85rem; font-size: 0.85rem;" onchange="Studio.handleMoodSelect(this.value)">
+                <option value="">✨ Style by Mood...</option>
+                <option value="Campus Day">🎓 Campus Day</option>
+                <option value="Casual Hangout">☕ Casual Hangout</option>
+                <option value="Date Night">🍷 Date Night</option>
+                <option value="Cozy Day">🧸 Cozy Day</option>
+                <option value="Smart & Chic">💼 Smart & Chic</option>
+              </select>
+
+              <button class="btn btn-lavender btn-sm" onclick="Studio.generateSurpriseOutfit()" title="Generate random outfit">
+                <span>🎲 Surprise Me!</span>
+              </button>
+
+              <button class="btn btn-primary btn-sm" onclick="Studio.openSaveModal()">
+                <span>💖 Save Outfit</span>
+              </button>
+
+              <button class="btn btn-secondary btn-sm" onclick="Studio.clearCanvas()" title="Clear all slots">
+                <span>🗑️ Clear</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Active Mood Indicator Banner -->
+          <div id="studio-mood-banner" class="canvas-helper-banner" style="display: none; margin-bottom: 1.25rem;">
+            <div>
+              <strong>Current Mood Vibe: </strong>
+              <span id="studio-mood-name" style="font-weight: 700; color: var(--blush-600);"></span>
+              <p id="studio-mood-tip" style="font-size: 0.8rem; color: var(--brown-700); margin-top: 2px;"></p>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="Studio.clearMoodBanner()">×</button>
+          </div>
+
+          <!-- Color Harmony Matcher Box -->
+          <div class="color-harmony-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-size:1.15rem;">🎨</span>
+                <strong style="font-size:0.92rem; color:var(--brown-900);">Color Palette Matcher</strong>
+                <span class="badge badge-lavender" style="font-size:0.7rem;">Color Harmony</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                <select id="studio-color-pref" class="form-control" style="width:auto; padding:0.4rem 0.75rem; font-size:0.82rem;">
+                  <option value="">Preferred Base Color (Any)</option>
+                  <option value="cream">🍦 Cream</option>
+                  <option value="beige">🌾 Beige</option>
+                  <option value="brown">🪵 Brown</option>
+                  <option value="black">⚫ Black</option>
+                  <option value="white">⚪ White</option>
+                  <option value="gray">🌫️ Gray</option>
+                  <option value="pink">🌸 Pink</option>
+                  <option value="blue">🫐 Blue</option>
+                  <option value="purple">🍇 Purple</option>
+                  <option value="green">🍃 Green</option>
+                  <option value="yellow">🍋 Yellow</option>
+                  <option value="red">🍒 Red</option>
+                  <option value="orange">🍊 Orange</option>
+                </select>
+
+                <select id="studio-color-harmony-rule" class="form-control" style="width:auto; padding:0.4rem 0.75rem; font-size:0.82rem;">
+                  <option value="neutrals">Tone Harmony (Neutrals & Earth)</option>
+                  <option value="monochrome">Monochromatic (Same Family)</option>
+                  <option value="complementary">Complementary Contrast</option>
+                  <option value="pastels">Soft Pastels Palette</option>
+                </select>
+
+                <button class="btn btn-primary btn-sm" onclick="Studio.matchColorPalette()" title="Generate color-matched outfit from wardrobe">
+                  <span>✨ Suggest Palette Outfit</span>
+                </button>
+              </div>
+            </div>
+            <p id="studio-color-tip" style="font-size:0.8rem; color:var(--brown-700); margin:0; display:none;"></p>
+          </div>
+
+          <!-- The Flat-Lay Pinboard -->
+          <div class="flatlay-board" id="studio-pinboard">
+            
+            <!-- Row 1: Outerwear & Accessories -->
+            <div class="flatlay-row top-row">
+              <!-- Outerwear Slot -->
+              <div class="flatlay-slot" id="slot-outerwear" onclick="Studio.handleSlotClick('outerwear')">
+                <div class="slot-empty-content">
+                  <span class="slot-icon">🧥</span>
+                  <span class="slot-label">Outerwear</span>
+                  <span class="slot-hint">+ Add Jacket/Coat</span>
+                </div>
+              </div>
+
+              <!-- Accessories Slot -->
+              <div class="flatlay-slot" id="slot-accessories" onclick="Studio.handleSlotClick('accessories')">
+                <div class="slot-empty-content">
+                  <span class="slot-icon">👜</span>
+                  <span class="slot-label">Accessories</span>
+                  <span class="slot-hint">+ Add Bag/Jewelry</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: Tops & Bottoms OR Dress Mode -->
+            <!-- Toggle between Two-Piece (Top+Bottom) and One-Piece (Dress) -->
+            <div style="display:flex; justify-content:center; gap:0.5rem; margin: -0.5rem 0;">
+              <button class="btn btn-secondary btn-sm" id="btn-mode-twopiece" onclick="Studio.setCenterMode('twopiece')" style="font-size:0.75rem; padding: 0.25rem 0.65rem;">
+                <span>Top + Bottom</span>
+              </button>
+              <button class="btn btn-secondary btn-sm" id="btn-mode-dress" onclick="Studio.setCenterMode('dress')" style="font-size:0.75rem; padding: 0.25rem 0.65rem;">
+                <span>One-Piece Dress</span>
+              </button>
+            </div>
+
+            <div class="flatlay-row middle-row" id="studio-center-row">
+              <!-- Top Slot -->
+              <div class="flatlay-slot" id="slot-tops" onclick="Studio.handleSlotClick('tops')">
+                <div class="slot-empty-content">
+                  <span class="slot-icon">👚</span>
+                  <span class="slot-label">Top</span>
+                  <span class="slot-hint">+ Add Blouse/Tee</span>
+                </div>
+              </div>
+
+              <!-- Bottom Slot -->
+              <div class="flatlay-slot" id="slot-bottoms" onclick="Studio.handleSlotClick('bottoms')">
+                <div class="slot-empty-content">
+                  <span class="slot-icon">👖</span>
+                  <span class="slot-label">Bottom</span>
+                  <span class="slot-hint">+ Add Skirt/Pants</span>
+                </div>
+              </div>
+
+              <!-- Dress Slot (shown in dress mode) -->
+              <div class="flatlay-slot" id="slot-dresses" style="display:none;" onclick="Studio.handleSlotClick('dresses')">
+                <div class="slot-empty-content">
+                  <span class="slot-icon">👗</span>
+                  <span class="slot-label">Dress</span>
+                  <span class="slot-hint">+ Add One-Piece Dress</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: Shoes -->
+            <div class="flatlay-row bottom-row">
+              <div class="flatlay-slot" id="slot-shoes" onclick="Studio.handleSlotClick('shoes')">
+                <div class="slot-empty-content">
+                  <span class="slot-icon">👞</span>
+                  <span class="slot-label">Shoes</span>
+                  <span class="slot-hint">+ Add Loafers/Heels</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Helper Microcopy -->
+          <p style="font-size: 0.8rem; color: var(--brown-500); text-align: center; margin-top: 1rem;">
+            📌 Click any empty slot or pick items from the sidebar to assemble your look.
+          </p>
+        </div>
+
+        <!-- Right: Studio Wardrobe Picker Sidebar -->
+        <aside class="studio-sidebar">
+          <div class="sidebar-header">
+            <h3>Wardrobe Rack <span class="script-font" style="font-size: 1.15rem;">browse</span></h3>
+            <p id="sidebar-context-hint">Click an item to place it in the studio.</p>
+          </div>
+
+          <!-- Category filter inside sidebar -->
+          <div class="sidebar-cat-nav" id="sidebar-cat-nav">
+            <button class="sidebar-cat-pill active" data-cat="all" onclick="Studio.setSidebarCategory('all')">All</button>
+            <button class="sidebar-cat-pill" data-cat="tops" onclick="Studio.setSidebarCategory('tops')">Tops</button>
+            <button class="sidebar-cat-pill" data-cat="bottoms" onclick="Studio.setSidebarCategory('bottoms')">Bottoms</button>
+            <button class="sidebar-cat-pill" data-cat="dresses" onclick="Studio.setSidebarCategory('dresses')">Dresses</button>
+            <button class="sidebar-cat-pill" data-cat="outerwear" onclick="Studio.setSidebarCategory('outerwear')">Outerwear</button>
+            <button class="sidebar-cat-pill" data-cat="shoes" onclick="Studio.setSidebarCategory('shoes')">Shoes</button>
+            <button class="sidebar-cat-pill" data-cat="accessories" onclick="Studio.setSidebarCategory('accessories')">Accessories</button>
+          </div>
+
+          <!-- Items list -->
+          <div class="sidebar-items-list" id="sidebar-items-list">
+            <!-- Dynamically populated -->
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 4: SAVED LOOKS
+         ======================================================================== -->
+    <section id="view-looks" class="view-section">
+      <div class="looks-header">
+        <div class="looks-title-group">
+          <h2>Saved Looks <span class="script-font" style="font-size: 1.4rem;">lookbook</span></h2>
+          <p>Your personal style lookbook. Relive your favorite outfit combinations anytime.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="App.navigateTo('studio')">
+          <span>🎨 Create New Look</span>
+        </button>
+      </div>
+
+      <!-- Outfits Grid -->
+      <div class="looks-grid" id="saved-looks-grid">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="looks-empty-state" class="empty-state" style="display: none;">
+        <div class="empty-icon-wrap">💖</div>
+        <h3>No saved looks yet!</h3>
+        <p>You haven't saved any outfit combinations so far. Head to the Mix & Match Studio to style and save your first look!</p>
+        <button class="btn btn-primary" onclick="App.navigateTo('studio')">
+          <span>🎨 Go to Mix & Match Studio</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 5: OUTFIT CALENDAR
+         ======================================================================== -->
+    <section id="view-calendar" class="view-section">
+      <div class="calendar-layout">
+        <!-- Calendar Grid Board -->
+        <div class="calendar-main-panel">
+          <div class="calendar-nav-bar">
+            <div>
+              <h2 class="calendar-month-title" id="calendar-month-heading">October 2026</h2>
+              <p style="font-size: 0.85rem; color: var(--brown-500);">Plan outfits ahead of time & keep your days styled.</p>
+            </div>
+            <div class="calendar-controls-btn-group">
+              <button class="btn btn-secondary btn-sm" onclick="CalendarUI.prevMonth()" title="Previous Month">‹ Prev</button>
+              <button class="btn btn-secondary btn-sm" onclick="CalendarUI.goToToday()" title="Current Month">Today</button>
+              <button class="btn btn-secondary btn-sm" onclick="CalendarUI.nextMonth()" title="Next Month">Next ›</button>
+            </div>
+          </div>
+
+          <!-- Weekday Headers -->
+          <div class="calendar-weekdays-grid">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+
+          <!-- Day Cells -->
+          <div class="calendar-month-cells" id="calendar-days-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Selected Date Outfit Inspector Sidebar -->
+        <aside class="calendar-sidebar-card">
+          <div style="border-bottom: 1.5px dashed var(--brown-200); padding-bottom: 1rem; margin-bottom: 1.25rem;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span class="badge badge-blush" id="calendar-selected-badge">Selected Date</span>
+              <span style="font-size: 1.2rem;">🗓️</span>
+            </div>
+            <h3 id="calendar-selected-date-text" style="font-size: 1.25rem; margin-top: 0.5rem; color: var(--brown-900);">Select a Date</h3>
+          </div>
+
+          <div id="calendar-selected-content">
+            <!-- Dynamically populated: planned look details or empty state -->
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         VIEW 6: FAVORITES
+         ======================================================================== -->
+    <section id="view-favorites" class="view-section">
+      <div class="wardrobe-header">
+        <div class="wardrobe-topbar">
+          <div class="wardrobe-title-group">
+            <h2>My Favorites <span class="script-font" style="font-size: 1.4rem;">curated ♡</span></h2>
+            <p>Quick access to all your favorite wardrobe pieces and saved outfit combinations.</p>
+          </div>
+          <div class="favorites-subnav">
+            <button class="fav-tab-btn active" id="btn-fav-tab-clothes" onclick="FavoritesUI.setTab('clothes')">
+              👗 Clothes (<span id="fav-clothes-count">0</span>)
+            </button>
+            <button class="fav-tab-btn" id="btn-fav-tab-looks" onclick="FavoritesUI.setTab('looks')">
+              💖 Outfits (<span id="fav-looks-count">0</span>)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Favorited Clothes Grid -->
+      <div id="fav-clothes-grid" class="clothes-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Favorited Looks Grid -->
+      <div id="fav-looks-grid" class="looks-grid" style="display: none;">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Empty State for Favorites -->
+      <div id="fav-empty-state" class="empty-state" style="display: none;">
+        <div class="empty-icon-wrap">♡</div>
+        <h3 id="fav-empty-title">No favorites yet!</h3>
+        <p id="fav-empty-desc">Click the heart icon on any clothing piece or saved look to pin your top favorites here.</p>
+        <button class="btn btn-primary" onclick="App.navigateTo('wardrobe')">
+          <span>👗 Browse Wardrobe</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL 1: UPLOAD CLOTHING MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="upload-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="App.closeModals()">✕</button>
+      
+      <div class="modal-header">
+        <h3>Add Clothes to Wardrobe <span class="script-font" style="font-size: 1.25rem;">📸</span></h3>
+        <p>Upload photos of your clothes. They are stored locally on your device.</p>
+      </div>
+
+      <!-- Dropzone -->
+      <div class="form-group">
+        <div class="file-dropzone" id="file-dropzone" onclick="document.getElementById('clothing-file-input').click()">
+          <div class="dropzone-icon">👗</div>
+          <strong style="color: var(--brown-900);">Click or drag & drop clothing photos</strong>
+          <span style="font-size: 0.8rem; color: var(--brown-500);">Supports JPG, JPEG, PNG, and WebP (Multiple files allowed)</span>
+          <input type="file" id="clothing-file-input" accept="image/png, image/jpeg, image/webp" multiple style="display: none;" onchange="UploadManager.handleFileSelect(event)">
+        </div>
+      </div>
+
+      <!-- Upload Queue & Metadata Assignment -->
+      <div id="upload-queue-container" style="display: none;">
+        <label class="form-label">Review & Categorize Selected Pieces:</label>
+        <div class="upload-queue" id="upload-queue-list">
+          <!-- Dynamically populated queue items -->
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button class="btn btn-secondary" onclick="App.closeModals()">Cancel</button>
+          <button class="btn btn-primary" id="btn-save-uploads" onclick="UploadManager.saveAllItems()">
+            <span>Save to Wardrobe ✨</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: SAVE OUTFIT MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="save-outfit-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="App.closeModals()">✕</button>
+      
+      <div class="modal-header">
+        <h3>Save This Outfit <span class="script-font" style="font-size: 1.25rem;">💖</span></h3>
+        <p>Give your outfit combination a cute title to remember it by.</p>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="outfit-title-input">Outfit Title *</label>
+        <input type="text" id="outfit-title-input" class="form-control" placeholder="e.g. Sunday Matcha & Bookstore, French Autumn Chic..." maxlength="45">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Occasion / Mood Tag</label>
+        <select id="outfit-mood-input" class="form-control">
+          <option value="Casual Hangout">☕ Casual Hangout</option>
+          <option value="Campus Day">🎓 Campus Day</option>
+          <option value="Date Night">🍷 Date Night</option>
+          <option value="Cozy Day">🧸 Cozy Day</option>
+          <option value="Smart & Chic">💼 Smart & Chic</option>
+          <option value="General Look">✨ General Everyday</option>
+        </select>
+      </div>
+
+      <!-- Preview of items in outfit -->
+      <div class="form-group">
+        <label class="form-label">Included Pieces:</label>
+        <div id="save-modal-items-preview" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="App.closeModals()">Cancel</button>
+        <button class="btn btn-primary" onclick="Studio.confirmSaveOutfit()">Save to Lookbook ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: CONFIRM ACTION DIALOG (Deletes, Replaces)
+       ========================================================================== -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-card" style="max-width: 420px; text-align: center;">
+      <div class="empty-icon-wrap" style="margin: 0 auto 1rem; width: 56px; height: 56px; font-size: 1.6rem; background: #FFF0EE;">
+        🗑️
+      </div>
+      <h3 id="confirm-modal-title" style="margin-bottom: 0.5rem; font-size: 1.3rem;">Are you sure?</h3>
+      <p id="confirm-modal-text" style="color: var(--brown-700); font-size: 0.9rem; margin-bottom: 1.5rem;"></p>
+      
+      <div style="display: flex; justify-content: center; gap: 0.75rem;">
+        <button class="btn btn-secondary" onclick="App.closeModals()">Cancel</button>
+        <button class="btn btn-primary" id="confirm-modal-action-btn" style="background: var(--danger); border-color: var(--danger);">Delete Permanently</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 4: EDIT CLOTHING ITEM MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="edit-item-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="App.closeModals()">✕</button>
+      
+      <div class="modal-header">
+        <h3>Edit Clothing Piece <span class="script-font" style="font-size: 1.25rem;">✎</span></h3>
+        <p>Update the name, category, or photo of this wardrobe item.</p>
+      </div>
+
+      <!-- Current Image Preview & Replacement -->
+      <div class="form-group" style="text-align: center; margin-bottom: 1.5rem;">
+        <label class="form-label" style="text-align: left;">Clothing Photo:</label>
+        <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius-sm); border: 1.5px solid var(--brown-200); overflow: hidden; background: var(--bg-alt); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <img id="edit-item-image-preview" src="" alt="Preview" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div style="flex: 1; text-align: left;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('edit-item-file-input').click()">
+              <span>📸 Replace Photo</span>
+            </button>
+            <input type="file" id="edit-item-file-input" accept="image/png, image/jpeg, image/webp" style="display: none;" onchange="WardrobeUI.handleEditImageChange(event)">
+            <p style="font-size: 0.75rem; color: var(--brown-500); margin-top: 0.35rem;">Optional. JPG, PNG, or WebP.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="edit-item-name-input">Item Name *</label>
+        <input type="text" id="edit-item-name-input" class="form-control" placeholder="e.g. Linen Button-Down Shirt" maxlength="50">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="edit-item-category-select">Category *</label>
+        <select id="edit-item-category-select" class="form-control">
+          <option value="tops">👚 Tops</option>
+          <option value="bottoms">👖 Bottoms</option>
+          <option value="dresses">👗 Dresses</option>
+          <option value="outerwear">🧥 Outerwear</option>
+          <option value="shoes">👞 Shoes</option>
+          <option value="accessories">👜 Accessories</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="edit-item-color-select">Color (Optional)</label>
+        <select id="edit-item-color-select" class="form-control">
+          <option value="">No Color Assigned</option>
+          <option value="black">⚫ Black</option>
+          <option value="white">⚪ White</option>
+          <option value="cream">🍦 Cream</option>
+          <option value="gray">🌫️ Gray</option>
+          <option value="brown">🪵 Brown</option>
+          <option value="beige">🌾 Beige</option>
+          <option value="red">🍒 Red</option>
+          <option value="pink">🌸 Pink</option>
+          <option value="orange">🍊 Orange</option>
+          <option value="yellow">🍋 Yellow</option>
+          <option value="green">🍃 Green</option>
+          <option value="blue">🫐 Blue</option>
+          <option value="purple">🍇 Purple</option>
+          <option value="other">✨ Other</option>
+        </select>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="App.closeModals()">Cancel</button>
+        <button class="btn btn-primary" onclick="WardrobeUI.saveEditedItem()">Save Changes ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 5: ASSIGN OUTFIT TO CALENDAR MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="assign-outfit-modal">
+    <div class="modal-card" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="App.closeModals()">✕</button>
+      
+      <div class="modal-header">
+        <h3>Schedule Outfit <span class="script-font" style="font-size: 1.25rem;">📅</span></h3>
+        <p id="assign-modal-date-subtitle">Choose a saved look from your lookbook to wear on this date.</p>
+      </div>
+
+      <div id="assign-outfit-picker-list" style="max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; padding-right: 0.25rem;">
+        <!-- Dynamically rendered list of user's saved outfits -->
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+        <button class="btn btn-secondary" onclick="App.closeModals()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MOBILE BOTTOM NAVIGATION
+       ========================================================================== -->
+  <nav class="mobile-nav" aria-label="Mobile Navigation">
+    <button class="mobile-nav-btn active" data-tab="home" onclick="App.navigateTo('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="wardrobe" onclick="App.navigateTo('wardrobe')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+      <span>Wardrobe</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="studio" onclick="App.navigateTo('studio')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+      <span>Studio</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="looks" onclick="App.navigateTo('looks')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      <span>Looks</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="calendar" onclick="App.navigateTo('calendar')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>Calendar</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="favorites" onclick="App.navigateTo('favorites')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <span>Favorites</span>
+    </button>
+  </nav>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT APPLICATION LOGIC
+       ========================================================================== -->
+  <script>
+    /**
+     * OUTFIT STUDIO — Single File Architecture
+     *
+     * Submodules:
+     * 1. DB: IndexedDB storage layer for clothes & saved looks
+     * 2. State: In-memory application state
+     * 3. SampleWardrobe: Cute vector/canvas starter clothes for instant demo
+     * 4. UploadManager: Multiple photo upload, canvas resize, batch tagging
+     * 5. WardrobeUI: Filtering, searching, deleting clothing gallery
+     * 6. Studio: Flat-lay canvas, slots, mood stylist, surprise generator
+     * 7. LooksUI: Saved lookbook gallery, loading looks back into studio
+     * 8. App: Navigation router, modals, toasts, initialization
+     */
+
+    // --- 1. INDEXEDDB STORAGE MANAGER ---
+    const DB = {
+      dbName: 'OutfitStudioDB',
+      dbVersion: 2,
+      dbInstance: null,
+
+      init() {
+        return new Promise((resolve, reject) => {
+          if (!window.indexedDB) {
+            console.error('IndexedDB not supported by this browser.');
+            reject(new Error('IndexedDB not supported'));
+            return;
+          }
+
+          const request = window.indexedDB.open(this.dbName, this.dbVersion);
+
+          request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            // Store 1: Clothing items
+            if (!db.objectStoreNames.contains('clothing_items')) {
+              const clothesStore = db.createObjectStore('clothing_items', { keyPath: 'id' });
+              clothesStore.createIndex('category', 'category', { unique: false });
+              clothesStore.createIndex('createdAt', 'createdAt', { unique: false });
+            }
+            // Store 2: Saved outfits
+            if (!db.objectStoreNames.contains('saved_outfits')) {
+              const outfitsStore = db.createObjectStore('saved_outfits', { keyPath: 'id' });
+              outfitsStore.createIndex('createdAt', 'createdAt', { unique: false });
+            }
+            // Store 3: Calendar plans
+            if (!db.objectStoreNames.contains('calendar_plans')) {
+              const calStore = db.createObjectStore('calendar_plans', { keyPath: 'date' });
+              calStore.createIndex('outfitId', 'outfitId', { unique: false });
+            }
+          };
+
+          request.onsuccess = (event) => {
+            this.dbInstance = event.target.result;
+            resolve(this.dbInstance);
+          };
+
+          request.onerror = (event) => {
+            console.error('IndexedDB open error:', event.target.error);
+            reject(event.target.error);
+          };
+        });
+      },
+
+      // Generic Store Helpers
+      getAll(storeName) {
+        return new Promise((resolve, reject) => {
+          if (!this.dbInstance) return resolve([]);
+          const tx = this.dbInstance.transaction(storeName, 'readonly');
+          const store = tx.objectStore(storeName);
+          const request = store.getAll();
+          request.onsuccess = () => resolve(request.result || []);
+          request.onerror = (e) => reject(e.target.error);
+        });
+      },
+
+      put(storeName, item) {
+        return new Promise((resolve, reject) => {
+          if (!this.dbInstance) return reject(new Error('DB not initialized'));
+          const tx = this.dbInstance.transaction(storeName, 'readwrite');
+          const store = tx.objectStore(storeName);
+          const request = store.put(item);
+          request.onsuccess = () => resolve(item);
+          request.onerror = (e) => reject(e.target.error);
+        });
+      },
+
+      delete(storeName, id) {
+        return new Promise((resolve, reject) => {
+          if (!this.dbInstance) return reject(new Error('DB not initialized'));
+          const tx = this.dbInstance.transaction(storeName, 'readwrite');
+          const store = tx.objectStore(storeName);
+          const request = store.delete(id);
+          request.onsuccess = () => resolve();
+          request.onerror = (e) => reject(e.target.error);
+        });
+      }
+    };
+
+    // --- 2. GLOBAL STATE ---
+    const State = {
+      clothes: [],
+      outfits: [],
+      calendarPlans: {}, // date 'YYYY-MM-DD' -> plan object
+      currentTab: 'home',
+      activeCategoryFilter: 'all',
+      activeColorFilter: 'all',
+      searchQuery: '',
+      selectedCalendarDate: null,
+      calendarYear: new Date().getFullYear(),
+      calendarMonth: new Date().getMonth(),
+      favoritesTab: 'clothes',
+
+      // Current active outfit on the studio canvas
+      activeCanvas: {
+        outerwear: null,   // item id or null
+        tops: null,
+        bottoms: null,
+        dresses: null,
+        shoes: null,
+        accessories: null,
+        centerMode: 'twopiece', // 'twopiece' (top + bottom) | 'dress' (one piece)
+        activeMood: null
+      },
+
+      // Queue of items being uploaded
+      uploadQueue: [],
+      editingItemId: null
+    };
+
+    // --- 3. SAMPLE CAPSULE WARDROBE (Inline High-Quality Illustrations) ---
+    // Creates beautiful SVG illustrations drawn on canvas to ensure the user
+    // has a gorgeously styled ready-to-test wardrobe with zero external network lag!
+    const SampleWardrobe = {
+      createSvgDataUrl(svgString) {
+        return 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
+      },
+
+      getStarterItems() {
+        return [
+          {
+            id: 'sample_top_1',
+            name: 'Cream Cable-Knit Sweater',
+            category: 'tops',
+            color: 'cream',
+            moods: ['Cozy Day', 'Casual Hangout'],
+            createdAt: Date.now() - 600000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FBF8F5"/>
+                <!-- Hanger -->
+                <path d="M150 45 Q150 25 160 20 Q170 15 160 30" stroke="#7A5C45" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Sweater Body -->
+                <path d="M90 65 L40 120 L70 145 L95 105 L95 270 Q150 280 205 270 L205 105 L230 145 L260 120 L210 65 Q150 85 90 65 Z" fill="#F4EFE6" stroke="#D3C7B6" stroke-width="2.5"/>
+                <!-- Cable Knit textures -->
+                <path d="M125 90 L125 265 M150 90 L150 268 M175 90 L175 265" stroke="#E2D7C5" stroke-width="2" stroke-dasharray="4,4"/>
+                <path d="M115 75 Q150 90 185 75" fill="none" stroke="#D3C7B6" stroke-width="3"/>
+                <!-- Cute Heart Tag -->
+                <circle cx="150" cy="130" r="14" fill="#FCE8E6"/>
+                <text x="150" y="135" font-family="sans-serif" font-size="12" fill="#E68A7D" text-anchor="middle">♡</text>
+              </svg>
+            `)
+          },
+          {
+            id: 'sample_top_2',
+            name: 'Silk Tie-Bow Blouse',
+            category: 'tops',
+            color: 'pink',
+            moods: ['Smart & Chic', 'Date Night'],
+            createdAt: Date.now() - 500000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FDFBF9"/>
+                <!-- Blouse -->
+                <path d="M95 70 L45 130 L70 150 L95 110 L95 260 Q150 270 205 260 L205 110 L230 150 L255 130 L205 70 Q150 85 95 70 Z" fill="#FCEFEF" stroke="#E6BFBD" stroke-width="2.5"/>
+                <!-- Bow collar -->
+                <circle cx="150" cy="85" r="7" fill="#D36E60"/>
+                <path d="M150 85 Q130 95 125 125 Q135 125 145 95" fill="#EFAAA4"/>
+                <path d="M150 85 Q170 95 175 125 Q165 125 155 95" fill="#EFAAA4"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'sample_bottom_1',
+            name: 'Pleated Tailored Trousers',
+            category: 'bottoms',
+            color: 'beige',
+            moods: ['Smart & Chic', 'Campus Day'],
+            createdAt: Date.now() - 400000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FBF8F5"/>
+                <!-- Trousers -->
+                <path d="M90 40 L210 40 L218 65 L210 295 L165 295 L150 120 L135 295 L90 295 L82 65 Z" fill="#ECE5DD" stroke="#C4B5A5" stroke-width="2.5"/>
+                <!-- Belt & Pleats -->
+                <line x1="90" y1="55" x2="210" y2="55" stroke="#A89684" stroke-width="2"/>
+                <line x1="120" y1="65" x2="115" y2="280" stroke="#DACDC0" stroke-width="1.5"/>
+                <line x1="180" y1="65" x2="185" y2="280" stroke="#DACDC0" stroke-width="1.5"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'sample_bottom_2',
+            name: 'A-Line Denim Midi Skirt',
+            category: 'bottoms',
+            color: 'blue',
+            moods: ['Casual Hangout', 'Campus Day'],
+            createdAt: Date.now() - 350000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FAF6F0"/>
+                <!-- Skirt -->
+                <path d="M100 45 L200 45 L235 285 Q150 300 65 285 Z" fill="#9FBAD3" stroke="#688BAE" stroke-width="2.5"/>
+                <!-- Buttons line -->
+                <line x1="150" y1="45" x2="150" y2="285" stroke="#688BAE" stroke-width="2" stroke-dasharray="3,3"/>
+                <circle cx="150" cy="80" r="4" fill="#C59B27"/>
+                <circle cx="150" cy="120" r="4" fill="#C59B27"/>
+                <circle cx="150" cy="160" r="4" fill="#C59B27"/>
+                <circle cx="150" cy="200" r="4" fill="#C59B27"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'sample_dress_1',
+            name: 'Lavender Floral Midi Dress',
+            category: 'dresses',
+            color: 'purple',
+            moods: ['Date Night', 'Casual Hangout'],
+            createdAt: Date.now() - 300000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FBF9FE"/>
+                <!-- Dress -->
+                <path d="M110 40 L90 70 L115 130 L75 295 Q150 310 225 295 L185 130 L210 70 L190 40 Q150 60 110 40 Z" fill="#E8DEF5" stroke="#B8A4D6" stroke-width="2.5"/>
+                <!-- Floral accents -->
+                <circle cx="130" cy="180" r="6" fill="#F7D6D0"/>
+                <circle cx="170" cy="220" r="6" fill="#F7D6D0"/>
+                <circle cx="120" cy="250" r="6" fill="#F7D6D0"/>
+                <circle cx="180" cy="160" r="6" fill="#F7D6D0"/>
+                <!-- Waist Ribbon -->
+                <path d="M115 130 Q150 140 185 130" stroke="#9B82C4" stroke-width="4" fill="none"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'sample_outerwear_1',
+            name: 'Oatmeal Wool Trench Coat',
+            category: 'outerwear',
+            color: 'brown',
+            moods: ['Smart & Chic', 'Cozy Day'],
+            createdAt: Date.now() - 250000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FDFBF9"/>
+                <!-- Trench -->
+                <path d="M90 45 L35 125 L65 145 L85 110 L80 305 L220 305 L215 110 L235 145 L265 125 L210 45 Q150 65 90 45 Z" fill="#EFE7DA" stroke="#CBBBA5" stroke-width="2.5"/>
+                <!-- Lapel -->
+                <path d="M110 50 L140 135 L115 135 Z" fill="#DECDB4"/>
+                <path d="M190 50 L160 135 L185 135 Z" fill="#DECDB4"/>
+                <!-- Belt -->
+                <rect x="75" y="160" width="150" height="14" fill="#CBBBA5" rx="3"/>
+                <rect x="140" y="157" width="20" height="20" fill="none" stroke="#7A5C45" stroke-width="3" rx="2"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'sample_shoes_1',
+            name: 'Chunky Leather Loafers',
+            category: 'shoes',
+            color: 'black',
+            moods: ['Smart & Chic', 'Campus Day'],
+            createdAt: Date.now() - 200000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FAF6F0"/>
+                <!-- Pair of loafers -->
+                <!-- Left Shoe -->
+                <path d="M50 170 Q70 140 120 150 Q135 170 130 210 L50 210 Q40 190 50 170 Z" fill="#423226" stroke="#2C2018" stroke-width="2"/>
+                <rect x="45" y="205" width="90" height="18" fill="#2C2018" rx="4"/>
+                <rect x="75" y="155" width="25" height="8" fill="#C59B27" rx="2"/>
+                <!-- Right Shoe -->
+                <path d="M170 170 Q190 140 240 150 Q255 170 250 210 L170 210 Q160 190 170 170 Z" fill="#423226" stroke="#2C2018" stroke-width="2"/>
+                <rect x="165" y="205" width="90" height="18" fill="#2C2018" rx="4"/>
+                <rect x="195" y="155" width="25" height="8" fill="#C59B27" rx="2"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'sample_accessories_1',
+            name: 'Woven Latte Shoulder Bag',
+            category: 'accessories',
+            color: 'brown',
+            moods: ['Casual Hangout', 'Smart & Chic'],
+            createdAt: Date.now() - 150000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FBF8F5"/>
+                <!-- Strap -->
+                <path d="M100 170 C100 40, 200 40, 200 170" fill="none" stroke="#7A5C45" stroke-width="4"/>
+                <!-- Bag Body -->
+                <path d="M80 160 L220 160 L205 270 Q150 285 95 270 Z" fill="#D3A77C" stroke="#9E7449" stroke-width="2.5"/>
+                <!-- Woven pattern -->
+                <path d="M90 190 L210 190 M95 220 L205 220 M100 250 L200 250" stroke="#9E7449" stroke-width="1.5" stroke-dasharray="6,4"/>
+                <!-- Buckle -->
+                <circle cx="150" cy="180" r="10" fill="#E2A03F" stroke="#B87D26" stroke-width="2"/>
+              </svg>
+            `)
+          }
+        ];
+      }
+    };
+
+    // --- 4. UPLOAD & IMAGE OPTIMIZATION MANAGER ---
+    const UploadManager = {
+      // Downscale image via HTML5 Canvas to max 800px to ensure fast IndexedDB storage
+      compressImage(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = (event) => {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = () => {
+              const maxDim = 800;
+              let width = img.width;
+              let height = img.height;
+
+              if (width > height && width > maxDim) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              } else if (height > maxDim) {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
+              }
+
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+
+              // Preserve transparency for PNG and WebP, otherwise compress as JPEG
+              let mimeType = 'image/jpeg';
+              let quality = 0.86;
+              if (file.type === 'image/png') {
+                mimeType = 'image/png';
+                quality = undefined;
+              } else if (file.type === 'image/webp') {
+                mimeType = 'image/webp';
+                quality = 0.86;
+              }
+
+              const dataUrl = canvas.toDataURL(mimeType, quality);
+              resolve(dataUrl);
+            };
+            img.onerror = (err) => reject(err);
+          };
+          reader.onerror = (err) => reject(err);
+        });
+      },
+
+      async handleFileSelect(event) {
+        const files = Array.from(event.target.files);
+        if (!files || files.length === 0) return;
+
+        App.showToast(`Processing ${files.length} photo(s)... ✨`);
+
+        for (const file of files) {
+          if (!file.type.match(/^image\/(png|jpeg|jpg|webp)$/)) {
+            App.showToast(`Skipped ${file.name}: only JPG, PNG, WebP supported.`, 'warning');
+            continue;
+          }
+
+          try {
+            const compressedDataUrl = await this.compressImage(file);
+            const baseName = file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+            const capitalizedName = baseName.charAt(0).toUpperCase() + baseName.slice(1);
+
+            State.uploadQueue.push({
+              tempId: 'temp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+              imageData: compressedDataUrl,
+              name: capitalizedName,
+              category: 'tops', // default
+              moods: ['Casual Hangout'],
+              color: ''
+            });
+          } catch (e) {
+            console.error('Error processing image:', e);
+            App.showToast(`Failed to process ${file.name}`, 'danger');
+          }
+        }
+
+        this.renderUploadQueue();
+      },
+
+      renderUploadQueue() {
+        const container = document.getElementById('upload-queue-container');
+        const list = document.getElementById('upload-queue-list');
+
+        if (State.uploadQueue.length === 0) {
+          container.style.display = 'none';
+          list.innerHTML = '';
+          return;
+        }
+
+        container.style.display = 'block';
+        list.innerHTML = State.uploadQueue.map((item, idx) => `
+          <div class="queue-item" data-id="${item.tempId}">
+            <img src="${item.imageData}" alt="Preview" class="queue-thumb">
+            <div class="queue-fields">
+              <input type="text" class="form-control" style="padding: 0.35rem 0.65rem; font-size: 0.85rem;" 
+                value="${item.name}" placeholder="Item Name" 
+                oninput="UploadManager.updateQueueItem('${item.tempId}', 'name', this.value)">
+              
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <select class="form-control" style="padding: 0.35rem 0.65rem; font-size: 0.82rem; flex: 1; min-width: 90px;"
+                  onchange="UploadManager.updateQueueItem('${item.tempId}', 'category', this.value)">
+                  <option value="tops" ${item.category === 'tops' ? 'selected' : ''}>👚 Tops</option>
+                  <option value="bottoms" ${item.category === 'bottoms' ? 'selected' : ''}>👖 Bottoms</option>
+                  <option value="dresses" ${item.category === 'dresses' ? 'selected' : ''}>👗 Dresses</option>
+                  <option value="outerwear" ${item.category === 'outerwear' ? 'selected' : ''}>🧥 Outerwear</option>
+                  <option value="shoes" ${item.category === 'shoes' ? 'selected' : ''}>👞 Shoes</option>
+                  <option value="accessories" ${item.category === 'accessories' ? 'selected' : ''}>👜 Accessories</option>
+                </select>
+
+                <select class="form-control" style="padding: 0.35rem 0.65rem; font-size: 0.82rem; flex: 1; min-width: 90px;"
+                  onchange="UploadManager.updateQueueItem('${item.tempId}', 'color', this.value)">
+                  <option value="">🎨 Color: None</option>
+                  <option value="black" ${item.color === 'black' ? 'selected' : ''}>⚫ Black</option>
+                  <option value="white" ${item.color === 'white' ? 'selected' : ''}>⚪ White</option>
+                  <option value="cream" ${item.color === 'cream' ? 'selected' : ''}>🍦 Cream</option>
+                  <option value="gray" ${item.color === 'gray' ? 'selected' : ''}>🌫️ Gray</option>
+                  <option value="brown" ${item.color === 'brown' ? 'selected' : ''}>🪵 Brown</option>
+                  <option value="beige" ${item.color === 'beige' ? 'selected' : ''}>🌾 Beige</option>
+                  <option value="red" ${item.color === 'red' ? 'selected' : ''}>🍒 Red</option>
+                  <option value="pink" ${item.color === 'pink' ? 'selected' : ''}>🌸 Pink</option>
+                  <option value="orange" ${item.color === 'orange' ? 'selected' : ''}>🍊 Orange</option>
+                  <option value="yellow" ${item.color === 'yellow' ? 'selected' : ''}>🍋 Yellow</option>
+                  <option value="green" ${item.color === 'green' ? 'selected' : ''}>🍃 Green</option>
+                  <option value="blue" ${item.color === 'blue' ? 'selected' : ''}>🫐 Blue</option>
+                  <option value="purple" ${item.color === 'purple' ? 'selected' : ''}>🍇 Purple</option>
+                  <option value="other" ${item.color === 'other' ? 'selected' : ''}>✨ Other</option>
+                </select>
+
+                <select class="form-control" style="padding: 0.35rem 0.65rem; font-size: 0.82rem; flex: 1; min-width: 90px;"
+                  onchange="UploadManager.updateQueueItem('${item.tempId}', 'mood', this.value)">
+                  <option value="Casual Hangout">☕ Casual</option>
+                  <option value="Campus Day">🎓 Campus</option>
+                  <option value="Date Night">🍷 Date Night</option>
+                  <option value="Cozy Day">🧸 Cozy Day</option>
+                  <option value="Smart & Chic">💼 Smart & Chic</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-icon" style="color: var(--danger); font-size: 0.9rem;" onclick="UploadManager.removeQueueItem('${item.tempId}')">✕</button>
+          </div>
+        `).join('');
+      },
+
+      updateQueueItem(tempId, field, value) {
+        const item = State.uploadQueue.find(i => i.tempId === tempId);
+        if (!item) return;
+        if (field === 'name') item.name = value;
+        if (field === 'category') item.category = value;
+        if (field === 'color') item.color = value;
+        if (field === 'mood') item.moods = [value];
+      },
+
+      removeQueueItem(tempId) {
+        State.uploadQueue = State.uploadQueue.filter(i => i.tempId !== tempId);
+        this.renderUploadQueue();
+      },
+
+      async saveAllItems() {
+        if (State.uploadQueue.length === 0) return;
+
+        const count = State.uploadQueue.length;
+        for (const queued of State.uploadQueue) {
+          const newItem = {
+            id: 'cloth_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            name: queued.name.trim() || 'Untitled Piece',
+            category: queued.category,
+            moods: queued.moods || ['Casual Hangout'],
+            color: queued.color || '',
+            favorite: false,
+            imageData: queued.imageData,
+            createdAt: Date.now()
+          };
+          await DB.put('clothing_items', newItem);
+          State.clothes.unshift(newItem);
+        }
+
+        State.uploadQueue = [];
+        this.renderUploadQueue();
+        App.closeModals();
+        
+        // Reset file input
+        const fileInput = document.getElementById('clothing-file-input');
+        if (fileInput) fileInput.value = '';
+
+        App.refreshAllViews();
+        App.showToast(`Added ${count} piece(s) to your wardrobe! 💖`);
+      }
+    };
+
+    // --- 5. WARDROBE GALLERY & FILTER UI ---
+    const WardrobeUI = {
+      setCategory(cat) {
+        State.activeCategoryFilter = cat;
+        // Update pills active state
+        document.querySelectorAll('#category-filter-pills .cat-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.category === cat);
+        });
+        this.renderGrid();
+      },
+
+      handleSearch(query) {
+        State.searchQuery = query.trim().toLowerCase();
+        this.renderGrid();
+      },
+
+      renderGrid() {
+        const grid = document.getElementById('wardrobe-items-grid');
+        const emptyState = document.getElementById('wardrobe-empty-state');
+
+        // Filter items
+        let filtered = State.clothes.filter(item => {
+          const matchCat = (State.activeCategoryFilter === 'all') || (item.category === State.activeCategoryFilter);
+          const matchSearch = !State.searchQuery || 
+            item.name.toLowerCase().includes(State.searchQuery) ||
+            (item.moods && item.moods.some(m => m.toLowerCase().includes(State.searchQuery)));
+          return matchCat && matchSearch;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '';
+          emptyState.style.display = 'flex';
+          return;
+        }
+
+        emptyState.style.display = 'none';
+        grid.innerHTML = filtered.map(item => `
+          <div class="item-card" data-id="${item.id}">
+            <div class="item-card-pin"></div>
+            <div class="item-img-container">
+              <img src="${item.imageData}" alt="${this.escapeHtml(item.name)}" loading="lazy">
+              <span class="item-badge-category">${this.getCategoryIcon(item.category)} ${item.category}</span>
+            </div>
+            <div class="item-details">
+              <div>
+                <h4 class="item-title" title="${this.escapeHtml(item.name)}">${this.escapeHtml(item.name)}</h4>
+                <div class="item-meta-tags">
+                  ${(item.moods || []).map(m => `<span class="badge badge-blush">${m}</span>`).join('')}
+                </div>
+              </div>
+              <div class="item-card-actions">
+                <button class="btn btn-secondary btn-sm" onclick="Studio.addItemToCanvas('${item.id}')" title="Wear in Studio">
+                  <span>🎨 Wear</span>
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="WardrobeUI.openEditModal('${item.id}')" title="Edit Piece">
+                  <span>✎ Edit</span>
+                </button>
+                <button class="btn btn-secondary btn-sm btn-delete-item" onclick="WardrobeUI.promptDeleteItem('${item.id}')" title="Delete Piece">
+                  ✕
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        this.updateCounts();
+      },
+
+      updateCounts() {
+        const total = State.clothes.length;
+        document.getElementById('count-all').textContent = total;
+        
+        ['tops', 'bottoms', 'dresses', 'outerwear', 'shoes', 'accessories'].forEach(cat => {
+          const el = document.getElementById(`count-${cat}`);
+          if (el) {
+            el.textContent = State.clothes.filter(i => i.category === cat).length;
+          }
+        });
+      },
+
+      promptDeleteItem(id) {
+        const item = State.clothes.find(i => i.id === id);
+        if (!item) return;
+
+        App.openConfirmModal({
+          title: 'Remove from wardrobe?',
+          text: `Are you sure you want to permanently delete "${item.name}"? It will also be removed from any active studio board.`,
+          actionLabel: 'Yes, Delete Piece',
+          onConfirm: async () => {
+            await DB.delete('clothing_items', id);
+            State.clothes = State.clothes.filter(i => i.id !== id);
+            // If item is on canvas, remove it
+            Studio.removeIfOnCanvas(id);
+            App.refreshAllViews();
+            App.showToast(`Deleted "${item.name}" from your wardrobe.`);
+          }
+        });
+      },
+
+      getCategoryIcon(cat) {
+        const map = {
+          tops: '👚',
+          bottoms: '👖',
+          dresses: '👗',
+          outerwear: '🧥',
+          shoes: '👞',
+          accessories: '👜'
+        };
+        return map[cat] || '✨';
+      },
+
+      escapeHtml(str) {
+        return (str || '').replace(/[&<>'"]/g, 
+          tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+        );
+      },
+
+      currentEditingImage: null,
+
+      openEditModal(id) {
+        const item = State.clothes.find(i => i.id === id);
+        if (!item) return;
+
+        State.editingItemId = id;
+        this.currentEditingImage = item.imageData;
+
+        document.getElementById('edit-item-name-input').value = item.name;
+        document.getElementById('edit-item-category-select').value = item.category;
+        document.getElementById('edit-item-image-preview').src = item.imageData;
+        
+        const fileInput = document.getElementById('edit-item-file-input');
+        if (fileInput) fileInput.value = '';
+
+        document.getElementById('edit-item-modal').classList.add('open');
+      },
+
+      async handleEditImageChange(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        if (!file.type.match(/^image\/(png|jpeg|jpg|webp)$/)) {
+          App.showToast('Please select a valid image (JPG, PNG, or WebP).', 'warning');
+          return;
+        }
+
+        try {
+          const compressed = await UploadManager.compressImage(file);
+          this.currentEditingImage = compressed;
+          document.getElementById('edit-item-image-preview').src = compressed;
+          App.showToast('Photo updated! Click "Save Changes" to apply.', 'info');
+        } catch (e) {
+          console.error('Failed to compress new image:', e);
+          App.showToast('Failed to process image.', 'danger');
+        }
+      },
+
+      async saveEditedItem() {
+        if (!State.editingItemId) return;
+
+        const nameInput = document.getElementById('edit-item-name-input');
+        const catSelect = document.getElementById('edit-item-category-select');
+        const newName = nameInput.value.trim();
+        const newCat = catSelect.value;
+
+        if (!newName) {
+          App.showToast('Item name cannot be empty!', 'warning');
+          nameInput.focus();
+          return;
+        }
+
+        const item = State.clothes.find(i => i.id === State.editingItemId);
+        if (!item) return;
+
+        const oldCategory = item.category;
+
+        // Update properties
+        item.name = newName;
+        item.category = newCat;
+        if (this.currentEditingImage) {
+          item.imageData = this.currentEditingImage;
+        }
+
+        // If category changed, update active canvas if the piece was placed in the old category slot
+        if (oldCategory !== newCat && State.activeCanvas[oldCategory] === item.id) {
+          State.activeCanvas[oldCategory] = null;
+        }
+
+        await DB.put('clothing_items', item);
+
+        App.closeModals();
+        App.refreshAllViews();
+        App.showToast(`Updated "${item.name}" ✨`);
+      }
+    };
+
+    // --- 6. MIX & MATCH STUDIO ---
+    const Studio = {
+      sidebarCategory: 'all',
+
+      init() {
+        this.renderCanvas();
+        this.renderSidebar();
+      },
+
+      setCenterMode(mode) {
+        State.activeCanvas.centerMode = mode;
+        const btnTwo = document.getElementById('btn-mode-twopiece');
+        const btnDress = document.getElementById('btn-mode-dress');
+        const slotTop = document.getElementById('slot-tops');
+        const slotBottom = document.getElementById('slot-bottoms');
+        const slotDress = document.getElementById('slot-dresses');
+        const centerRow = document.getElementById('studio-center-row');
+
+        if (mode === 'dress') {
+          btnDress.classList.add('btn-dark');
+          btnDress.classList.remove('btn-secondary');
+          btnTwo.classList.remove('btn-dark');
+          btnTwo.classList.add('btn-secondary');
+          
+          slotTop.style.display = 'none';
+          slotBottom.style.display = 'none';
+          slotDress.style.display = 'flex';
+          centerRow.classList.add('dress-mode');
+        } else {
+          btnTwo.classList.add('btn-dark');
+          btnTwo.classList.remove('btn-secondary');
+          btnDress.classList.remove('btn-dark');
+          btnDress.classList.add('btn-secondary');
+
+          slotTop.style.display = 'flex';
+          slotBottom.style.display = 'flex';
+          slotDress.style.display = 'none';
+          centerRow.classList.remove('dress-mode');
+        }
+      },
+
+      addItemToCanvas(itemId) {
+        const item = State.clothes.find(i => i.id === itemId);
+        if (!item) return;
+
+        // Auto switch mode if dress
+        if (item.category === 'dresses') {
+          this.setCenterMode('dress');
+          State.activeCanvas.dresses = item.id;
+          // Clear tops/bottoms to avoid clash
+          State.activeCanvas.tops = null;
+          State.activeCanvas.bottoms = null;
+        } else if (item.category === 'tops' || item.category === 'bottoms') {
+          if (State.activeCanvas.centerMode === 'dress') {
+            this.setCenterMode('twopiece');
+            State.activeCanvas.dresses = null;
+          }
+          State.activeCanvas[item.category] = item.id;
+        } else {
+          // outerwear, shoes, accessories
+          State.activeCanvas[item.category] = item.id;
+        }
+
+        this.renderCanvas();
+        this.renderSidebar();
+        App.updateStats();
+        App.showToast(`Placed "${item.name}" on canvas ✨`);
+      },
+
+      removeItemFromSlot(slotCategory, event) {
+        if (event) event.stopPropagation();
+        State.activeCanvas[slotCategory] = null;
+        this.renderCanvas();
+        this.renderSidebar();
+        App.updateStats();
+      },
+
+      removeIfOnCanvas(itemId) {
+        Object.keys(State.activeCanvas).forEach(key => {
+          if (State.activeCanvas[key] === itemId) {
+            State.activeCanvas[key] = null;
+          }
+        });
+        this.renderCanvas();
+        this.renderSidebar();
+      },
+
+      clearCanvas() {
+        State.activeCanvas.outerwear = null;
+        State.activeCanvas.tops = null;
+        State.activeCanvas.bottoms = null;
+        State.activeCanvas.dresses = null;
+        State.activeCanvas.shoes = null;
+        State.activeCanvas.accessories = null;
+        State.activeCanvas.activeMood = null;
+        this.clearMoodBanner();
+        this.renderCanvas();
+        this.renderSidebar();
+        App.updateStats();
+        App.showToast('Canvas cleared! Ready for new ideas.');
+      },
+
+      handleSlotClick(category) {
+        // Focus the sidebar on this category to make selection effortless
+        this.setSidebarCategory(category);
+      },
+
+      swapSlotItem(category, event) {
+        if (event) event.stopPropagation();
+        this.setSidebarCategory(category);
+        App.showToast(`Choose a replacement ${category} from the rack ✨`);
+      },
+
+      renderCanvas() {
+        const slots = ['outerwear', 'accessories', 'tops', 'bottoms', 'dresses', 'shoes'];
+
+        slots.forEach(cat => {
+          const slotEl = document.getElementById(`slot-${cat}`);
+          if (!slotEl) return;
+
+          const itemId = State.activeCanvas[cat];
+          const item = itemId ? State.clothes.find(i => i.id === itemId) : null;
+
+          if (item) {
+            slotEl.classList.add('has-item');
+            slotEl.innerHTML = `
+              <div class="slot-filled-content">
+                <div class="slot-img-wrap">
+                  <img src="${item.imageData}" alt="${WardrobeUI.escapeHtml(item.name)}">
+                </div>
+                <div class="slot-item-info">
+                  <span class="slot-item-title" title="${WardrobeUI.escapeHtml(item.name)}">${WardrobeUI.escapeHtml(item.name)}</span>
+                  <div class="slot-actions">
+                    <button class="slot-btn" onclick="Studio.swapSlotItem('${cat}', event)" title="Change / Replace piece">⇄ Swap</button>
+                    <button class="slot-btn remove-btn" onclick="Studio.removeItemFromSlot('${cat}', event)" title="Remove piece">×</button>
+                  </div>
+                </div>
+              </div>
+            `;
+          } else {
+            slotEl.classList.remove('has-item');
+            const icons = {
+              outerwear: '🧥',
+              accessories: '👜',
+              tops: '👚',
+              bottoms: '👖',
+              dresses: '👗',
+              shoes: '👞'
+            };
+            const labels = {
+              outerwear: 'Outerwear',
+              accessories: 'Accessories',
+              tops: 'Top',
+              bottoms: 'Bottom',
+              dresses: 'Dress',
+              shoes: 'Shoes'
+            };
+            slotEl.innerHTML = `
+              <div class="slot-empty-content">
+                <span class="slot-icon">${icons[cat]}</span>
+                <span class="slot-label">${labels[cat]}</span>
+                <span class="slot-hint">+ Add ${labels[cat]}</span>
+              </div>
+            `;
+          }
+        });
+      },
+
+      setSidebarCategory(cat) {
+        this.sidebarCategory = cat;
+        document.querySelectorAll('#sidebar-cat-nav .sidebar-cat-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.cat === cat);
+        });
+        this.renderSidebar();
+      },
+
+      renderSidebar() {
+        const list = document.getElementById('sidebar-items-list');
+        const hint = document.getElementById('sidebar-context-hint');
+
+        let filtered = State.clothes;
+        if (this.sidebarCategory !== 'all') {
+          filtered = filtered.filter(i => i.category === this.sidebarCategory);
+          hint.textContent = `Showing all ${this.sidebarCategory} (${filtered.length} found)`;
+        } else {
+          hint.textContent = `Browse entire wardrobe (${filtered.length} pieces)`;
+        }
+
+        if (filtered.length === 0) {
+          list.innerHTML = `
+            <div style="grid-column: span 2; text-align: center; padding: 2rem 1rem; color: var(--brown-500); font-size: 0.85rem;">
+              No pieces in this category yet.
+              <button class="btn btn-secondary btn-sm" style="margin-top: 0.5rem;" onclick="App.openUploadModal()">+ Upload Piece</button>
+            </div>
+          `;
+          return;
+        }
+
+        // Active IDs currently on canvas
+        const activeIds = Object.values(State.activeCanvas).filter(Boolean);
+
+        list.innerHTML = filtered.map(item => {
+          const isOnCanvas = activeIds.includes(item.id);
+          return `
+            <div class="picker-item-card ${isOnCanvas ? 'is-active-on-canvas' : ''}" onclick="Studio.addItemToCanvas('${item.id}')">
+              <img src="${item.imageData}" alt="${WardrobeUI.escapeHtml(item.name)}" class="picker-img">
+              <span class="picker-name" title="${WardrobeUI.escapeHtml(item.name)}">${WardrobeUI.escapeHtml(item.name)}</span>
+            </div>
+          `;
+        }).join('');
+      },
+
+      // --- RANDOM OUTFIT GENERATOR (Surprise Me!) ---
+      generateSurpriseOutfit() {
+        if (State.clothes.length === 0) {
+          App.showToast('Your wardrobe is empty! Upload clothes or load starter pieces first.', 'warning');
+          return;
+        }
+
+        const tops = State.clothes.filter(i => i.category === 'tops');
+        const bottoms = State.clothes.filter(i => i.category === 'bottoms');
+        const dresses = State.clothes.filter(i => i.category === 'dresses');
+        const outerwear = State.clothes.filter(i => i.category === 'outerwear');
+        const shoes = State.clothes.filter(i => i.category === 'shoes');
+        const accessories = State.clothes.filter(i => i.category === 'accessories');
+
+        const canMakeTwoPiece = tops.length > 0 && bottoms.length > 0;
+        const canMakeDress = dresses.length > 0;
+
+        if (!canMakeTwoPiece && !canMakeDress) {
+          App.showToast('Need at least 1 Top + 1 Bottom or 1 Dress to generate an outfit!', 'warning');
+          return;
+        }
+
+        // Random choice between dress or two-piece
+        let chooseDress = false;
+        if (canMakeDress && canMakeTwoPiece) {
+          chooseDress = Math.random() < 0.35; // 35% chance dress
+        } else if (canMakeDress) {
+          chooseDress = true;
+        }
+
+        const getRandom = arr => arr[Math.floor(Math.random() * arr.length)];
+
+        // Reset canvas
+        this.clearCanvas();
+
+        if (chooseDress) {
+          this.setCenterMode('dress');
+          State.activeCanvas.dresses = getRandom(dresses).id;
+        } else {
+          this.setCenterMode('twopiece');
+          State.activeCanvas.tops = getRandom(tops).id;
+          State.activeCanvas.bottoms = getRandom(bottoms).id;
+        }
+
+        // Optionally add shoes (75% probability if available)
+        if (shoes.length > 0 && Math.random() < 0.85) {
+          State.activeCanvas.shoes = getRandom(shoes).id;
+        }
+
+        // Optionally add outerwear (50% probability)
+        if (outerwear.length > 0 && Math.random() < 0.5) {
+          State.activeCanvas.outerwear = getRandom(outerwear).id;
+        }
+
+        // Optionally add accessories (60% probability)
+        if (accessories.length > 0 && Math.random() < 0.6) {
+          State.activeCanvas.accessories = getRandom(accessories).id;
+        }
+
+        this.renderCanvas();
+        this.renderSidebar();
+        App.updateStats();
+        App.showToast('✨ Voila! A randomized outfit combination just for you!');
+      },
+
+      // --- OUTFIT MOOD SELECTOR ---
+      handleMoodSelect(mood) {
+        if (!mood) {
+          this.clearMoodBanner();
+          return;
+        }
+        App.generateMoodOutfit(mood);
+      },
+
+      clearMoodBanner() {
+        const banner = document.getElementById('studio-mood-banner');
+        if (banner) banner.style.display = 'none';
+        const select = document.getElementById('studio-mood-select');
+        if (select) select.value = '';
+      },
+
+      // --- SAVE OUTFIT FLOW ---
+      openSaveModal() {
+        const activeIds = Object.values(State.activeCanvas).filter(Boolean);
+        if (activeIds.length === 0) {
+          App.showToast('Add at least one piece to the canvas before saving!', 'warning');
+          return;
+        }
+
+        const titleInput = document.getElementById('outfit-title-input');
+        const moodSelect = document.getElementById('outfit-mood-input');
+        const previewWrap = document.getElementById('save-modal-items-preview');
+
+        // Suggest a cute default name based on items
+        const firstItem = State.clothes.find(i => i.id === activeIds[0]);
+        titleInput.value = firstItem ? `${firstItem.name} Look` : 'My Style Look';
+        if (State.activeCanvas.activeMood) {
+          moodSelect.value = State.activeCanvas.activeMood;
+        }
+
+        // Show thumbnails of pieces
+        previewWrap.innerHTML = activeIds.map(id => {
+          const item = State.clothes.find(i => i.id === id);
+          if (!item) return '';
+          return `
+            <div style="width: 50px; height: 50px; border-radius: 8px; overflow: hidden; border: 1px solid var(--brown-200);">
+              <img src="${item.imageData}" alt="" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+          `;
+        }).join('');
+
+        document.getElementById('save-outfit-modal').classList.add('open');
+      },
+
+      async confirmSaveOutfit() {
+        const titleInput = document.getElementById('outfit-title-input');
+        const moodSelect = document.getElementById('outfit-mood-input');
+        const title = titleInput.value.trim() || 'Untitled Outfit';
+        const mood = moodSelect.value || 'Casual Hangout';
+
+        const newLook = {
+          id: 'outfit_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+          title: title,
+          mood: mood,
+          items: {
+            outerwear: State.activeCanvas.outerwear,
+            tops: State.activeCanvas.tops,
+            bottoms: State.activeCanvas.bottoms,
+            dresses: State.activeCanvas.dresses,
+            shoes: State.activeCanvas.shoes,
+            accessories: State.activeCanvas.accessories,
+            centerMode: State.activeCanvas.centerMode
+          },
+          createdAt: Date.now()
+        };
+
+        await DB.put('saved_outfits', newLook);
+        State.outfits.unshift(newLook);
+
+        App.closeModals();
+        App.refreshAllViews();
+        App.showToast(`Saved "${title}" to your looks! 💖`);
+      }
+    };
+
+    // --- 7. SAVED LOOKS (LOOKBOOK) UI ---
+    const LooksUI = {
+      renderGrid() {
+        const grid = document.getElementById('saved-looks-grid');
+        const emptyState = document.getElementById('looks-empty-state');
+
+        if (State.outfits.length === 0) {
+          grid.innerHTML = '';
+          emptyState.style.display = 'flex';
+          return;
+        }
+
+        emptyState.style.display = 'none';
+        grid.innerHTML = State.outfits.map(outfit => {
+          const itemsObj = outfit.items || {};
+          const itemIds = [
+            itemsObj.outerwear,
+            itemsObj.tops,
+            itemsObj.bottoms,
+            itemsObj.dresses,
+            itemsObj.shoes,
+            itemsObj.accessories
+          ].filter(Boolean);
+          const pieces = itemIds.map(id => State.clothes.find(c => c.id === id)).filter(Boolean);
+          const dateStr = new Date(outfit.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+
+          return `
+            <div class="look-card" data-id="${outfit.id}">
+              <div class="look-collage-preview">
+                ${pieces.length > 0 ? pieces.slice(0, 6).map(piece => `
+                  <div class="look-preview-item">
+                    <img src="${piece.imageData}" alt="${WardrobeUI.escapeHtml(piece.name)}">
+                  </div>
+                `).join('') : `
+                  <div style="grid-column: span 3; grid-row: span 2; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--brown-500); font-size: 0.8rem; gap: 4px;">
+                    <span style="font-size: 1.2rem;">🧺</span>
+                    <span>Pieces removed from wardrobe</span>
+                  </div>
+                `}
+              </div>
+
+              <div class="look-card-info">
+                <h3 class="look-card-title">${WardrobeUI.escapeHtml(outfit.title)}</h3>
+                <div class="look-card-meta">
+                  <span class="badge badge-lavender">${outfit.mood || 'General Look'}</span>
+                  <span class="look-date">${dateStr} • ${pieces.length} pieces</span>
+                </div>
+              </div>
+
+              <div class="look-card-actions">
+                <button class="btn btn-secondary btn-sm" onclick="LooksUI.loadOutfitToStudio('${outfit.id}')">
+                  <span>🎨 Wear in Studio</span>
+                </button>
+                <button class="btn btn-secondary btn-sm btn-delete-item" onclick="LooksUI.promptDeleteOutfit('${outfit.id}')" title="Delete Outfit">
+                  ✕
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      loadOutfitToStudio(outfitId) {
+        const outfit = State.outfits.find(o => o.id === outfitId);
+        if (!outfit) return;
+
+        // Restore canvas state only for items that still exist in wardrobe
+        const exists = id => (id && State.clothes.some(c => c.id === id)) ? id : null;
+        State.activeCanvas.outerwear = exists(outfit.items.outerwear);
+        State.activeCanvas.tops = exists(outfit.items.tops);
+        State.activeCanvas.bottoms = exists(outfit.items.bottoms);
+        State.activeCanvas.dresses = exists(outfit.items.dresses);
+        State.activeCanvas.shoes = exists(outfit.items.shoes);
+        State.activeCanvas.accessories = exists(outfit.items.accessories);
+        State.activeCanvas.centerMode = outfit.items.centerMode || (outfit.items.dresses ? 'dress' : 'twopiece');
+        State.activeCanvas.activeMood = outfit.mood || null;
+
+        Studio.setCenterMode(State.activeCanvas.centerMode);
+        Studio.renderCanvas();
+        Studio.renderSidebar();
+        App.updateStats();
+
+        // Switch view to Studio
+        App.navigateTo('studio');
+
+        const originalCount = [outfit.items.outerwear, outfit.items.tops, outfit.items.bottoms, outfit.items.dresses, outfit.items.shoes, outfit.items.accessories].filter(Boolean).length;
+        const activeCount = [State.activeCanvas.outerwear, State.activeCanvas.tops, State.activeCanvas.bottoms, State.activeCanvas.dresses, State.activeCanvas.shoes, State.activeCanvas.accessories].filter(Boolean).length;
+        if (activeCount < originalCount) {
+          App.showToast(`Loaded "${outfit.title}" (some pieces were previously deleted from wardrobe).`, 'warning');
+        } else {
+          App.showToast(`Loaded "${outfit.title}" into the Studio ✨`);
+        }
+      },
+
+      promptDeleteOutfit(outfitId) {
+        const outfit = State.outfits.find(o => o.id === outfitId);
+        if (!outfit) return;
+
+        App.openConfirmModal({
+          title: 'Delete this look?',
+          text: `Are you sure you want to remove "${outfit.title}" from your saved looks? This action cannot be undone.`,
+          actionLabel: 'Yes, Delete Look',
+          onConfirm: async () => {
+            await DB.delete('saved_outfits', outfitId);
+            State.outfits = State.outfits.filter(o => o.id !== outfitId);
+            App.refreshAllViews();
+            App.showToast(`Deleted "${outfit.title}" from saved looks.`);
+          }
+        });
+      }
+    };
+
+    // --- 8. MAIN APP CONTROLLER ---
+    const App = {
+      async init() {
+        try {
+          await DB.init();
+          State.clothes = await DB.getAll('clothing_items');
+          State.outfits = await DB.getAll('saved_outfits');
+
+          // Sort by creation desc
+          State.clothes.sort((a, b) => b.createdAt - a.createdAt);
+          State.outfits.sort((a, b) => b.createdAt - a.createdAt);
+
+          // Setup drag and drop listeners
+          this.setupDropzone();
+
+          // Refresh UI
+          this.refreshAllViews();
+          Studio.init();
+
+          console.log('Outfit Studio initialized successfully.');
+        } catch (err) {
+          console.error('Initialization error:', err);
+          this.showToast('Storage error. Some features may not persist.', 'danger');
+        }
+      },
+
+      setupDropzone() {
+        const dropzone = document.getElementById('file-dropzone');
+        if (!dropzone) return;
+
+        ['dragenter', 'dragover'].forEach(name => {
+          dropzone.addEventListener(name, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropzone.classList.add('dragover');
+          });
+        });
+
+        ['dragleave', 'drop'].forEach(name => {
+          dropzone.addEventListener(name, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropzone.classList.remove('dragover');
+          });
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+          const dt = e.dataTransfer;
+          const files = dt.files;
+          if (files && files.length > 0) {
+            UploadManager.handleFileSelect({ target: { files: files } });
+          }
+        });
+      },
+
+      navigateTo(tabId) {
+        State.currentTab = tabId;
+
+        // Switch sections
+        document.querySelectorAll('.view-section').forEach(sec => {
+          sec.classList.remove('active');
+        });
+        const targetSec = document.getElementById(`view-${tabId}`);
+        if (targetSec) targetSec.classList.add('active');
+
+        // Update nav tabs desktop
+        document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.tab === tabId);
+        });
+
+        // Update mobile nav
+        document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.tab === tabId);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+
+      refreshAllViews() {
+        this.updateStats();
+        WardrobeUI.renderGrid();
+        LooksUI.renderGrid();
+        Studio.renderSidebar();
+        Studio.renderCanvas();
+      },
+
+      updateStats() {
+        const totalClothes = State.clothes.length;
+        const totalOutfits = State.outfits.length;
+
+        // Badges
+        const navWardrobe = document.getElementById('nav-wardrobe-count');
+        const navLooks = document.getElementById('nav-looks-count');
+        if (navWardrobe) navWardrobe.textContent = totalClothes;
+        if (navLooks) navLooks.textContent = totalOutfits;
+
+        // Home Counters
+        const homeClothes = document.getElementById('stat-total-clothes');
+        const homeLooks = document.getElementById('stat-total-looks');
+        const homeSlots = document.getElementById('stat-active-slots');
+        if (homeClothes) homeClothes.textContent = totalClothes;
+        if (homeLooks) homeLooks.textContent = totalOutfits;
+
+        const activeCount = Object.values(State.activeCanvas).filter(Boolean).length;
+        if (homeSlots) homeSlots.textContent = `${activeCount} / 6`;
+
+        // Home Breakdown Chips
+        const breakdownWrap = document.getElementById('home-category-breakdown');
+        if (breakdownWrap) {
+          const cats = ['tops', 'bottoms', 'dresses', 'outerwear', 'shoes', 'accessories'];
+          breakdownWrap.innerHTML = cats.map(c => {
+            const count = State.clothes.filter(i => i.category === c).length;
+            return `<span class="chip-counter">${WardrobeUI.getCategoryIcon(c)} <strong>${count}</strong> ${c}</span>`;
+          }).join('');
+        }
+      },
+
+      // --- MOOD STYLIST GENERATOR ---
+      generateMoodOutfit(mood) {
+        if (State.clothes.length === 0) {
+          this.showToast('Your wardrobe is empty! Add clothes first.', 'warning');
+          return;
+        }
+
+        const moodTips = {
+          'Campus Day': 'Effortless, comfortable layers paired with versatile shoes for walking around campus. 🎒',
+          'Casual Hangout': 'Relaxed chic vibe perfect for catching coffee, brunch, or a weekend stroll. ☕',
+          'Date Night': 'Romantic silhouettes with elegant delicate accessories and statement footwear. 🍷',
+          'Cozy Day': 'Soft, warm knitwear and comfortable textures for a restful aesthetic day. 🧸',
+          'Smart & Chic': 'Polished tailoring, crisp clean lines, and sophisticated neutral tones. 💼'
+        };
+
+        // Switch to Studio view
+        this.navigateTo('studio');
+
+        // Filter pieces that match the mood, fallback to any available
+        const filterMoodOrAll = (cat) => {
+          const inCat = State.clothes.filter(i => i.category === cat);
+          const moodMatches = inCat.filter(i => i.moods && i.moods.includes(mood));
+          return moodMatches.length > 0 ? moodMatches : inCat;
+        };
+
+        const tops = filterMoodOrAll('tops');
+        const bottoms = filterMoodOrAll('bottoms');
+        const dresses = filterMoodOrAll('dresses');
+        const outerwear = filterMoodOrAll('outerwear');
+        const shoes = filterMoodOrAll('shoes');
+        const accessories = filterMoodOrAll('accessories');
+
+        Studio.clearCanvas();
+
+        const getRandom = arr => arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
+
+        if (mood === 'Date Night' && dresses.length > 0 && Math.random() < 0.6) {
+          Studio.setCenterMode('dress');
+          State.activeCanvas.dresses = getRandom(dresses).id;
+        } else if (tops.length > 0 && bottoms.length > 0) {
+          Studio.setCenterMode('twopiece');
+          State.activeCanvas.tops = getRandom(tops).id;
+          State.activeCanvas.bottoms = getRandom(bottoms).id;
+        } else if (dresses.length > 0) {
+          Studio.setCenterMode('dress');
+          State.activeCanvas.dresses = getRandom(dresses).id;
+        }
+
+        if (shoes.length > 0) State.activeCanvas.shoes = getRandom(shoes).id;
+        if (outerwear.length > 0 && (mood === 'Cozy Day' || mood === 'Campus Day' || Math.random() < 0.5)) {
+          State.activeCanvas.outerwear = getRandom(outerwear).id;
+        }
+        if (accessories.length > 0) State.activeCanvas.accessories = getRandom(accessories).id;
+
+        State.activeCanvas.activeMood = mood;
+
+        // Show banner
+        const banner = document.getElementById('studio-mood-banner');
+        const nameEl = document.getElementById('studio-mood-name');
+        const tipEl = document.getElementById('studio-mood-tip');
+        const select = document.getElementById('studio-mood-select');
+
+        if (banner) {
+          banner.style.display = 'flex';
+          nameEl.textContent = mood;
+          tipEl.textContent = moodTips[mood] || 'Tailored style combination.';
+          if (select) select.value = mood;
+        }
+
+        Studio.renderCanvas();
+        Studio.renderSidebar();
+        this.updateStats();
+        this.showToast(`Styled an outfit for "${mood}" ✨`);
+      },
+
+      // --- SEED STARTER CAPSULE WARDROBE ---
+      async seedSampleWardrobe() {
+        const samples = SampleWardrobe.getStarterItems();
+        let addedCount = 0;
+
+        for (const sample of samples) {
+          const exists = State.clothes.some(c => c.name === sample.name);
+          if (!exists) {
+            await DB.put('clothing_items', sample);
+            State.clothes.unshift(sample);
+            addedCount++;
+          }
+        }
+
+        this.refreshAllViews();
+        if (addedCount > 0) {
+          this.showToast(`Added ${addedCount} capsule wardrobe pieces! Ready to style ✨`);
+        } else {
+          this.showToast('Starter capsule pieces are already in your wardrobe!');
+        }
+      },
+
+      // --- MODALS & DIALOGS ---
+      openUploadModal() {
+        State.uploadQueue = [];
+        UploadManager.renderUploadQueue();
+        const fileInput = document.getElementById('clothing-file-input');
+        if (fileInput) fileInput.value = '';
+        document.getElementById('upload-modal').classList.add('open');
+      },
+
+      openConfirmModal({ title, text, actionLabel, onConfirm }) {
+        const modal = document.getElementById('confirm-modal');
+        document.getElementById('confirm-modal-title').textContent = title || 'Confirm Action';
+        document.getElementById('confirm-modal-text').textContent = text || 'Are you sure?';
+        
+        const actBtn = document.getElementById('confirm-modal-action-btn');
+        actBtn.textContent = actionLabel || 'Delete';
+        actBtn.onclick = () => {
+          App.closeModals();
+          if (typeof onConfirm === 'function') onConfirm();
+        };
+
+        modal.classList.add('open');
+      },
+
+      closeModals() {
+        document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('open'));
+        // Clear any half-filled upload queue on modal dismiss
+        if (State.uploadQueue.length > 0) {
+          State.uploadQueue = [];
+          UploadManager.renderUploadQueue();
+          const fileInput = document.getElementById('clothing-file-input');
+          if (fileInput) fileInput.value = '';
+        }
+        // Clear editing state
+        State.editingItemId = null;
+        WardrobeUI.currentEditingImage = null;
+        const editFileInput = document.getElementById('edit-item-file-input');
+        if (editFileInput) editFileInput.value = '';
+      },
+
+      // --- TOAST ALERTS ---
+      showToast(message, type = 'info') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        
+        const icon = type === 'danger' ? '⚠️' : (type === 'warning' ? '💡' : '✨');
+        toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+        
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(10px)';
+          toast.style.transition = 'all 0.3s ease';
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      }
+    };
+
+    // Close modals on Escape key or backdrop click
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') App.closeModals();
+    });
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) App.closeModals();
+      });
+    });
+
+    // Boot application when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      App.init();
+    });
+  </script>
+</body>
+</html>
