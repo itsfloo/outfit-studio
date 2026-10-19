@@ -649,6 +649,203 @@
       box-shadow: 0 0 0 3px rgba(230, 138, 125, 0.15);
     }
 
+    /* ==========================================================================
+       DEMO WARDROBE SYSTEM & SOURCE SWITCHER
+       ========================================================================== */
+    .wardrobe-source-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg-alt);
+      padding: 0.35rem 0.45rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--brown-200);
+      margin-bottom: 1.25rem;
+      width: fit-content;
+      max-width: 100%;
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .source-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid transparent;
+      background: transparent;
+      color: var(--brown-700);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .source-tab-btn:hover {
+      color: var(--brown-900);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .source-tab-btn.active {
+      background: var(--bg-surface);
+      color: var(--brown-900);
+      box-shadow: var(--shadow-sm);
+      font-weight: 700;
+    }
+
+    .source-tab-btn.active.source-demo {
+      color: var(--lavender-500);
+      border-color: var(--lavender-300);
+      background: #FFFFFF;
+    }
+
+    .source-tab-btn.active.source-personal {
+      color: var(--blush-600);
+      border-color: var(--blush-300);
+      background: #FFFFFF;
+    }
+
+    .source-tab-badge {
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      background: rgba(66, 50, 38, 0.08);
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .source-tab-btn.active .source-tab-badge {
+      background: var(--brown-900);
+      color: #FFFDF9;
+    }
+
+    .source-tab-btn.active.source-demo .source-tab-badge {
+      background: var(--lavender-500);
+      color: #FFFFFF;
+    }
+
+    .source-tab-btn.active.source-personal .source-tab-badge {
+      background: var(--blush-500);
+      color: #FFFFFF;
+    }
+
+    /* Demo Capsule Informative Banner */
+    .demo-info-banner {
+      background: linear-gradient(135deg, rgba(232, 222, 245, 0.55) 0%, rgba(250, 220, 215, 0.55) 100%);
+      border: 1.5px dashed var(--lavender-300);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.35rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .demo-info-text {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .demo-info-sparkle {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    /* Visual Tag Badges (Differentiating Demo vs Personal on cards) */
+    .demo-tag-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 3;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      pointer-events: none;
+    }
+
+    .demo-tag-badge.is-demo {
+      background: var(--lavender-200);
+      color: var(--lavender-500);
+      border: 1px solid var(--lavender-300);
+    }
+
+    .demo-tag-badge.is-personal {
+      background: var(--blush-100);
+      color: var(--blush-600);
+      border: 1px solid var(--blush-200);
+    }
+
+    /* Studio Sidebar Source Filter Tabs */
+    .studio-source-filter {
+      display: flex;
+      gap: 0.3rem;
+      padding: 0.25rem;
+      background: var(--bg-alt);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--brown-200);
+      margin-bottom: 0.75rem;
+    }
+
+    .studio-source-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0.4rem 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--brown-700);
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .studio-source-btn:hover {
+      color: var(--brown-900);
+    }
+
+    .studio-source-btn.active {
+      background: var(--bg-surface);
+      color: var(--brown-900);
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(66, 50, 38, 0.08);
+    }
+
+    .picker-source-tag {
+      position: absolute;
+      bottom: 22px;
+      left: 6px;
+      font-size: 0.6rem;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+      z-index: 2;
+    }
+
+    .picker-source-tag.demo {
+      background: rgba(232, 222, 245, 0.95);
+      color: var(--lavender-500);
+      border: 1px solid rgba(155, 130, 196, 0.3);
+    }
+
+    .picker-source-tag.personal {
+      background: rgba(250, 220, 215, 0.95);
+      color: var(--blush-600);
+      border: 1px solid rgba(211, 110, 96, 0.3);
+    }
+
     /* Category Filter Tabs */
     .category-pills {
       display: flex;
@@ -1846,6 +2043,350 @@
     }
 
     /* ==========================================================================
+       CALENDAR VIEW SWITCHER & WEEKLY PLANNER STYLES
+       ========================================================================== */
+    .calendar-view-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--bg-alt);
+      padding: 0.3rem 0.4rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--brown-200);
+      margin-bottom: 1.25rem;
+    }
+
+    .cal-view-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid transparent;
+      background: transparent;
+      color: var(--brown-700);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .cal-view-tab-btn:hover {
+      color: var(--brown-900);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .cal-view-tab-btn.active {
+      background: var(--bg-surface);
+      color: var(--brown-900);
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      border-color: var(--lavender-300);
+    }
+
+    /* Weekly Calendar Grid */
+    .calendar-weekly-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 1200px) {
+      .calendar-weekly-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
+      .calendar-weekly-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .calendar-weekly-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .weekly-day-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-lg);
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 230px;
+      transition: all var(--transition-fast);
+      position: relative;
+    }
+
+    .weekly-day-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--blush-300);
+    }
+
+    .weekly-day-card.is-today {
+      border-color: var(--lavender-500);
+      box-shadow: 0 0 0 2px rgba(155, 130, 196, 0.25);
+      background: #FFFEFB;
+    }
+
+    .weekly-day-card.is-selected {
+      border-color: var(--blush-600);
+      background: #FFFDFB;
+      box-shadow: 0 0 0 2px rgba(211, 110, 96, 0.3);
+    }
+
+    .weekly-day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--brown-200);
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .weekly-day-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--brown-700);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .weekly-day-number {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--brown-900);
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .weekly-day-card.is-today .weekly-day-number {
+      background: var(--brown-900);
+      color: #fff;
+    }
+
+    .weekly-day-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .weekly-outfit-preview {
+      width: 100%;
+      height: 100px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-alt);
+      border: 1px solid var(--brown-200);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      padding: 2px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+
+    .weekly-outfit-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .weekly-outfit-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brown-900);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 0.35rem;
+    }
+
+    .weekly-note-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: var(--lavender-100);
+      color: var(--lavender-500);
+      border: 1px solid var(--lavender-200);
+      border-radius: var(--radius-pill);
+      padding: 2px 7px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 0.5rem;
+    }
+
+    .weekly-empty-plan {
+      text-align: center;
+      padding: 1rem 0.25rem;
+      color: var(--brown-500);
+    }
+
+    .quick-note-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .quick-note-chip {
+      background: var(--bg-alt);
+      border: 1px solid var(--brown-200);
+      border-radius: var(--radius-pill);
+      padding: 3px 9px;
+      font-size: 0.75rem;
+      color: var(--brown-700);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .quick-note-chip:hover {
+      background: var(--lavender-100);
+      border-color: var(--lavender-300);
+      color: var(--lavender-500);
+    }
+
+    /* Upcoming Plans Shelf */
+    .upcoming-plans-section {
+      margin-top: 2.5rem;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .upcoming-cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .upcoming-plan-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .upcoming-plan-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--blush-300);
+    }
+
+    .upcoming-plan-thumb {
+      width: 65px;
+      height: 65px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid var(--brown-200);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--bg-alt);
+      padding: 2px;
+    }
+
+    .upcoming-plan-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Closet Remix Challenge Styles */
+    .remix-challenge-banner {
+      background: linear-gradient(135deg, rgba(226, 160, 63, 0.15) 0%, rgba(230, 138, 125, 0.15) 100%);
+      border: 2px dashed var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.4rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .remix-hero-slot {
+      border: 2.5px solid var(--accent-gold) !important;
+      box-shadow: 0 0 12px rgba(226, 160, 63, 0.35) !important;
+      position: relative;
+    }
+
+    .remix-hero-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #E2A03F 0%, #D48825 100%);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      letter-spacing: 0.03em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+      z-index: 5;
+    }
+
+    .remix-trophy-shelf {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--brown-200);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-trophy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      background: var(--bg-alt);
+      border: 1.5px solid var(--brown-200);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--brown-700);
+      transition: all var(--transition-fast);
+    }
+
+    .badge-trophy-pill.unlocked {
+      background: linear-gradient(135deg, #FFFDF0 0%, #FEF3D6 100%);
+      border-color: var(--accent-gold);
+      color: #8C5C00;
+      box-shadow: 0 2px 6px rgba(226, 160, 63, 0.2);
+    }
+
+    /* ==========================================================================
        15. COLOR PALETTE MATCHING STYLING
        ========================================================================== */
     .color-dot {
@@ -2007,10 +2548,10 @@
               <span>🎨 Open Mix & Match Studio</span>
             </button>
             <button class="btn btn-secondary" onclick="App.openUploadModal()">
-              <span>📸 Add New Clothes</span>
+              <span>📸 Upload Personal Clothes</span>
             </button>
-            <button class="btn btn-lavender" onclick="App.seedSampleWardrobe()">
-              <span>🧺 Load Capsule Wardrobe</span>
+            <button class="btn btn-lavender" onclick="App.viewDemoWardrobe()">
+              <span>✨ Explore Demo Wardrobe</span>
             </button>
           </div>
         </div>
@@ -2022,7 +2563,7 @@
           <div class="stat-icon pink">👗</div>
           <div class="stat-meta">
             <div class="stat-val" id="stat-total-clothes">0</div>
-            <div class="stat-label">Wardrobe Pieces</div>
+            <div class="stat-label">Personal Pieces (<span id="stat-demo-clothes-count" style="color:var(--lavender-500); font-weight:700;">24 Demo</span>)</div>
           </div>
         </div>
         <div class="stat-card">
@@ -2085,6 +2626,29 @@
             <span>Style by Mood →</span>
           </button>
         </div>
+
+        <!-- Feature Card 4: Closet Remix Challenge -->
+        <div class="feature-card highlight" style="background: linear-gradient(135deg, rgba(226, 160, 63, 0.1) 0%, rgba(254, 243, 214, 0.35) 100%); border-color: rgba(226, 160, 63, 0.45);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.35rem;">
+              <h3 style="margin:0;">🎯 Closet Remix Challenge</h3>
+              <span class="badge badge-cream" id="home-remix-score-badge" style="border-color:var(--accent-gold); color:#8C5C00; font-weight:700;">⭐ 0 pts</span>
+            </div>
+            <p>Rediscover clothes you rarely wear. Challenge yourself to style an underloved piece with 2–3 items, earn style points, and unlock badges.</p>
+
+            <div id="home-remix-preview-box" style="margin: 0.85rem 0; padding: 0.75rem; background: var(--bg-surface); border: 1.5px dashed var(--accent-gold); border-radius: var(--radius-md); display:flex; align-items:center; gap:0.75rem;">
+              <!-- Dynamically populated challenge piece -->
+            </div>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+            <button class="btn btn-primary btn-sm" onclick="RemixChallenge.startFromHome()">
+              <span>🎯 Start Challenge in Studio</span>
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="RemixChallenge.rollNewChallengeItem()" title="Try a different underused piece">
+              <span>🎲 Different Piece</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2095,15 +2659,49 @@
       <div class="wardrobe-header">
         <div class="wardrobe-topbar">
           <div class="wardrobe-title-group">
-            <h2>My Wardrobe <span class="script-font" style="font-size: 1.4rem;">collection</span></h2>
-            <p>Manage, search, and curate all your individual clothing pieces.</p>
+            <h2>Wardrobe Studio <span class="script-font" style="font-size: 1.4rem;">collection</span></h2>
+            <p>Browse the Demo capsule or curate your personal uploaded clothes.</p>
           </div>
-          <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
-            <button class="btn btn-secondary btn-sm" onclick="App.seedSampleWardrobe()">
-              <span>🧺 Add Starter Pieces</span>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
+            <button class="btn btn-lavender btn-sm" onclick="App.navigateTo('studio')" title="Mix & Match pieces in Studio">
+              <span>🎨 Open in Studio</span>
             </button>
             <button class="btn btn-primary btn-sm" onclick="App.openUploadModal()">
               <span>📸 Upload Clothes</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Source Switcher: Demo Wardrobe vs My Personal Wardrobe vs All Pieces -->
+        <div class="wardrobe-source-switcher" id="wardrobe-source-switcher" role="tablist" aria-label="Wardrobe Source">
+          <button class="source-tab-btn active source-demo" id="source-tab-demo" onclick="WardrobeUI.setSource('demo')" title="Explore predefined sample clothes">
+            <span>✨ Demo Wardrobe</span>
+            <span class="source-tab-badge" id="source-count-demo">24</span>
+          </button>
+          <button class="source-tab-btn source-personal" id="source-tab-personal" onclick="WardrobeUI.setSource('personal')" title="View your own uploaded clothes">
+            <span>👗 My Personal Wardrobe</span>
+            <span class="source-tab-badge" id="source-count-personal">0</span>
+          </button>
+          <button class="source-tab-btn" id="source-tab-all" onclick="WardrobeUI.setSource('all')" title="View both demo and personal clothes together">
+            <span>🌟 All Pieces</span>
+            <span class="source-tab-badge" id="source-count-all">24</span>
+          </button>
+        </div>
+
+        <!-- Demo Capsule Informative Banner -->
+        <div class="demo-info-banner" id="wardrobe-demo-banner">
+          <div class="demo-info-text">
+            <span class="demo-info-sparkle">✨</span>
+            <div>
+              <strong style="color:var(--brown-900); font-size:0.92rem;">Predefined Demo Capsule Wardrobe</strong>
+              <p style="font-size:0.82rem; color:var(--brown-700); margin:0;">
+                Curated sample items (tops, bottoms, dresses, outerwear, shoes & accessories) ready for testing and instant styling in the Mix & Match Studio without uploading anything.
+              </p>
+            </div>
+          </div>
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <button class="btn btn-primary btn-sm" onclick="App.navigateTo('studio')">
+              <span>🎨 Try in Mix & Match Studio →</span>
             </button>
           </div>
         </div>
@@ -2184,15 +2782,15 @@
 
       <!-- Empty State -->
       <div id="wardrobe-empty-state" class="empty-state" style="display: none;">
-        <div class="empty-icon-wrap">🧺</div>
-        <h3>Your wardrobe is waiting!</h3>
-        <p>No clothing items found in this section. Upload your own outfit photos or click below to load a starter capsule collection!</p>
-        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <div class="empty-icon-wrap" id="wardrobe-empty-icon">🧺</div>
+        <h3 id="wardrobe-empty-title">Your personal closet is waiting!</h3>
+        <p id="wardrobe-empty-desc">No clothing items found in this section. Upload your own outfit photos or switch to the Demo Wardrobe to test features immediately!</p>
+        <div id="wardrobe-empty-actions" style="display:flex; gap:0.75rem; flex-wrap:wrap;">
           <button class="btn btn-primary" onclick="App.openUploadModal()">
             <span>📸 Upload Clothes</span>
           </button>
-          <button class="btn btn-secondary" onclick="App.seedSampleWardrobe()">
-            <span>🧺 Load Starter Capsule</span>
+          <button class="btn btn-lavender" onclick="WardrobeUI.setSource('demo')">
+            <span>✨ View Demo Wardrobe</span>
           </button>
         </div>
       </div>
@@ -2230,6 +2828,10 @@
                 <span>🎲 Surprise Me!</span>
               </button>
 
+              <button class="btn btn-secondary btn-sm" onclick="RemixChallenge.openChallengeFromStudio()" title="Start Closet Remix Challenge" style="border-color:var(--accent-gold); color:#8C5C00; background:#FFFDF0;">
+                <span>🎯 Remix Challenge</span>
+              </button>
+
               <button class="btn btn-primary btn-sm" onclick="Studio.openSaveModal()">
                 <span>💖 Save Outfit</span>
               </button>
@@ -2248,6 +2850,25 @@
               <p id="studio-mood-tip" style="font-size: 0.8rem; color: var(--brown-700); margin-top: 2px;"></p>
             </div>
             <button class="btn btn-secondary btn-sm" onclick="Studio.clearMoodBanner()">×</button>
+          </div>
+
+          <!-- Closet Remix Challenge Active Banner -->
+          <div class="remix-challenge-banner" id="studio-challenge-banner" style="display: none;">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <span style="font-size: 1.8rem;">🎯</span>
+              <div>
+                <strong style="color:var(--brown-900); font-size:0.92rem;">Closet Remix Challenge Active!</strong>
+                <p style="font-size:0.8rem; color:var(--brown-700); margin:0;" id="studio-challenge-instruction">
+                  Rediscover this underloved piece! Style it with 2-3 other pieces and save to earn +50 Style Points.
+                </p>
+              </div>
+            </div>
+            <div style="display:flex; gap:0.5rem; align-items:center;">
+              <button class="btn btn-primary btn-sm" onclick="Studio.openSaveModal()">
+                <span>💖 Save & Complete</span>
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="RemixChallenge.cancelChallenge()" title="Exit challenge">✕</button>
+            </div>
           </div>
 
           <!-- Color Harmony Matcher Box -->
@@ -2381,6 +3002,13 @@
             <p id="sidebar-context-hint">Click an item to place it in the studio.</p>
           </div>
 
+          <!-- Source Filter (All / Demo / Personal) -->
+          <div class="studio-source-filter" id="studio-source-filter" role="tablist" aria-label="Studio Clothing Source">
+            <button class="studio-source-btn active" data-source="all" onclick="Studio.setSourceFilter('all')">🌟 All (<span id="studio-source-count-all">24</span>)</button>
+            <button class="studio-source-btn" data-source="demo" onclick="Studio.setSourceFilter('demo')">✨ Demo (<span id="studio-source-count-demo">24</span>)</button>
+            <button class="studio-source-btn" data-source="personal" onclick="Studio.setSourceFilter('personal')">👗 My Clothes (<span id="studio-source-count-personal">0</span>)</button>
+          </div>
+
           <!-- Category filter inside sidebar -->
           <div class="sidebar-cat-nav" id="sidebar-cat-nav">
             <button class="sidebar-cat-pill active" data-cat="all" onclick="Studio.setSidebarCategory('all')">All</button>
@@ -2435,52 +3063,124 @@
          VIEW 5: OUTFIT CALENDAR
          ======================================================================== -->
     <section id="view-calendar" class="view-section">
+      <!-- Calendar Header & View Mode Switcher -->
+      <div class="wardrobe-header" style="margin-bottom: 1.5rem;">
+        <div class="wardrobe-topbar">
+          <div class="wardrobe-title-group">
+            <h2>Outfit Calendar <span class="script-font" style="font-size: 1.4rem;">weekly planner</span></h2>
+            <p>Plan what to wear for each day of the week, assign looks, and add daily notes like "presentation day" or "campus with friends."</p>
+          </div>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
+            <button class="btn btn-primary btn-sm" onclick="CalendarUI.openAssignModal()">
+              <span>➕ Schedule an Outfit</span>
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="App.navigateTo('studio')">
+              <span>🎨 Mix & Match Studio</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- View Switcher: Weekly Plan vs Monthly Overview -->
+        <div class="calendar-view-switcher" role="tablist" aria-label="Calendar View Mode">
+          <button class="cal-view-tab-btn active" id="cal-tab-weekly" onclick="CalendarUI.setViewMode('weekly')">
+            <span>📅 Weekly Plan (Mon–Sun)</span>
+          </button>
+          <button class="cal-view-tab-btn" id="cal-tab-monthly" onclick="CalendarUI.setViewMode('monthly')">
+            <span>🗓️ Monthly Overview</span>
+          </button>
+        </div>
+      </div>
+
       <div class="calendar-layout">
-        <!-- Calendar Grid Board -->
+        <!-- Calendar Main Board -->
         <div class="calendar-main-panel">
-          <div class="calendar-nav-bar">
-            <div>
-              <h2 class="calendar-month-title" id="calendar-month-heading">October 2026</h2>
-              <p style="font-size: 0.85rem; color: var(--brown-500);">Plan outfits ahead of time & keep your days styled.</p>
+
+          <!-- WEEKLY VIEW CONTAINER -->
+          <div id="calendar-weekly-container">
+            <div class="calendar-nav-bar">
+              <div>
+                <h2 class="calendar-month-title" id="calendar-week-heading">This Week</h2>
+                <p style="font-size: 0.85rem; color: var(--brown-500);" id="calendar-week-subheading">7-Day Style Schedule</p>
+              </div>
+              <div class="calendar-controls-btn-group">
+                <button class="btn btn-secondary btn-sm" onclick="CalendarUI.prevWeek()" title="Previous Week">‹ Prev Week</button>
+                <button class="btn btn-secondary btn-sm" onclick="CalendarUI.goToCurrentWeek()" title="This Week">This Week</button>
+                <button class="btn btn-secondary btn-sm" onclick="CalendarUI.nextWeek()" title="Next Week">Next Week ›</button>
+              </div>
             </div>
-            <div class="calendar-controls-btn-group">
-              <button class="btn btn-secondary btn-sm" onclick="CalendarUI.prevMonth()" title="Previous Month">‹ Prev</button>
-              <button class="btn btn-secondary btn-sm" onclick="CalendarUI.goToToday()" title="Current Month">Today</button>
-              <button class="btn btn-secondary btn-sm" onclick="CalendarUI.nextMonth()" title="Next Month">Next ›</button>
+
+            <!-- 7 Days Grid -->
+            <div class="calendar-weekly-grid" id="calendar-weekly-cards-grid">
+              <!-- Dynamically populated weekly day cards -->
             </div>
           </div>
 
-          <!-- Weekday Headers -->
-          <div class="calendar-weekdays-grid">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
+          <!-- MONTHLY VIEW CONTAINER -->
+          <div id="calendar-monthly-container" style="display: none;">
+            <div class="calendar-nav-bar">
+              <div>
+                <h2 class="calendar-month-title" id="calendar-month-heading">October 2026</h2>
+                <p style="font-size: 0.85rem; color: var(--brown-500);">Full month grid view & dates overview.</p>
+              </div>
+              <div class="calendar-controls-btn-group">
+                <button class="btn btn-secondary btn-sm" onclick="CalendarUI.prevMonth()" title="Previous Month">‹ Prev</button>
+                <button class="btn btn-secondary btn-sm" onclick="CalendarUI.goToToday()" title="Current Month">Today</button>
+                <button class="btn btn-secondary btn-sm" onclick="CalendarUI.nextMonth()" title="Next Month">Next ›</button>
+              </div>
+            </div>
+
+            <!-- Weekday Headers -->
+            <div class="calendar-weekdays-grid">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+
+            <!-- Day Cells -->
+            <div class="calendar-month-cells" id="calendar-days-container">
+              <!-- Dynamically populated -->
+            </div>
           </div>
 
-          <!-- Day Cells -->
-          <div class="calendar-month-cells" id="calendar-days-container">
-            <!-- Dynamically populated -->
-          </div>
         </div>
 
         <!-- Selected Date Outfit Inspector Sidebar -->
         <aside class="calendar-sidebar-card">
           <div style="border-bottom: 1.5px dashed var(--brown-200); padding-bottom: 1rem; margin-bottom: 1.25rem;">
             <div style="display:flex; align-items:center; justify-content:space-between;">
-              <span class="badge badge-blush" id="calendar-selected-badge">Selected Date</span>
+              <span class="badge badge-blush" id="calendar-selected-badge">Selected Day</span>
               <span style="font-size: 1.2rem;">🗓️</span>
             </div>
-            <h3 id="calendar-selected-date-text" style="font-size: 1.25rem; margin-top: 0.5rem; color: var(--brown-900);">Select a Date</h3>
+            <h3 id="calendar-selected-date-text" style="font-size: 1.2rem; margin-top: 0.5rem; color: var(--brown-900);">Select a Date</h3>
           </div>
 
           <div id="calendar-selected-content">
             <!-- Dynamically populated: planned look details or empty state -->
           </div>
         </aside>
+      </div>
+
+      <!-- UPCOMING OUTFIT PLANS SHELF -->
+      <div class="upcoming-plans-section" id="upcoming-plans-section">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem;">
+          <div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--brown-900); margin:0;">
+              Upcoming Outfit Plans <span class="script-font" style="font-size: 1.2rem;">scheduled looks</span>
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--brown-500); margin: 0.25rem 0 0;">
+              A quick glance at what you're wearing in the coming days so you can dress with ease.
+            </p>
+          </div>
+          <span class="badge badge-lavender" id="upcoming-plans-count-badge">0 Plans</span>
+        </div>
+
+        <div class="upcoming-cards-container" id="upcoming-plans-container">
+          <!-- Dynamically populated upcoming plans -->
+        </div>
       </div>
     </section>
 
@@ -2712,15 +3412,72 @@
       
       <div class="modal-header">
         <h3>Schedule Outfit <span class="script-font" style="font-size: 1.25rem;">📅</span></h3>
-        <p id="assign-modal-date-subtitle">Choose a saved look from your lookbook to wear on this date.</p>
+        <p id="assign-modal-date-subtitle">Choose a look and set what you're doing on this date.</p>
       </div>
 
-      <div id="assign-outfit-picker-list" style="max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; padding-right: 0.25rem;">
-        <!-- Dynamically rendered list of user's saved outfits -->
+      <!-- Day Note / Occasion Input -->
+      <div class="form-group" style="margin-bottom: 1.25rem; background: var(--bg-alt); padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid var(--brown-200);">
+        <label class="form-label" for="assign-outfit-note" style="display:flex; justify-content:space-between; align-items:center;">
+          <span>📝 Day Note / Occasion</span>
+          <span style="font-weight:400; color:var(--brown-500); font-size:0.75rem;">e.g., presentation day</span>
+        </label>
+        <input type="text" id="assign-outfit-note" class="form-control" placeholder="e.g. presentation day, campus with friends, brunch date..." maxlength="60" style="background:#FFF;">
+        
+        <div class="quick-note-chips">
+          <span class="quick-note-chip" onclick="CalendarUI.fillNote('presentation day')">💼 presentation day</span>
+          <span class="quick-note-chip" onclick="CalendarUI.fillNote('campus with friends')">☕ campus with friends</span>
+          <span class="quick-note-chip" onclick="CalendarUI.fillNote('exam day')">📚 exam day</span>
+          <span class="quick-note-chip" onclick="CalendarUI.fillNote('relaxed weekend')">🧸 relaxed weekend</span>
+          <span class="quick-note-chip" onclick="CalendarUI.fillNote('date night')">🍷 date night</span>
+        </div>
       </div>
 
-      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+      <!-- Outfit Tabs: Saved Looks vs Predefined Demo Looks -->
+      <div style="display:flex; gap:0.4rem; margin-bottom: 0.85rem; border-bottom: 1.5px solid var(--brown-200); padding-bottom: 0.5rem;">
+        <button class="btn btn-secondary btn-sm active" id="assign-tab-saved" onclick="CalendarUI.setAssignTab('saved')">
+          <span>💖 Saved Looks (<span id="assign-saved-count">0</span>)</span>
+        </button>
+        <button class="btn btn-secondary btn-sm" id="assign-tab-demo" onclick="CalendarUI.setAssignTab('demo')">
+          <span>✨ Demo Looks (6)</span>
+        </button>
+      </div>
+
+      <div id="assign-outfit-picker-list" style="max-height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; padding-right: 0.25rem;">
+        <!-- Dynamically rendered list of outfits -->
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.25rem;">
         <button class="btn btn-secondary" onclick="App.closeModals()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 6: REMIX CHALLENGE CELEBRATION MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="remix-celebration-modal">
+    <div class="modal-card" style="max-width: 480px; text-align: center;">
+      <button class="modal-close-btn" onclick="App.closeModals()">✕</button>
+      <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🎉</div>
+      <h3 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--brown-900); margin-bottom: 0.5rem;">
+        Closet Remix Complete!
+      </h3>
+      <p style="color: var(--brown-700); font-size: 0.92rem; margin-bottom: 1.25rem;" id="remix-celebration-text">
+        You creatively restyled an underloved piece into a brand new look!
+      </p>
+
+      <div style="background: linear-gradient(135deg, #FFFDF0 0%, #FEF3D6 100%); border: 1.5px solid var(--accent-gold); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <div style="font-size: 1.8rem; font-weight: 800; color: #8C5C00; margin-bottom: 0.25rem;" id="remix-points-awarded">+50 Points ⭐</div>
+        <div style="font-size: 0.85rem; color: var(--brown-800); font-weight: 700;" id="remix-badge-unlocked-text">Badge Unlocked: 🥉 Closet Explorer</div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+        <button class="btn btn-secondary" onclick="App.closeModals(); App.navigateTo('looks');">
+          <span>📖 View Lookbook</span>
+        </button>
+        <button class="btn btn-primary" onclick="App.closeModals(); App.navigateTo('calendar');">
+          <span>📅 Plan on Calendar</span>
+        </button>
       </div>
     </div>
   </div>
@@ -2861,10 +3618,12 @@
 
     // --- 2. GLOBAL STATE ---
     const State = {
-      clothes: [],
-      outfits: [],
-      calendarPlans: {}, // date 'YYYY-MM-DD' -> plan object
+      clothes: [],              // User's personal uploaded clothes (persisted in IndexedDB)
+      demoClothes: [],          // Predefined sample items (from DemoWardrobe)
+      outfits: [],              // Saved outfits (persisted in IndexedDB)
+      calendarPlans: {},        // date 'YYYY-MM-DD' -> plan object
       currentTab: 'home',
+      wardrobeSource: 'demo',   // 'demo' | 'personal' | 'all'
       activeCategoryFilter: 'all',
       activeColorFilter: 'all',
       searchQuery: '',
@@ -2885,190 +3644,628 @@
         activeMood: null
       },
 
+      // Studio rack source filter
+      studioSource: 'all', // 'all' | 'demo' | 'personal'
+
       // Queue of items being uploaded
       uploadQueue: [],
-      editingItemId: null
-    };
+      editingItemId: null,
 
-    // --- 3. SAMPLE CAPSULE WARDROBE (Inline High-Quality Illustrations) ---
-    // Creates beautiful SVG illustrations drawn on canvas to ensure the user
-    // has a gorgeously styled ready-to-test wardrobe with zero external network lag!
-    const SampleWardrobe = {
-      createSvgDataUrl(svgString) {
-        return 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
+      // Universal resolver for any item ID across personal and demo collections
+      getItem(id) {
+        if (!id) return null;
+        return this.clothes.find(i => i.id === id) || 
+               this.demoClothes.find(i => i.id === id) || 
+               null;
       },
 
-      getStarterItems() {
-        return [
+      // Returns combined array of all clothes
+      getAllClothes() {
+        return [...this.clothes, ...this.demoClothes];
+      },
+
+      // Returns clothes filtered by active source tab ('all', 'demo', 'personal')
+      getAvailableClothes(source = this.wardrobeSource) {
+        if (source === 'personal') return this.clothes;
+        if (source === 'demo') return this.demoClothes;
+        return [...this.clothes, ...this.demoClothes];
+      }
+    };
+
+    // --- 3. DEMO CAPSULE WARDROBE (Inline High-Quality Illustrations) ---
+    // Curated capsule collection of 24 aesthetic clothing pieces across tops, bottoms,
+    // dresses, outerwear, shoes & accessories. Rendered entirely as self-contained SVG
+    // data URIs to guarantee zero network latency, no external CDN dependencies, and 
+    // immediate functionality on GitHub Pages!
+    const DemoWardrobe = {
+      favStorageKey: 'outfitstudio_demo_favorites_v1',
+
+      getSavedFavorites() {
+        try {
+          const raw = localStorage.getItem(this.favStorageKey);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          return {};
+        }
+      },
+
+      toggleFavorite(id) {
+        const favs = this.getSavedFavorites();
+        favs[id] = !favs[id];
+        try {
+          localStorage.setItem(this.favStorageKey, JSON.stringify(favs));
+        } catch (e) {
+          console.warn('Could not save demo favorite to localStorage:', e);
+        }
+        const item = State.demoClothes.find(i => i.id === id);
+        if (item) item.favorite = !!favs[id];
+        return !!favs[id];
+      },
+
+      createSvgDataUrl(svgString) {
+        return 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString.trim().replace(/\s+/g, ' '));
+      },
+
+      getItems() {
+        const favs = this.getSavedFavorites();
+        const baseTime = Date.now() - 3600000;
+
+        const items = [
+          // --- TOPS ---
           {
-            id: 'sample_top_1',
+            id: 'demo_top_1',
             name: 'Cream Cable-Knit Sweater',
             category: 'tops',
             color: 'cream',
             moods: ['Cozy Day', 'Casual Hangout'],
-            createdAt: Date.now() - 600000,
+            createdAt: baseTime + 1000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FBF8F5"/>
-                <!-- Hanger -->
+                <rect width="100%" height="100%" fill="#FBF8F5" rx="8"/>
                 <path d="M150 45 Q150 25 160 20 Q170 15 160 30" stroke="#7A5C45" stroke-width="3" fill="none" stroke-linecap="round"/>
-                <!-- Sweater Body -->
                 <path d="M90 65 L40 120 L70 145 L95 105 L95 270 Q150 280 205 270 L205 105 L230 145 L260 120 L210 65 Q150 85 90 65 Z" fill="#F4EFE6" stroke="#D3C7B6" stroke-width="2.5"/>
-                <!-- Cable Knit textures -->
                 <path d="M125 90 L125 265 M150 90 L150 268 M175 90 L175 265" stroke="#E2D7C5" stroke-width="2" stroke-dasharray="4,4"/>
                 <path d="M115 75 Q150 90 185 75" fill="none" stroke="#D3C7B6" stroke-width="3"/>
-                <!-- Cute Heart Tag -->
                 <circle cx="150" cy="130" r="14" fill="#FCE8E6"/>
                 <text x="150" y="135" font-family="sans-serif" font-size="12" fill="#E68A7D" text-anchor="middle">♡</text>
               </svg>
             `)
           },
           {
-            id: 'sample_top_2',
+            id: 'demo_top_2',
             name: 'Silk Tie-Bow Blouse',
             category: 'tops',
             color: 'pink',
             moods: ['Smart & Chic', 'Date Night'],
-            createdAt: Date.now() - 500000,
+            createdAt: baseTime + 2000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FDFBF9"/>
-                <!-- Blouse -->
+                <rect width="100%" height="100%" fill="#FDFBF9" rx="8"/>
+                <path d="M150 45 Q150 25 160 20 Q170 15 160 30" stroke="#B08D79" stroke-width="2.5" fill="none" stroke-linecap="round"/>
                 <path d="M95 70 L45 130 L70 150 L95 110 L95 260 Q150 270 205 260 L205 110 L230 150 L255 130 L205 70 Q150 85 95 70 Z" fill="#FCEFEF" stroke="#E6BFBD" stroke-width="2.5"/>
-                <!-- Bow collar -->
+                <line x1="150" y1="90" x2="150" y2="255" stroke="#E6BFBD" stroke-width="1.5" stroke-dasharray="2,5"/>
                 <circle cx="150" cy="85" r="7" fill="#D36E60"/>
-                <path d="M150 85 Q130 95 125 125 Q135 125 145 95" fill="#EFAAA4"/>
-                <path d="M150 85 Q170 95 175 125 Q165 125 155 95" fill="#EFAAA4"/>
+                <path d="M150 85 Q125 95 120 130 Q135 130 145 95 Z" fill="#EFAAA4" stroke="#D36E60" stroke-width="1.5"/>
+                <path d="M150 85 Q175 95 180 130 Q165 130 155 95 Z" fill="#EFAAA4" stroke="#D36E60" stroke-width="1.5"/>
+                <circle cx="150" cy="140" r="2.5" fill="#D36E60"/>
+                <circle cx="150" cy="175" r="2.5" fill="#D36E60"/>
+                <circle cx="150" cy="210" r="2.5" fill="#D36E60"/>
               </svg>
             `)
           },
           {
-            id: 'sample_bottom_1',
+            id: 'demo_top_3',
+            name: 'Breton Striped Longsleeve',
+            category: 'tops',
+            color: 'blue',
+            moods: ['Casual Hangout', 'Campus Day'],
+            createdAt: baseTime + 3000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FAF7F2" rx="8"/>
+                <path d="M150 45 Q150 25 160 20 Q170 15 160 30" stroke="#7A5C45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M90 68 L35 135 L62 155 L90 115 L90 270 Q150 276 210 270 L210 115 L238 155 L265 135 L210 68 Q150 80 90 68 Z" fill="#FDFDFD" stroke="#D5CCC2" stroke-width="2"/>
+                <path d="M90 120 L210 120 M90 145 L210 145 M90 170 L210 170 M90 195 L210 195 M90 220 L210 220 M90 245 L210 245" stroke="#2B3E50" stroke-width="4.5" stroke-linecap="round"/>
+                <path d="M50 115 L78 135 M40 130 L66 150 M222 135 L250 115 M234 150 L260 130" stroke="#2B3E50" stroke-width="4" stroke-linecap="round"/>
+                <path d="M185 105 C185 100 175 100 175 106 C175 111 185 116 185 116 C185 116 195 111 195 106 C195 100 185 100 185 105 Z" fill="#D9383A"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_top_4',
+            name: 'Crisp White Poplin Shirt',
+            category: 'tops',
+            color: 'white',
+            moods: ['Smart & Chic', 'Campus Day'],
+            createdAt: baseTime + 4000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F9F9F8" rx="8"/>
+                <path d="M150 45 Q150 25 160 20 Q170 15 160 30" stroke="#7A5C45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M92 68 L40 135 L68 155 L95 112 L92 270 Q150 282 208 270 L205 112 L232 155 L260 135 L208 68 Q150 82 92 68 Z" fill="#FFFFFF" stroke="#C4BCB3" stroke-width="2"/>
+                <path d="M110 68 L138 98 L150 78 L162 98 L190 68 Q150 82 110 68 Z" fill="#F4F1EC" stroke="#B8AEA3" stroke-width="2"/>
+                <line x1="150" y1="78" x2="150" y2="274" stroke="#D3C9BD" stroke-width="2"/>
+                <circle cx="150" cy="115" r="2.5" fill="#8E7765"/>
+                <circle cx="150" cy="150" r="2.5" fill="#8E7765"/>
+                <circle cx="150" cy="185" r="2.5" fill="#8E7765"/>
+                <circle cx="150" cy="220" r="2.5" fill="#8E7765"/>
+                <path d="M115 125 L135 125 L135 150 L125 158 L115 150 Z" fill="none" stroke="#D3C9BD" stroke-width="1.5"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_top_5',
+            name: 'Sage Ribbed Cropped Tank',
+            category: 'tops',
+            color: 'green',
+            moods: ['Casual Hangout', 'Date Night'],
+            createdAt: baseTime + 5000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F5F8F5" rx="8"/>
+                <path d="M105 70 L105 110 Q150 115 195 110 L195 70 L178 70 L175 105 Q150 108 125 105 L122 70 Z" fill="#B4C9B5" stroke="#8DA68E" stroke-width="2"/>
+                <path d="M105 110 Q150 115 195 110 L198 230 Q150 236 102 230 Z" fill="#B4C9B5" stroke="#8DA68E" stroke-width="2"/>
+                <line x1="120" y1="108" x2="118" y2="231" stroke="#9DB79E" stroke-width="1.8"/>
+                <line x1="135" y1="112" x2="134" y2="233" stroke="#9DB79E" stroke-width="1.8"/>
+                <line x1="150" y1="113" x2="150" y2="234" stroke="#9DB79E" stroke-width="1.8"/>
+                <line x1="165" y1="112" x2="166" y2="233" stroke="#9DB79E" stroke-width="1.8"/>
+                <line x1="180" y1="108" x2="182" y2="231" stroke="#9DB79E" stroke-width="1.8"/>
+                <path d="M102 230 Q115 235 125 231 Q138 237 150 232 Q162 237 175 231 Q188 235 198 230" fill="none" stroke="#7A967B" stroke-width="2"/>
+              </svg>
+            `)
+          },
+
+          // --- BOTTOMS ---
+          {
+            id: 'demo_bottom_1',
             name: 'Pleated Tailored Trousers',
             category: 'bottoms',
             color: 'beige',
             moods: ['Smart & Chic', 'Campus Day'],
-            createdAt: Date.now() - 400000,
+            createdAt: baseTime + 6000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FBF8F5"/>
-                <!-- Trousers -->
+                <rect width="100%" height="100%" fill="#FBF8F5" rx="8"/>
                 <path d="M90 40 L210 40 L218 65 L210 295 L165 295 L150 120 L135 295 L90 295 L82 65 Z" fill="#ECE5DD" stroke="#C4B5A5" stroke-width="2.5"/>
-                <!-- Belt & Pleats -->
                 <line x1="90" y1="55" x2="210" y2="55" stroke="#A89684" stroke-width="2"/>
                 <line x1="120" y1="65" x2="115" y2="280" stroke="#DACDC0" stroke-width="1.5"/>
                 <line x1="180" y1="65" x2="185" y2="280" stroke="#DACDC0" stroke-width="1.5"/>
+                <circle cx="150" cy="48" r="3.5" fill="#7A5C45"/>
+                <line x1="92" y1="65" x2="108" y2="95" stroke="#C4B5A5" stroke-width="1.5"/>
+                <line x1="208" y1="65" x2="192" y2="95" stroke="#C4B5A5" stroke-width="1.5"/>
               </svg>
             `)
           },
           {
-            id: 'sample_bottom_2',
+            id: 'demo_bottom_2',
             name: 'A-Line Denim Midi Skirt',
             category: 'bottoms',
             color: 'blue',
             moods: ['Casual Hangout', 'Campus Day'],
-            createdAt: Date.now() - 350000,
+            createdAt: baseTime + 7000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FAF6F0"/>
-                <!-- Skirt -->
+                <rect width="100%" height="100%" fill="#FAF6F0" rx="8"/>
                 <path d="M100 45 L200 45 L235 285 Q150 300 65 285 Z" fill="#9FBAD3" stroke="#688BAE" stroke-width="2.5"/>
-                <!-- Buttons line -->
                 <line x1="150" y1="45" x2="150" y2="285" stroke="#688BAE" stroke-width="2" stroke-dasharray="3,3"/>
                 <circle cx="150" cy="80" r="4" fill="#C59B27"/>
                 <circle cx="150" cy="120" r="4" fill="#C59B27"/>
                 <circle cx="150" cy="160" r="4" fill="#C59B27"/>
                 <circle cx="150" cy="200" r="4" fill="#C59B27"/>
+                <circle cx="150" cy="240" r="4" fill="#C59B27"/>
+                <path d="M100 58 Q118 68 118 95" fill="none" stroke="#D4A338" stroke-width="1.5"/>
+                <path d="M200 58 Q182 68 182 95" fill="none" stroke="#D4A338" stroke-width="1.5"/>
               </svg>
             `)
           },
           {
-            id: 'sample_dress_1',
+            id: 'demo_bottom_3',
+            name: 'Wide-Leg Linen Pants',
+            category: 'bottoms',
+            color: 'cream',
+            moods: ['Cozy Day', 'Casual Hangout'],
+            createdAt: baseTime + 8000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FDFBF7" rx="8"/>
+                <path d="M92 48 Q150 45 208 48 L225 290 L168 290 L150 115 L132 290 L75 290 Z" fill="#F5F0E6" stroke="#D8CDBC" stroke-width="2.5"/>
+                <path d="M92 48 Q150 45 208 48 L206 66 Q150 63 94 66 Z" fill="#E8DEC9" stroke="#CBBFA9" stroke-width="1.5"/>
+                <circle cx="150" cy="57" r="4" fill="#B09F87"/>
+                <path d="M150 57 Q135 50 132 62 Q142 66 150 57" fill="#CBBFA9" stroke="#9E8D75" stroke-width="1.2"/>
+                <path d="M150 57 Q165 50 168 62 Q158 66 150 57" fill="#CBBFA9" stroke="#9E8D75" stroke-width="1.2"/>
+                <path d="M148 58 L142 82 M152 58 L158 84" stroke="#9E8D75" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="142" cy="83" r="2" fill="#7A5C45"/>
+                <circle cx="158" cy="85" r="2" fill="#7A5C45"/>
+                <line x1="110" y1="80" x2="105" y2="275" stroke="#E2D7C5" stroke-width="1.5"/>
+                <line x1="190" y1="80" x2="195" y2="275" stroke="#E2D7C5" stroke-width="1.5"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_bottom_4',
+            name: 'Vintage Straight-Leg Jeans',
+            category: 'bottoms',
+            color: 'blue',
+            moods: ['Casual Hangout', 'Campus Day'],
+            createdAt: baseTime + 9000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F7F9FB" rx="8"/>
+                <path d="M90 42 L210 42 L216 70 L204 275 L162 275 L150 120 L138 275 L96 275 L84 70 Z" fill="#7B9EC2" stroke="#52769C" stroke-width="2.5"/>
+                <rect x="94" y="275" width="46" height="16" fill="#A4C2E0" stroke="#52769C" stroke-width="2" rx="2"/>
+                <rect x="160" y="275" width="46" height="16" fill="#A4C2E0" stroke="#52769C" stroke-width="2" rx="2"/>
+                <line x1="90" y1="56" x2="210" y2="56" stroke="#D9A74A" stroke-width="2"/>
+                <line x1="150" y1="56" x2="150" y2="105" stroke="#D9A74A" stroke-width="2"/>
+                <circle cx="150" cy="49" r="3.5" fill="#C59B27"/>
+                <circle cx="95" cy="72" r="2.5" fill="#C59B27"/>
+                <circle cx="205" cy="72" r="2.5" fill="#C59B27"/>
+                <path d="M92 56 Q112 66 112 90" fill="none" stroke="#D9A74A" stroke-width="1.5"/>
+                <path d="M208 56 Q188 66 188 90" fill="none" stroke="#D9A74A" stroke-width="1.5"/>
+                <path d="M125 100 Q140 108 148 105 M175 100 Q160 108 152 105" fill="none" stroke="#96B5D6" stroke-width="2"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_bottom_5',
+            name: 'Pleated Charcoal Tennis Skirt',
+            category: 'bottoms',
+            color: 'black',
+            moods: ['Campus Day', 'Date Night'],
+            createdAt: baseTime + 10000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F8F8F9" rx="8"/>
+                <path d="M100 48 L200 48 L228 250 Q150 260 72 250 Z" fill="#363B40" stroke="#212427" stroke-width="2.5"/>
+                <path d="M100 48 L200 48 L204 75 L96 75 Z" fill="#2B2F34" stroke="#1D2024" stroke-width="1.5"/>
+                <line x1="108" y1="75" x2="90" y2="252" stroke="#212427" stroke-width="2"/>
+                <line x1="124" y1="75" x2="114" y2="255" stroke="#212427" stroke-width="2"/>
+                <line x1="140" y1="75" x2="138" y2="256" stroke="#212427" stroke-width="2"/>
+                <line x1="160" y1="75" x2="162" y2="256" stroke="#212427" stroke-width="2"/>
+                <line x1="176" y1="75" x2="186" y2="255" stroke="#212427" stroke-width="2"/>
+                <line x1="192" y1="75" x2="210" y2="252" stroke="#212427" stroke-width="2"/>
+                <path d="M76 244 Q150 254 224 244" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.9"/>
+              </svg>
+            `)
+          },
+
+          // --- DRESSES ---
+          {
+            id: 'demo_dress_1',
             name: 'Lavender Floral Midi Dress',
             category: 'dresses',
             color: 'purple',
             moods: ['Date Night', 'Casual Hangout'],
-            createdAt: Date.now() - 300000,
+            createdAt: baseTime + 11000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FBF9FE"/>
-                <!-- Dress -->
-                <path d="M110 40 L90 70 L115 130 L75 295 Q150 310 225 295 L185 130 L210 70 L190 40 Q150 60 110 40 Z" fill="#E8DEF5" stroke="#B8A4D6" stroke-width="2.5"/>
-                <!-- Floral accents -->
-                <circle cx="130" cy="180" r="6" fill="#F7D6D0"/>
-                <circle cx="170" cy="220" r="6" fill="#F7D6D0"/>
-                <circle cx="120" cy="250" r="6" fill="#F7D6D0"/>
-                <circle cx="180" cy="160" r="6" fill="#F7D6D0"/>
-                <!-- Waist Ribbon -->
-                <path d="M115 130 Q150 140 185 130" stroke="#9B82C4" stroke-width="4" fill="none"/>
+                <rect width="100%" height="100%" fill="#FAF7FC" rx="8"/>
+                <path d="M150 40 Q150 20 160 15 Q170 10 160 25" stroke="#7A5C45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M110 50 L88 78 L115 130 L72 295 Q150 310 228 295 L185 130 L212 78 L190 50 Q150 68 110 50 Z" fill="#E8DEF5" stroke="#B8A4D6" stroke-width="2.5"/>
+                <path d="M115 130 Q150 138 185 130" stroke="#9B82C4" stroke-width="4.5" fill="none"/>
+                <circle cx="150" cy="134" r="5" fill="#9B82C4"/>
+                <circle cx="120" cy="170" r="5" fill="#FADCD7"/><circle cx="120" cy="170" r="2" fill="#E2A03F"/>
+                <circle cx="180" cy="185" r="5" fill="#FADCD7"/><circle cx="180" cy="185" r="2" fill="#E2A03F"/>
+                <circle cx="140" cy="225" r="5" fill="#FADCD7"/><circle cx="140" cy="225" r="2" fill="#E2A03F"/>
+                <circle cx="170" cy="255" r="5" fill="#FADCD7"/><circle cx="170" cy="255" r="2" fill="#E2A03F"/>
+                <circle cx="105" cy="270" r="5" fill="#FADCD7"/><circle cx="105" cy="270" r="2" fill="#E2A03F"/>
+                <path d="M78 275 Q150 288 222 275" fill="none" stroke="#B8A4D6" stroke-width="2" stroke-dasharray="4,4"/>
               </svg>
             `)
           },
           {
-            id: 'sample_outerwear_1',
+            id: 'demo_dress_2',
+            name: 'Sleek Black Satin Slip Dress',
+            category: 'dresses',
+            color: 'black',
+            moods: ['Date Night', 'Smart & Chic'],
+            createdAt: baseTime + 12000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F9F9FA" rx="8"/>
+                <path d="M150 40 Q150 20 160 15 Q170 10 160 25" stroke="#C4A872" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <line x1="120" y1="52" x2="115" y2="85" stroke="#2C2B30" stroke-width="2"/>
+                <line x1="180" y1="52" x2="185" y2="85" stroke="#2C2B30" stroke-width="2"/>
+                <path d="M115 85 Q150 105 185 85 L195 135 L215 300 L170 300 L165 250 L160 300 L85 300 L105 135 Z" fill="#2C2B30" stroke="#151417" stroke-width="2.5"/>
+                <path d="M120 92 Q150 112 180 92" fill="none" stroke="#48454F" stroke-width="2"/>
+                <path d="M128 102 Q150 118 172 102" fill="none" stroke="#48454F" stroke-width="1.5"/>
+                <line x1="165" y1="250" x2="165" y2="300" stroke="#151417" stroke-width="2"/>
+                <path d="M130 140 Q138 210 120 285" fill="none" stroke="#504C58" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_dress_3',
+            name: 'Terracotta Ribbed Wrap Dress',
+            category: 'dresses',
+            color: 'brown',
+            moods: ['Cozy Day', 'Smart & Chic'],
+            createdAt: baseTime + 13000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FAF5F2" rx="8"/>
+                <path d="M150 38 Q150 20 160 15 Q170 10 160 25" stroke="#7A5C45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M110 55 L45 125 L70 145 L95 110 L80 295 Q150 308 220 295 L205 110 L230 145 L255 125 L190 55 Q150 70 110 55 Z" fill="#CB6D51" stroke="#A85036" stroke-width="2.5"/>
+                <line x1="110" y1="55" x2="165" y2="135" stroke="#A85036" stroke-width="2.5"/>
+                <line x1="190" y1="55" x2="135" y2="135" stroke="#A85036" stroke-width="2"/>
+                <rect x="115" y="130" width="70" height="12" fill="#B8583E" rx="3"/>
+                <circle cx="168" cy="136" r="6" fill="#A85036"/>
+                <path d="M168 136 L175 190 M168 136 L185 185" stroke="#A85036" stroke-width="4" stroke-linecap="round"/>
+                <line x1="165" y1="142" x2="115" y2="298" stroke="#A85036" stroke-width="2"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_dress_4',
+            name: 'Buttercream Tiered Sundress',
+            category: 'dresses',
+            color: 'yellow',
+            moods: ['Casual Hangout', 'Date Night'],
+            createdAt: baseTime + 14000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FDFCF7" rx="8"/>
+                <path d="M150 40 Q150 20 160 15 Q170 10 160 25" stroke="#C4A872" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M110 50 Q105 70 108 90" stroke="#DFC988" stroke-width="6" stroke-linecap="round" fill="none"/>
+                <path d="M190 50 Q195 70 192 90" stroke="#DFC988" stroke-width="6" stroke-linecap="round" fill="none"/>
+                <rect x="105" y="88" width="90" height="48" fill="#FDF2C8" stroke="#DFC988" stroke-width="2" rx="4"/>
+                <line x1="105" y1="100" x2="195" y2="100" stroke="#E5CE85" stroke-width="1.5" stroke-dasharray="2,2"/>
+                <line x1="105" y1="112" x2="195" y2="112" stroke="#E5CE85" stroke-width="1.5" stroke-dasharray="2,2"/>
+                <line x1="105" y1="124" x2="195" y2="124" stroke="#E5CE85" stroke-width="1.5" stroke-dasharray="2,2"/>
+                <path d="M105 136 L85 210 Q150 220 215 210 L195 136 Z" fill="#FDF5D6" stroke="#DFC988" stroke-width="2"/>
+                <path d="M85 210 L65 295 Q150 310 235 295 L215 210 Z" fill="#FFF8E0" stroke="#DFC988" stroke-width="2"/>
+                <path d="M68 290 Q150 304 232 290" fill="none" stroke="#D1BA77" stroke-width="1.5" stroke-dasharray="3,3"/>
+              </svg>
+            `)
+          },
+
+          // --- OUTERWEAR ---
+          {
+            id: 'demo_outerwear_1',
             name: 'Oatmeal Wool Trench Coat',
             category: 'outerwear',
             color: 'brown',
             moods: ['Smart & Chic', 'Cozy Day'],
-            createdAt: Date.now() - 250000,
+            createdAt: baseTime + 15000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FDFBF9"/>
-                <!-- Trench -->
+                <rect width="100%" height="100%" fill="#FDFBF9" rx="8"/>
+                <path d="M150 35 Q150 18 160 12 Q170 8 160 22" stroke="#7A5C45" stroke-width="3" fill="none" stroke-linecap="round"/>
                 <path d="M90 45 L35 125 L65 145 L85 110 L80 305 L220 305 L215 110 L235 145 L265 125 L210 45 Q150 65 90 45 Z" fill="#EFE7DA" stroke="#CBBBA5" stroke-width="2.5"/>
-                <!-- Lapel -->
-                <path d="M110 50 L140 135 L115 135 Z" fill="#DECDB4"/>
-                <path d="M190 50 L160 135 L185 135 Z" fill="#DECDB4"/>
-                <!-- Belt -->
-                <rect x="75" y="160" width="150" height="14" fill="#CBBBA5" rx="3"/>
+                <path d="M110 50 L140 135 L115 135 Z" fill="#DECDB4" stroke="#CBBBA5" stroke-width="1.5"/>
+                <path d="M190 50 L160 135 L185 135 Z" fill="#DECDB4" stroke="#CBBBA5" stroke-width="1.5"/>
+                <rect x="75" y="160" width="150" height="14" fill="#DECDB4" stroke="#CBBBA5" stroke-width="1.5" rx="3"/>
                 <rect x="140" y="157" width="20" height="20" fill="none" stroke="#7A5C45" stroke-width="3" rx="2"/>
+                <circle cx="125" cy="115" r="4" fill="#5C4033"/>
+                <circle cx="175" cy="115" r="4" fill="#5C4033"/>
+                <circle cx="125" cy="205" r="4" fill="#5C4033"/>
+                <circle cx="175" cy="205" r="4" fill="#5C4033"/>
+                <circle cx="125" cy="245" r="4" fill="#5C4033"/>
+                <circle cx="175" cy="245" r="4" fill="#5C4033"/>
               </svg>
             `)
           },
           {
-            id: 'sample_shoes_1',
+            id: 'demo_outerwear_2',
+            name: 'Vintage Washed Denim Jacket',
+            category: 'outerwear',
+            color: 'blue',
+            moods: ['Casual Hangout', 'Campus Day'],
+            createdAt: baseTime + 16000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F6F8FA" rx="8"/>
+                <path d="M150 38 Q150 20 160 15 Q170 10 160 25" stroke="#7A5C45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M92 50 L30 125 L60 148 L85 110 L82 250 L218 250 L215 110 L240 148 L270 125 L208 50 Q150 68 92 50 Z" fill="#8BA8C8" stroke="#5C7C9E" stroke-width="2.5"/>
+                <path d="M110 50 L135 80 L150 62 L165 80 L190 50 Q150 68 110 50 Z" fill="#7597BC" stroke="#4F6F91" stroke-width="2"/>
+                <line x1="150" y1="62" x2="150" y2="250" stroke="#D9A74A" stroke-width="2"/>
+                <circle cx="150" cy="95" r="3.5" fill="#C4C9CF" stroke="#6C757D" stroke-width="1"/>
+                <circle cx="150" cy="135" r="3.5" fill="#C4C9CF" stroke="#6C757D" stroke-width="1"/>
+                <circle cx="150" cy="175" r="3.5" fill="#C4C9CF" stroke="#6C757D" stroke-width="1"/>
+                <circle cx="150" cy="215" r="3.5" fill="#C4C9CF" stroke="#6C757D" stroke-width="1"/>
+                <path d="M98 100 L132 100 L132 128 L115 138 L98 128 Z" fill="#7A9CBE" stroke="#4F6F91" stroke-width="1.5"/>
+                <circle cx="115" cy="112" r="2.5" fill="#C4C9CF"/>
+                <path d="M168 100 L202 100 L202 128 L185 138 L168 128 Z" fill="#7A9CBE" stroke="#4F6F91" stroke-width="1.5"/>
+                <circle cx="185" cy="112" r="2.5" fill="#C4C9CF"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_outerwear_3',
+            name: 'Houndstooth Tailored Blazer',
+            category: 'outerwear',
+            color: 'gray',
+            moods: ['Smart & Chic', 'Campus Day'],
+            createdAt: baseTime + 17000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F9F9F9" rx="8"/>
+                <path d="M150 36 Q150 20 160 15 Q170 10 160 25" stroke="#7A5C45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M85 52 L32 135 L64 155 L88 112 L84 275 L216 275 L212 112 L236 155 L268 135 L215 52 Q150 68 85 52 Z" fill="#ECECEE" stroke="#A5A5AA" stroke-width="2.5"/>
+                <path d="M95 100 L115 100 M135 100 L155 100 M175 100 L195 100 M105 130 L125 130 M145 130 L165 130 M185 130 L205 130 M95 160 L115 160 M135 160 L155 160 M175 160 L195 160 M105 220 L125 220 M145 220 L165 220 M185 220 L205 220" stroke="#7C7C84" stroke-width="2" stroke-dasharray="3,5"/>
+                <path d="M85 52 L140 148 L115 148 Z" fill="#DFDFE3" stroke="#8E8E96" stroke-width="2"/>
+                <path d="M215 52 L160 148 L185 148 Z" fill="#DFDFE3" stroke="#8E8E96" stroke-width="2"/>
+                <circle cx="150" cy="175" r="4.5" fill="#2C2018"/>
+                <circle cx="150" cy="215" r="4.5" fill="#2C2018"/>
+                <rect x="94" y="210" width="38" height="12" fill="#D3D3D8" stroke="#8E8E96" stroke-width="1.5" rx="2"/>
+                <rect x="168" y="210" width="38" height="12" fill="#D3D3D8" stroke="#8E8E96" stroke-width="1.5" rx="2"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_outerwear_4',
+            name: 'Pastel Mint Knit Cardigan',
+            category: 'outerwear',
+            color: 'green',
+            moods: ['Cozy Day', 'Casual Hangout'],
+            createdAt: baseTime + 18000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F5FAF6" rx="8"/>
+                <path d="M150 40 Q150 20 160 15 Q170 10 160 25" stroke="#7A5C45" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M85 55 L28 135 L58 158 L85 115 L82 265 Q150 274 218 265 L215 115 L242 158 L272 135 L215 55 Q150 72 85 55 Z" fill="#C5E0C9" stroke="#98BFA0" stroke-width="2.5"/>
+                <path d="M110 58 L142 140 L142 268 L158 268 L158 140 L190 58" fill="#B4D6BA" stroke="#8CB694" stroke-width="2"/>
+                <circle cx="150" cy="160" r="5.5" fill="#B86C2B" stroke="#733F13" stroke-width="1.5"/>
+                <circle cx="150" cy="198" r="5.5" fill="#B86C2B" stroke="#733F13" stroke-width="1.5"/>
+                <circle cx="150" cy="236" r="5.5" fill="#B86C2B" stroke="#733F13" stroke-width="1.5"/>
+                <rect x="95" y="200" width="36" height="38" fill="#B4D6BA" stroke="#8CB694" stroke-width="1.5" rx="3"/>
+                <rect x="169" y="200" width="36" height="38" fill="#B4D6BA" stroke="#8CB694" stroke-width="1.5" rx="3"/>
+              </svg>
+            `)
+          },
+
+          // --- SHOES ---
+          {
+            id: 'demo_shoes_1',
             name: 'Chunky Leather Loafers',
             category: 'shoes',
             color: 'black',
             moods: ['Smart & Chic', 'Campus Day'],
-            createdAt: Date.now() - 200000,
+            createdAt: baseTime + 19000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FAF6F0"/>
-                <!-- Pair of loafers -->
-                <!-- Left Shoe -->
-                <path d="M50 170 Q70 140 120 150 Q135 170 130 210 L50 210 Q40 190 50 170 Z" fill="#423226" stroke="#2C2018" stroke-width="2"/>
-                <rect x="45" y="205" width="90" height="18" fill="#2C2018" rx="4"/>
-                <rect x="75" y="155" width="25" height="8" fill="#C59B27" rx="2"/>
-                <!-- Right Shoe -->
-                <path d="M170 170 Q190 140 240 150 Q255 170 250 210 L170 210 Q160 190 170 170 Z" fill="#423226" stroke="#2C2018" stroke-width="2"/>
-                <rect x="165" y="205" width="90" height="18" fill="#2C2018" rx="4"/>
-                <rect x="195" y="155" width="25" height="8" fill="#C59B27" rx="2"/>
+                <rect width="100%" height="100%" fill="#FAF6F0" rx="8"/>
+                <path d="M48 165 Q68 135 118 145 Q135 165 130 205 L48 205 Q38 185 48 165 Z" fill="#3A2A1E" stroke="#21160E" stroke-width="2"/>
+                <rect x="42" y="200" width="92" height="20" fill="#21160E" rx="4"/>
+                <rect x="52" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="72" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="92" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="112" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="72" y="152" width="28" height="7" fill="#D4A338" stroke="#9E7418" stroke-width="1" rx="2"/>
+                <path d="M172 165 Q192 135 242 145 Q258 165 252 205 L172 205 Q162 185 172 165 Z" fill="#3A2A1E" stroke="#21160E" stroke-width="2"/>
+                <rect x="166" y="200" width="92" height="20" fill="#21160E" rx="4"/>
+                <rect x="176" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="196" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="216" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="236" y="215" width="8" height="6" fill="#140D08"/>
+                <rect x="196" y="152" width="28" height="7" fill="#D4A338" stroke="#9E7418" stroke-width="1" rx="2"/>
               </svg>
             `)
           },
           {
-            id: 'sample_accessories_1',
+            id: 'demo_shoes_2',
+            name: 'Classic White Canvas Sneakers',
+            category: 'shoes',
+            color: 'white',
+            moods: ['Casual Hangout', 'Campus Day'],
+            createdAt: baseTime + 20000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F8F8F7" rx="8"/>
+                <path d="M45 170 Q75 140 120 155 Q135 175 130 205 L45 205 Q35 190 45 170 Z" fill="#FFFFFF" stroke="#C5BFB5" stroke-width="2"/>
+                <rect x="40" y="202" width="94" height="15" fill="#F4EFE6" stroke="#C5BFB5" stroke-width="1.5" rx="3"/>
+                <line x1="40" y1="208" x2="134" y2="208" stroke="#D36E60" stroke-width="1.5"/>
+                <path d="M115 168 Q130 180 130 202 L115 202 Z" fill="#F4EFE6" stroke="#C5BFB5" stroke-width="1"/>
+                <circle cx="85" cy="165" r="2" fill="#8E7765"/><circle cx="95" cy="168" r="2" fill="#8E7765"/><circle cx="105" cy="172" r="2" fill="#8E7765"/>
+                <line x1="85" y1="165" x2="98" y2="168" stroke="#E6DDD4" stroke-width="2"/>
+                <path d="M165 170 Q195 140 240 155 Q255 175 250 205 L165 205 Q155 190 165 170 Z" fill="#FFFFFF" stroke="#C5BFB5" stroke-width="2"/>
+                <rect x="160" y="202" width="94" height="15" fill="#F4EFE6" stroke="#C5BFB5" stroke-width="1.5" rx="3"/>
+                <line x1="160" y1="208" x2="254" y2="208" stroke="#D36E60" stroke-width="1.5"/>
+                <path d="M235 168 Q250 180 250 202 L235 202 Z" fill="#F4EFE6" stroke="#C5BFB5" stroke-width="1"/>
+                <circle cx="205" cy="165" r="2" fill="#8E7765"/><circle cx="215" cy="168" r="2" fill="#8E7765"/><circle cx="225" cy="172" r="2" fill="#8E7765"/>
+                <line x1="205" y1="165" x2="218" y2="168" stroke="#E6DDD4" stroke-width="2"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_shoes_3',
+            name: 'Almond Suede Chelsea Boots',
+            category: 'shoes',
+            color: 'brown',
+            moods: ['Cozy Day', 'Smart & Chic'],
+            createdAt: baseTime + 21000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FAF7F3" rx="8"/>
+                <path d="M52 140 L78 140 L88 180 Q118 175 132 205 L48 205 L48 165 Z" fill="#BA9675" stroke="#8C6B4D" stroke-width="2"/>
+                <path d="M60 140 L70 140 L74 175 L56 175 Z" fill="#423A33"/>
+                <rect x="46" y="203" width="88" height="8" fill="#5A3D28" rx="2"/>
+                <rect x="46" y="211" width="30" height="15" fill="#735034" rx="2"/>
+                <path d="M172 140 L198 140 L208 180 Q238 175 252 205 L168 205 L168 165 Z" fill="#BA9675" stroke="#8C6B4D" stroke-width="2"/>
+                <path d="M180 140 L190 140 L194 175 L176 175 Z" fill="#423A33"/>
+                <rect x="166" y="203" width="88" height="8" fill="#5A3D28" rx="2"/>
+                <rect x="166" y="211" width="30" height="15" fill="#735034" rx="2"/>
+              </svg>
+            `)
+          },
+
+          // --- ACCESSORIES ---
+          {
+            id: 'demo_accessories_1',
             name: 'Woven Latte Shoulder Bag',
             category: 'accessories',
             color: 'brown',
             moods: ['Casual Hangout', 'Smart & Chic'],
-            createdAt: Date.now() - 150000,
+            createdAt: baseTime + 22000,
             imageData: this.createSvgDataUrl(`
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
-                <rect width="100%" height="100%" fill="#FBF8F5"/>
-                <!-- Strap -->
+                <rect width="100%" height="100%" fill="#FBF8F5" rx="8"/>
                 <path d="M100 170 C100 40, 200 40, 200 170" fill="none" stroke="#7A5C45" stroke-width="4"/>
-                <!-- Bag Body -->
                 <path d="M80 160 L220 160 L205 270 Q150 285 95 270 Z" fill="#D3A77C" stroke="#9E7449" stroke-width="2.5"/>
-                <!-- Woven pattern -->
                 <path d="M90 190 L210 190 M95 220 L205 220 M100 250 L200 250" stroke="#9E7449" stroke-width="1.5" stroke-dasharray="6,4"/>
-                <!-- Buckle -->
-                <circle cx="150" cy="180" r="10" fill="#E2A03F" stroke="#B87D26" stroke-width="2"/>
+                <path d="M125 160 L175 160 L170 200 Q150 210 130 200 Z" fill="#8C5C36" stroke="#684224" stroke-width="1.5"/>
+                <circle cx="150" cy="188" r="8" fill="#E2A03F" stroke="#B87D26" stroke-width="2"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_accessories_2',
+            name: 'Quilted Chain Mini Crossbody',
+            category: 'accessories',
+            color: 'black',
+            moods: ['Date Night', 'Smart & Chic'],
+            createdAt: baseTime + 23000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#F8F8F9" rx="8"/>
+                <path d="M95 165 C95 45, 205 45, 205 165" fill="none" stroke="#D4A338" stroke-width="3.5" stroke-dasharray="6,3"/>
+                <rect x="75" y="155" width="150" height="110" fill="#242426" stroke="#121214" stroke-width="2.5" rx="10"/>
+                <path d="M85 165 L150 230 L215 165 M85 210 L150 275 L215 210 M150 165 L85 230 M215 165 L150 230" stroke="#3D3D42" stroke-width="1.5"/>
+                <path d="M75 155 L225 155 L225 215 Q150 230 75 215 Z" fill="#2D2D30" stroke="#121214" stroke-width="2"/>
+                <rect x="140" y="205" width="20" height="14" fill="#D4A338" stroke="#9E7418" stroke-width="1.5" rx="3"/>
+                <rect x="146" y="208" width="8" height="8" fill="#B8861E" rx="1"/>
+              </svg>
+            `)
+          },
+          {
+            id: 'demo_accessories_3',
+            name: 'Tortoiseshell Sunglasses & Pearl Clip',
+            category: 'accessories',
+            color: 'brown',
+            moods: ['Casual Hangout', 'Campus Day'],
+            createdAt: baseTime + 24000,
+            imageData: this.createSvgDataUrl(`
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340">
+                <rect width="100%" height="100%" fill="#FAF7F2" rx="8"/>
+                <rect x="95" y="90" width="110" height="14" fill="#E8DEC9" rx="7" stroke="#C4B5A5" stroke-width="1"/>
+                <circle cx="105" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <circle cx="118" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <circle cx="131" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <circle cx="144" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <circle cx="157" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <circle cx="170" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <circle cx="183" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <circle cx="195" cy="97" r="5" fill="#FFFFFF" stroke="#DACDC0" stroke-width="1"/>
+                <path d="M60 165 Q95 155 135 170 Q130 215 85 215 Q55 210 60 165 Z" fill="#6A3B18" stroke="#42220B" stroke-width="3"/>
+                <path d="M68 172 Q95 164 127 176 Q122 208 86 208 Q64 204 68 172 Z" fill="#242124"/>
+                <path d="M165 170 Q205 155 240 165 Q245 210 215 215 Q170 215 165 170 Z" fill="#6A3B18" stroke="#42220B" stroke-width="3"/>
+                <path d="M173 176 Q205 164 232 172 Q236 204 214 208 Q178 208 173 176 Z" fill="#242124"/>
+                <path d="M135 174 Q150 166 165 174" fill="none" stroke="#D4A338" stroke-width="3"/>
+                <line x1="60" y1="168" x2="45" y2="160" stroke="#6A3B18" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="240" y1="168" x2="255" y2="160" stroke="#6A3B18" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="78" y1="175" x2="110" y2="205" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                <line x1="183" y1="175" x2="215" y2="205" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
               </svg>
             `)
           }
         ];
+
+        // Attach isDemo flag and favorite status
+        items.forEach(item => {
+          item.isDemo = true;
+          item.favorite = !!favs[item.id];
+        });
+
+        return items;
       }
     };
 
@@ -3267,6 +4464,23 @@
 
     // --- 5. WARDROBE GALLERY & FILTER UI ---
     const WardrobeUI = {
+      setSource(source) {
+        State.wardrobeSource = source;
+        
+        // Update switcher buttons
+        document.querySelectorAll('#wardrobe-source-switcher .source-tab-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.id === `source-tab-${source}`);
+        });
+
+        // Show/hide demo banner
+        const banner = document.getElementById('wardrobe-demo-banner');
+        if (banner) {
+          banner.style.display = (source === 'personal') ? 'none' : 'flex';
+        }
+
+        this.renderGrid();
+      },
+
       setCategory(cat) {
         State.activeCategoryFilter = cat;
         // Update pills active state
@@ -3274,6 +4488,66 @@
           btn.classList.toggle('active', btn.dataset.category === cat);
         });
         this.renderGrid();
+      },
+
+      setColorFilter(color) {
+        State.activeColorFilter = color;
+        this.renderGrid();
+      },
+
+      resetFilters() {
+        State.activeCategoryFilter = 'all';
+        State.activeColorFilter = 'all';
+        State.searchQuery = '';
+
+        const searchInput = document.getElementById('wardrobe-search');
+        if (searchInput) searchInput.value = '';
+
+        const colorSelect = document.getElementById('wardrobe-color-filter');
+        if (colorSelect) colorSelect.value = 'all';
+
+        document.querySelectorAll('#category-filter-pills .cat-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.category === 'all');
+        });
+
+        this.renderGrid();
+      },
+
+      async toggleFavorite(id, event) {
+        if (event) event.stopPropagation();
+        const item = State.getItem(id);
+        if (!item) return;
+
+        if (item.isDemo) {
+          const isFav = DemoWardrobe.toggleFavorite(id);
+          App.refreshAllViews();
+          App.showToast(isFav ? `Favorited "${item.name}" ♡` : `Removed "${item.name}" from favorites`);
+        } else {
+          item.favorite = !item.favorite;
+          await DB.put('clothing_items', item);
+          App.refreshAllViews();
+          App.showToast(item.favorite ? `Favorited "${item.name}" ♡` : `Removed "${item.name}" from favorites`);
+        }
+      },
+
+      getColorHex(color) {
+        const map = {
+          black: '#1A1A1A',
+          white: '#FFFFFF',
+          cream: '#FFFDD0',
+          gray: '#8E8E93',
+          brown: '#6B4423',
+          beige: '#D4B996',
+          red: '#D9383A',
+          pink: '#F48FB1',
+          orange: '#FF9800',
+          yellow: '#FDD835',
+          green: '#4CAF50',
+          blue: '#2196F3',
+          purple: '#9C27B0',
+          other: '#BDBDBD'
+        };
+        return map[color] || '#D3C4B6';
       },
 
       handleSearch(query) {
@@ -3284,70 +4558,158 @@
       renderGrid() {
         const grid = document.getElementById('wardrobe-items-grid');
         const emptyState = document.getElementById('wardrobe-empty-state');
+        const emptyTitle = document.getElementById('wardrobe-empty-title');
+        const emptyDesc = document.getElementById('wardrobe-empty-desc');
+        const emptyActions = document.getElementById('wardrobe-empty-actions');
+
+        const availableClothes = State.getAvailableClothes(State.wardrobeSource);
 
         // Filter items
-        let filtered = State.clothes.filter(item => {
-          const matchCat = (State.activeCategoryFilter === 'all') || (item.category === State.activeCategoryFilter);
-          const matchSearch = !State.searchQuery || 
-            item.name.toLowerCase().includes(State.searchQuery) ||
-            (item.moods && item.moods.some(m => m.toLowerCase().includes(State.searchQuery)));
-          return matchCat && matchSearch;
+        let filtered = availableClothes.filter(item => {
+          let matchCat = true;
+          if (State.activeCategoryFilter === 'favorites') {
+            matchCat = !!item.favorite;
+          } else if (State.activeCategoryFilter !== 'all') {
+            matchCat = (item.category === State.activeCategoryFilter);
+          }
+
+          let matchColor = true;
+          if (State.activeColorFilter !== 'all') {
+            matchColor = (item.color === State.activeColorFilter);
+          }
+
+          const q = State.searchQuery;
+          const matchSearch = !q || 
+            item.name.toLowerCase().includes(q) ||
+            (item.color && item.color.toLowerCase().includes(q)) ||
+            (item.moods && item.moods.some(m => m.toLowerCase().includes(q)));
+
+          return matchCat && matchColor && matchSearch;
         });
 
         if (filtered.length === 0) {
           grid.innerHTML = '';
           emptyState.style.display = 'flex';
+
+          if (State.wardrobeSource === 'personal' && State.clothes.length === 0) {
+            if (emptyTitle) emptyTitle.textContent = 'Your personal closet is waiting!';
+            if (emptyDesc) emptyDesc.textContent = "You haven't uploaded any personal clothes yet. Upload your own outfit photos, or switch to the Demo Wardrobe to test features immediately!";
+            if (emptyActions) {
+              emptyActions.innerHTML = `
+                <button class="btn btn-primary" onclick="App.openUploadModal()">
+                  <span>📸 Upload Clothes</span>
+                </button>
+                <button class="btn btn-lavender" onclick="WardrobeUI.setSource('demo')">
+                  <span>✨ View Demo Wardrobe</span>
+                </button>
+              `;
+            }
+          } else {
+            if (emptyTitle) emptyTitle.textContent = 'No clothing items match your filter';
+            if (emptyDesc) emptyDesc.textContent = 'Try resetting your search query, color selection, or category pills.';
+            if (emptyActions) {
+              emptyActions.innerHTML = `
+                <button class="btn btn-secondary" onclick="WardrobeUI.resetFilters()">
+                  <span>↺ Clear Filters</span>
+                </button>
+              `;
+            }
+          }
+          this.updateCounts();
           return;
         }
 
         emptyState.style.display = 'none';
-        grid.innerHTML = filtered.map(item => `
-          <div class="item-card" data-id="${item.id}">
-            <div class="item-card-pin"></div>
-            <div class="item-img-container">
-              <img src="${item.imageData}" alt="${this.escapeHtml(item.name)}" loading="lazy">
-              <span class="item-badge-category">${this.getCategoryIcon(item.category)} ${item.category}</span>
-            </div>
-            <div class="item-details">
-              <div>
-                <h4 class="item-title" title="${this.escapeHtml(item.name)}">${this.escapeHtml(item.name)}</h4>
-                <div class="item-meta-tags">
-                  ${(item.moods || []).map(m => `<span class="badge badge-blush">${m}</span>`).join('')}
+        grid.innerHTML = filtered.map(item => {
+          const isDemo = !!item.isDemo;
+          const sourceBadge = isDemo
+            ? `<span class="demo-tag-badge is-demo">✨ Demo</span>`
+            : `<span class="demo-tag-badge is-personal">👤 My Piece</span>`;
+
+          const actionsHtml = isDemo ? `
+            <button class="btn btn-secondary btn-sm" onclick="Studio.addItemToCanvas('${item.id}')" title="Wear in Studio">
+              <span>🎨 Wear</span>
+            </button>
+            <span class="badge badge-lavender" style="font-size:0.75rem; padding: 0.35rem 0.65rem;" title="Predefined sample piece for demonstration">
+              ✨ Sample Item
+            </span>
+          ` : `
+            <button class="btn btn-secondary btn-sm" onclick="Studio.addItemToCanvas('${item.id}')" title="Wear in Studio">
+              <span>🎨 Wear</span>
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="WardrobeUI.openEditModal('${item.id}')" title="Edit Piece">
+              <span>✎ Edit</span>
+            </button>
+            <button class="btn btn-secondary btn-sm btn-delete-item" onclick="WardrobeUI.promptDeleteItem('${item.id}')" title="Delete Piece">
+              ✕
+            </button>
+          `;
+
+          return `
+            <div class="item-card" data-id="${item.id}">
+              <button class="btn-fav-toggle ${item.favorite ? 'is-fav' : ''}" onclick="WardrobeUI.toggleFavorite('${item.id}', event)" title="${item.favorite ? 'Remove favorite' : 'Add to favorites'}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="${item.favorite ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+              <div class="item-card-pin"></div>
+              <div class="item-img-container">
+                <img src="${item.imageData}" alt="${this.escapeHtml(item.name)}" loading="lazy">
+                ${sourceBadge}
+                <span class="item-badge-category">${this.getCategoryIcon(item.category)} ${item.category}</span>
+              </div>
+              <div class="item-details">
+                <div>
+                  <h4 class="item-title" title="${this.escapeHtml(item.name)}">${this.escapeHtml(item.name)}</h4>
+                  <div class="item-meta-tags">
+                    ${item.color ? `<span class="color-badge"><span class="color-dot" style="background:${this.getColorHex(item.color)}"></span>${item.color}</span>` : ''}
+                    ${(item.moods || []).map(m => `<span class="badge badge-blush">${m}</span>`).join('')}
+                  </div>
+                </div>
+                <div class="item-card-actions">
+                  ${actionsHtml}
                 </div>
               </div>
-              <div class="item-card-actions">
-                <button class="btn btn-secondary btn-sm" onclick="Studio.addItemToCanvas('${item.id}')" title="Wear in Studio">
-                  <span>🎨 Wear</span>
-                </button>
-                <button class="btn btn-secondary btn-sm" onclick="WardrobeUI.openEditModal('${item.id}')" title="Edit Piece">
-                  <span>✎ Edit</span>
-                </button>
-                <button class="btn btn-secondary btn-sm btn-delete-item" onclick="WardrobeUI.promptDeleteItem('${item.id}')" title="Delete Piece">
-                  ✕
-                </button>
-              </div>
             </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
 
         this.updateCounts();
       },
 
       updateCounts() {
-        const total = State.clothes.length;
-        document.getElementById('count-all').textContent = total;
+        // Source tab badges
+        const demoBadge = document.getElementById('source-count-demo');
+        const personalBadge = document.getElementById('source-count-personal');
+        const allBadge = document.getElementById('source-count-all');
+
+        if (demoBadge) demoBadge.textContent = State.demoClothes.length;
+        if (personalBadge) personalBadge.textContent = State.clothes.length;
+        if (allBadge) allBadge.textContent = State.getAllClothes().length;
+
+        // Current active source pool
+        const currentPool = State.getAvailableClothes(State.wardrobeSource);
+
+        const countAll = document.getElementById('count-all');
+        if (countAll) countAll.textContent = currentPool.length;
         
+        const favEl = document.getElementById('count-fav-clothes');
+        if (favEl) {
+          favEl.textContent = currentPool.filter(i => !!i.favorite).length;
+        }
+
         ['tops', 'bottoms', 'dresses', 'outerwear', 'shoes', 'accessories'].forEach(cat => {
           const el = document.getElementById(`count-${cat}`);
           if (el) {
-            el.textContent = State.clothes.filter(i => i.category === cat).length;
+            el.textContent = currentPool.filter(i => i.category === cat).length;
           }
         });
       },
 
       promptDeleteItem(id) {
         const item = State.clothes.find(i => i.id === id);
-        if (!item) return;
+        if (!item) {
+          App.showToast('Demo pieces are predefined samples and cannot be deleted.', 'warning');
+          return;
+        }
 
         App.openConfirmModal({
           title: 'Remove from wardrobe?',
@@ -3393,6 +4755,8 @@
 
         document.getElementById('edit-item-name-input').value = item.name;
         document.getElementById('edit-item-category-select').value = item.category;
+        const colorSelect = document.getElementById('edit-item-color-select');
+        if (colorSelect) colorSelect.value = item.color || '';
         document.getElementById('edit-item-image-preview').src = item.imageData;
         
         const fileInput = document.getElementById('edit-item-file-input');
@@ -3426,8 +4790,10 @@
 
         const nameInput = document.getElementById('edit-item-name-input');
         const catSelect = document.getElementById('edit-item-category-select');
+        const colorSelect = document.getElementById('edit-item-color-select');
         const newName = nameInput.value.trim();
         const newCat = catSelect.value;
+        const newColor = colorSelect ? colorSelect.value : '';
 
         if (!newName) {
           App.showToast('Item name cannot be empty!', 'warning');
@@ -3443,6 +4809,7 @@
         // Update properties
         item.name = newName;
         item.category = newCat;
+        item.color = newColor;
         if (this.currentEditingImage) {
           item.imageData = this.currentEditingImage;
         }
@@ -3463,9 +4830,18 @@
     // --- 6. MIX & MATCH STUDIO ---
     const Studio = {
       sidebarCategory: 'all',
+      sourceFilter: 'all', // 'all' | 'demo' | 'personal'
 
       init() {
         this.renderCanvas();
+        this.renderSidebar();
+      },
+
+      setSourceFilter(source) {
+        this.sourceFilter = source;
+        document.querySelectorAll('#studio-source-filter .studio-source-btn').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.source === source);
+        });
         this.renderSidebar();
       },
 
@@ -3502,7 +4878,7 @@
       },
 
       addItemToCanvas(itemId) {
-        const item = State.clothes.find(i => i.id === itemId);
+        const item = State.getItem(itemId);
         if (!item) return;
 
         // Auto switch mode if dress
@@ -3581,10 +4957,11 @@
           if (!slotEl) return;
 
           const itemId = State.activeCanvas[cat];
-          const item = itemId ? State.clothes.find(i => i.id === itemId) : null;
+          const item = itemId ? State.getItem(itemId) : null;
 
           if (item) {
             slotEl.classList.add('has-item');
+            const demoNotice = item.isDemo ? `<span style="font-size:0.65rem; color:var(--lavender-500); font-weight:700;">✨ Demo Piece</span>` : '';
             slotEl.innerHTML = `
               <div class="slot-filled-content">
                 <div class="slot-img-wrap">
@@ -3592,6 +4969,7 @@
                 </div>
                 <div class="slot-item-info">
                   <span class="slot-item-title" title="${WardrobeUI.escapeHtml(item.name)}">${WardrobeUI.escapeHtml(item.name)}</span>
+                  ${demoNotice}
                   <div class="slot-actions">
                     <button class="slot-btn" onclick="Studio.swapSlotItem('${cat}', event)" title="Change / Replace piece">⇄ Swap</button>
                     <button class="slot-btn remove-btn" onclick="Studio.removeItemFromSlot('${cat}', event)" title="Remove piece">×</button>
@@ -3640,19 +5018,34 @@
         const list = document.getElementById('sidebar-items-list');
         const hint = document.getElementById('sidebar-context-hint');
 
-        let filtered = State.clothes;
+        // Update counts in sidebar source tabs
+        const allBadge = document.getElementById('studio-source-count-all');
+        const demoBadge = document.getElementById('studio-source-count-demo');
+        const personalBadge = document.getElementById('studio-source-count-personal');
+
+        if (allBadge) allBadge.textContent = State.getAllClothes().length;
+        if (demoBadge) demoBadge.textContent = State.demoClothes.length;
+        if (personalBadge) personalBadge.textContent = State.clothes.length;
+
+        // Current source pool
+        let pool = State.getAvailableClothes(this.sourceFilter || 'all');
+
+        let filtered = pool;
         if (this.sidebarCategory !== 'all') {
           filtered = filtered.filter(i => i.category === this.sidebarCategory);
-          hint.textContent = `Showing all ${this.sidebarCategory} (${filtered.length} found)`;
+          hint.textContent = `Showing ${this.sidebarCategory} (${filtered.length} found)`;
         } else {
-          hint.textContent = `Browse entire wardrobe (${filtered.length} pieces)`;
+          hint.textContent = `Browse wardrobe rack (${filtered.length} pieces)`;
         }
 
         if (filtered.length === 0) {
           list.innerHTML = `
             <div style="grid-column: span 2; text-align: center; padding: 2rem 1rem; color: var(--brown-500); font-size: 0.85rem;">
-              No pieces in this category yet.
-              <button class="btn btn-secondary btn-sm" style="margin-top: 0.5rem;" onclick="App.openUploadModal()">+ Upload Piece</button>
+              No pieces in this section yet.
+              <div style="display:flex; justify-content:center; gap:0.5rem; margin-top:0.6rem;">
+                <button class="btn btn-lavender btn-sm" onclick="Studio.setSourceFilter('demo')">View Demo Pieces</button>
+                <button class="btn btn-secondary btn-sm" onclick="App.openUploadModal()">+ Upload Piece</button>
+              </div>
             </div>
           `;
           return;
@@ -3663,9 +5056,15 @@
 
         list.innerHTML = filtered.map(item => {
           const isOnCanvas = activeIds.includes(item.id);
+          const isDemo = !!item.isDemo;
+          const sourceTag = isDemo 
+            ? `<span class="picker-source-tag demo">✨ Demo</span>`
+            : `<span class="picker-source-tag personal">👤 Personal</span>`;
+
           return `
-            <div class="picker-item-card ${isOnCanvas ? 'is-active-on-canvas' : ''}" onclick="Studio.addItemToCanvas('${item.id}')">
+            <div class="picker-item-card ${isOnCanvas ? 'is-active-on-canvas' : ''}" onclick="Studio.addItemToCanvas('${item.id}')" title="Place ${WardrobeUI.escapeHtml(item.name)} on studio canvas">
               <img src="${item.imageData}" alt="${WardrobeUI.escapeHtml(item.name)}" class="picker-img">
+              ${sourceTag}
               <span class="picker-name" title="${WardrobeUI.escapeHtml(item.name)}">${WardrobeUI.escapeHtml(item.name)}</span>
             </div>
           `;
@@ -3674,17 +5073,22 @@
 
       // --- RANDOM OUTFIT GENERATOR (Surprise Me!) ---
       generateSurpriseOutfit() {
-        if (State.clothes.length === 0) {
-          App.showToast('Your wardrobe is empty! Upload clothes or load starter pieces first.', 'warning');
+        let pool = State.getAvailableClothes(this.sourceFilter || 'all');
+        if (pool.length === 0) {
+          pool = State.getAllClothes();
+        }
+
+        if (pool.length === 0) {
+          App.showToast('Your wardrobe is empty! Upload clothes or browse Demo Wardrobe first.', 'warning');
           return;
         }
 
-        const tops = State.clothes.filter(i => i.category === 'tops');
-        const bottoms = State.clothes.filter(i => i.category === 'bottoms');
-        const dresses = State.clothes.filter(i => i.category === 'dresses');
-        const outerwear = State.clothes.filter(i => i.category === 'outerwear');
-        const shoes = State.clothes.filter(i => i.category === 'shoes');
-        const accessories = State.clothes.filter(i => i.category === 'accessories');
+        const tops = pool.filter(i => i.category === 'tops');
+        const bottoms = pool.filter(i => i.category === 'bottoms');
+        const dresses = pool.filter(i => i.category === 'dresses');
+        const outerwear = pool.filter(i => i.category === 'outerwear');
+        const shoes = pool.filter(i => i.category === 'shoes');
+        const accessories = pool.filter(i => i.category === 'accessories');
 
         const canMakeTwoPiece = tops.length > 0 && bottoms.length > 0;
         const canMakeDress = dresses.length > 0;
@@ -3716,7 +5120,7 @@
           State.activeCanvas.bottoms = getRandom(bottoms).id;
         }
 
-        // Optionally add shoes (75% probability if available)
+        // Optionally add shoes (85% probability if available)
         if (shoes.length > 0 && Math.random() < 0.85) {
           State.activeCanvas.shoes = getRandom(shoes).id;
         }
@@ -3735,6 +5139,126 @@
         this.renderSidebar();
         App.updateStats();
         App.showToast('✨ Voila! A randomized outfit combination just for you!');
+      },
+
+      // --- COLOR PALETTE HARMONY MATCHER ---
+      matchColorPalette() {
+        let pool = State.getAvailableClothes(this.sourceFilter || 'all');
+        if (pool.length === 0) {
+          pool = State.getAllClothes();
+        }
+
+        if (pool.length === 0) {
+          App.showToast('Your wardrobe is empty! Explore the demo wardrobe or upload clothes.', 'warning');
+          return;
+        }
+
+        const prefSelect = document.getElementById('studio-color-pref');
+        const ruleSelect = document.getElementById('studio-color-harmony-rule');
+        const preferredColor = (prefSelect && prefSelect.value) ? prefSelect.value.toLowerCase() : '';
+        const rule = (ruleSelect && ruleSelect.value) ? ruleSelect.value : 'neutrals';
+
+        const neutrals = ['black', 'white', 'cream', 'gray', 'brown', 'beige'];
+        const pastels = ['cream', 'pink', 'beige', 'purple', 'blue', 'white'];
+        const complementaryMap = {
+          blue: ['orange', 'brown', 'beige', 'cream', 'white'],
+          orange: ['blue', 'cream', 'white', 'brown'],
+          pink: ['green', 'white', 'gray', 'cream'],
+          green: ['pink', 'cream', 'white', 'beige', 'brown'],
+          purple: ['yellow', 'cream', 'white', 'beige'],
+          yellow: ['purple', 'black', 'white', 'gray'],
+          red: ['black', 'white', 'cream', 'beige', 'green'],
+          brown: ['blue', 'cream', 'beige', 'white'],
+          beige: ['brown', 'blue', 'black', 'white'],
+          cream: ['brown', 'beige', 'blue', 'pink'],
+          black: ['white', 'red', 'cream', 'gray'],
+          white: ['black', 'blue', 'pink', 'brown'],
+          gray: ['pink', 'blue', 'black', 'white']
+        };
+
+        const isMatch = (item) => {
+          const c = (item.color || '').toLowerCase();
+          if (!c) return true; // untagged colors are versatile wildcards
+          
+          if (rule === 'monochrome') {
+            if (preferredColor) {
+              return c === preferredColor || neutrals.includes(c);
+            }
+            return true;
+          } else if (rule === 'pastels') {
+            return pastels.includes(c);
+          } else if (rule === 'complementary') {
+            if (preferredColor && complementaryMap[preferredColor]) {
+              return c === preferredColor || complementaryMap[preferredColor].includes(c);
+            }
+            return true;
+          } else {
+            // Tone Harmony (Neutrals & Earth)
+            if (preferredColor) {
+              return c === preferredColor || neutrals.includes(c);
+            }
+            return neutrals.includes(c);
+          }
+        };
+
+        const filterCat = (cat) => {
+          const inCat = pool.filter(i => i.category === cat);
+          const matched = inCat.filter(isMatch);
+          return matched.length > 0 ? matched : inCat;
+        };
+
+        const tops = filterCat('tops');
+        const bottoms = filterCat('bottoms');
+        const dresses = filterCat('dresses');
+        const outerwear = filterCat('outerwear');
+        const shoes = filterCat('shoes');
+        const accessories = filterCat('accessories');
+
+        if ((tops.length === 0 || bottoms.length === 0) && dresses.length === 0) {
+          App.showToast('Need at least 1 Top + 1 Bottom or 1 Dress in available pieces!', 'warning');
+          return;
+        }
+
+        this.clearCanvas();
+
+        const getRandom = arr => arr.length > 0 ? arr[Math.floor(Math.random() * arr.length)] : null;
+
+        let useDress = false;
+        if (dresses.length > 0 && ((tops.length === 0 || bottoms.length === 0) || Math.random() < 0.35)) {
+          useDress = true;
+        }
+
+        if (useDress) {
+          this.setCenterMode('dress');
+          State.activeCanvas.dresses = getRandom(dresses).id;
+        } else {
+          this.setCenterMode('twopiece');
+          State.activeCanvas.tops = getRandom(tops).id;
+          State.activeCanvas.bottoms = getRandom(bottoms).id;
+        }
+
+        if (shoes.length > 0) State.activeCanvas.shoes = getRandom(shoes).id;
+        if (outerwear.length > 0 && Math.random() < 0.6) State.activeCanvas.outerwear = getRandom(outerwear).id;
+        if (accessories.length > 0 && Math.random() < 0.65) State.activeCanvas.accessories = getRandom(accessories).id;
+
+        this.renderCanvas();
+        this.renderSidebar();
+        App.updateStats();
+
+        const tipEl = document.getElementById('studio-color-tip');
+        if (tipEl) {
+          const ruleNames = {
+            neutrals: 'Tone Harmony (Neutrals & Earth)',
+            monochrome: 'Monochromatic Harmony',
+            complementary: 'Complementary Contrast',
+            pastels: 'Soft Pastels'
+          };
+          const baseName = preferredColor ? `anchored around ${preferredColor}` : 'palette';
+          tipEl.style.display = 'block';
+          tipEl.innerHTML = `<strong>✨ ${ruleNames[rule] || 'Color Match'}:</strong> Styled balanced ${baseName} from your wardrobe.`;
+        }
+
+        App.showToast('✨ Styled a color palette outfit for you!');
       },
 
       // --- OUTFIT MOOD SELECTOR ---
@@ -3766,7 +5290,7 @@
         const previewWrap = document.getElementById('save-modal-items-preview');
 
         // Suggest a cute default name based on items
-        const firstItem = State.clothes.find(i => i.id === activeIds[0]);
+        const firstItem = State.getItem(activeIds[0]);
         titleInput.value = firstItem ? `${firstItem.name} Look` : 'My Style Look';
         if (State.activeCanvas.activeMood) {
           moodSelect.value = State.activeCanvas.activeMood;
@@ -3774,7 +5298,7 @@
 
         // Show thumbnails of pieces
         previewWrap.innerHTML = activeIds.map(id => {
-          const item = State.clothes.find(i => i.id === id);
+          const item = State.getItem(id);
           if (!item) return '';
           return `
             <div style="width: 50px; height: 50px; border-radius: 8px; overflow: hidden; border: 1px solid var(--brown-200);">
@@ -3840,11 +5364,14 @@
             itemsObj.shoes,
             itemsObj.accessories
           ].filter(Boolean);
-          const pieces = itemIds.map(id => State.clothes.find(c => c.id === id)).filter(Boolean);
+          const pieces = itemIds.map(id => State.getItem(id)).filter(Boolean);
           const dateStr = new Date(outfit.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
 
           return `
             <div class="look-card" data-id="${outfit.id}">
+              <button class="btn-fav-toggle ${outfit.favorite ? 'is-fav' : ''}" onclick="LooksUI.toggleFavorite('${outfit.id}', event)" title="${outfit.favorite ? 'Remove favorite' : 'Add to favorites'}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="${outfit.favorite ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
               <div class="look-collage-preview">
                 ${pieces.length > 0 ? pieces.slice(0, 6).map(piece => `
                   <div class="look-preview-item">
@@ -3879,12 +5406,22 @@
         }).join('');
       },
 
+      async toggleFavorite(outfitId, event) {
+        if (event) event.stopPropagation();
+        const outfit = State.outfits.find(o => o.id === outfitId);
+        if (!outfit) return;
+        outfit.favorite = !outfit.favorite;
+        await DB.put('saved_outfits', outfit);
+        App.refreshAllViews();
+        App.showToast(outfit.favorite ? `Favorited "${outfit.title}" ♡` : `Removed "${outfit.title}" from favorites`);
+      },
+
       loadOutfitToStudio(outfitId) {
         const outfit = State.outfits.find(o => o.id === outfitId);
         if (!outfit) return;
 
-        // Restore canvas state only for items that still exist in wardrobe
-        const exists = id => (id && State.clothes.some(c => c.id === id)) ? id : null;
+        // Restore canvas state for items that exist in personal or demo wardrobe
+        const exists = id => (id && State.getItem(id)) ? id : null;
         State.activeCanvas.outerwear = exists(outfit.items.outerwear);
         State.activeCanvas.tops = exists(outfit.items.tops);
         State.activeCanvas.bottoms = exists(outfit.items.bottoms);
@@ -3922,6 +5459,15 @@
           onConfirm: async () => {
             await DB.delete('saved_outfits', outfitId);
             State.outfits = State.outfits.filter(o => o.id !== outfitId);
+            
+            // Clean up calendar plans referencing this outfit
+            for (const d of Object.keys(State.calendarPlans)) {
+              if (State.calendarPlans[d].outfitId === outfitId) {
+                await DB.delete('calendar_plans', d);
+                delete State.calendarPlans[d];
+              }
+            }
+
             App.refreshAllViews();
             App.showToast(`Deleted "${outfit.title}" from saved looks.`);
           }
@@ -3929,30 +5475,496 @@
       }
     };
 
-    // --- 8. MAIN APP CONTROLLER ---
+    // --- 8. FAVORITES UI ---
+    const FavoritesUI = {
+      setTab(tab) {
+        State.favoritesTab = tab;
+        const btnClothes = document.getElementById('btn-fav-tab-clothes');
+        const btnLooks = document.getElementById('btn-fav-tab-looks');
+        const gridClothes = document.getElementById('fav-clothes-grid');
+        const gridLooks = document.getElementById('fav-looks-grid');
+
+        if (tab === 'clothes') {
+          if (btnClothes) btnClothes.classList.add('active');
+          if (btnLooks) btnLooks.classList.remove('active');
+          if (gridClothes) gridClothes.style.display = 'grid';
+          if (gridLooks) gridLooks.style.display = 'none';
+        } else {
+          if (btnClothes) btnClothes.classList.remove('active');
+          if (btnLooks) btnLooks.classList.add('active');
+          if (gridClothes) gridClothes.style.display = 'none';
+          if (gridLooks) gridLooks.style.display = 'grid';
+        }
+        this.render();
+      },
+
+      render() {
+        const favClothes = State.getAllClothes().filter(i => !!i.favorite);
+        const favLooks = State.outfits.filter(o => !!o.favorite);
+
+        const countClothesEl = document.getElementById('fav-clothes-count');
+        const countLooksEl = document.getElementById('fav-looks-count');
+        if (countClothesEl) countClothesEl.textContent = favClothes.length;
+        if (countLooksEl) countLooksEl.textContent = favLooks.length;
+
+        const gridClothes = document.getElementById('fav-clothes-grid');
+        const gridLooks = document.getElementById('fav-looks-grid');
+        const emptyState = document.getElementById('fav-empty-state');
+        const emptyTitle = document.getElementById('fav-empty-title');
+        const emptyDesc = document.getElementById('fav-empty-desc');
+
+        const isClothesTab = State.favoritesTab === 'clothes';
+        const activeItems = isClothesTab ? favClothes : favLooks;
+
+        if (activeItems.length === 0) {
+          if (gridClothes) gridClothes.innerHTML = '';
+          if (gridLooks) gridLooks.innerHTML = '';
+          if (emptyState) emptyState.style.display = 'flex';
+          if (emptyTitle) emptyTitle.textContent = isClothesTab ? 'No favorite clothes yet!' : 'No favorite outfits yet!';
+          if (emptyDesc) emptyDesc.textContent = isClothesTab 
+            ? 'Click the heart icon on any piece in your wardrobe to keep your favorite items here.'
+            : 'Click the heart icon on any saved look in your lookbook to keep your favorite outfits here.';
+          return;
+        }
+
+        if (emptyState) emptyState.style.display = 'none';
+
+        if (isClothesTab) {
+          gridClothes.innerHTML = favClothes.map(item => {
+            const isDemo = !!item.isDemo;
+            const sourceBadge = isDemo
+              ? `<span class="demo-tag-badge is-demo">✨ Demo</span>`
+              : `<span class="demo-tag-badge is-personal">👤 My Piece</span>`;
+
+            const actionsHtml = isDemo ? `
+              <button class="btn btn-secondary btn-sm" onclick="Studio.addItemToCanvas('${item.id}')" title="Wear in Studio">
+                <span>🎨 Wear</span>
+              </button>
+              <span class="badge badge-lavender" style="font-size:0.75rem; padding: 0.35rem 0.65rem;" title="Predefined sample piece">
+                ✨ Demo Item
+              </span>
+            ` : `
+              <button class="btn btn-secondary btn-sm" onclick="Studio.addItemToCanvas('${item.id}')" title="Wear in Studio">
+                <span>🎨 Wear</span>
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="WardrobeUI.openEditModal('${item.id}')" title="Edit Piece">
+                <span>✎ Edit</span>
+              </button>
+              <button class="btn btn-secondary btn-sm btn-delete-item" onclick="WardrobeUI.promptDeleteItem('${item.id}')" title="Delete Piece">
+                ✕
+              </button>
+            `;
+
+            return `
+              <div class="item-card" data-id="${item.id}">
+                <button class="btn-fav-toggle is-fav" onclick="WardrobeUI.toggleFavorite('${item.id}', event)" title="Remove favorite">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <div class="item-card-pin"></div>
+                <div class="item-img-container">
+                  <img src="${item.imageData}" alt="${WardrobeUI.escapeHtml(item.name)}" loading="lazy">
+                  ${sourceBadge}
+                  <span class="item-badge-category">${WardrobeUI.getCategoryIcon(item.category)} ${item.category}</span>
+                </div>
+                <div class="item-details">
+                  <div>
+                    <h4 class="item-title" title="${WardrobeUI.escapeHtml(item.name)}">${WardrobeUI.escapeHtml(item.name)}</h4>
+                    <div class="item-meta-tags">
+                      ${item.color ? `<span class="color-badge"><span class="color-dot" style="background:${WardrobeUI.getColorHex(item.color)}"></span>${item.color}</span>` : ''}
+                      ${(item.moods || []).map(m => `<span class="badge badge-blush">${m}</span>`).join('')}
+                    </div>
+                  </div>
+                  <div class="item-card-actions">
+                    ${actionsHtml}
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        } else {
+          gridLooks.innerHTML = favLooks.map(outfit => {
+            const itemsObj = outfit.items || {};
+            const itemIds = [itemsObj.outerwear, itemsObj.tops, itemsObj.bottoms, itemsObj.dresses, itemsObj.shoes, itemsObj.accessories].filter(Boolean);
+            const pieces = itemIds.map(id => State.getItem(id)).filter(Boolean);
+            const dateStr = new Date(outfit.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+
+            return `
+              <div class="look-card" data-id="${outfit.id}">
+                <button class="btn-fav-toggle is-fav" onclick="LooksUI.toggleFavorite('${outfit.id}', event)" title="Remove favorite">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </button>
+                <div class="look-collage-preview">
+                  ${pieces.length > 0 ? pieces.slice(0, 6).map(piece => `
+                    <div class="look-preview-item">
+                      <img src="${piece.imageData}" alt="${WardrobeUI.escapeHtml(piece.name)}">
+                    </div>
+                  `).join('') : `
+                    <div style="grid-column: span 3; grid-row: span 2; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--brown-500); font-size: 0.8rem; gap: 4px;">
+                      <span style="font-size: 1.2rem;">🧺</span>
+                      <span>Pieces removed from wardrobe</span>
+                    </div>
+                  `}
+                </div>
+                <div class="look-card-info">
+                  <h3 class="look-card-title">${WardrobeUI.escapeHtml(outfit.title)}</h3>
+                  <div class="look-card-meta">
+                    <span class="badge badge-lavender">${outfit.mood || 'General Look'}</span>
+                    <span class="look-date">${dateStr} • ${pieces.length} pieces</span>
+                  </div>
+                </div>
+                <div class="look-card-actions">
+                  <button class="btn btn-secondary btn-sm" onclick="LooksUI.loadOutfitToStudio('${outfit.id}')">
+                    <span>🎨 Wear in Studio</span>
+                  </button>
+                  <button class="btn btn-secondary btn-sm btn-delete-item" onclick="LooksUI.promptDeleteOutfit('${outfit.id}')" title="Delete Outfit">
+                    ✕
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+    };
+
+    // --- 9. OUTFIT CALENDAR UI ---
+    const CalendarUI = {
+      formatDateKey(year, month, day) {
+        const m = String(month + 1).padStart(2, '0');
+        const d = String(day).padStart(2, '0');
+        return `${year}-${m}-${d}`;
+      },
+
+      init() {
+        const today = new Date();
+        if (!State.selectedCalendarDate) {
+          State.selectedCalendarDate = this.formatDateKey(today.getFullYear(), today.getMonth(), today.getDate());
+        }
+        this.renderCalendar();
+        this.renderSelectedDateDetails();
+      },
+
+      prevMonth() {
+        State.calendarMonth--;
+        if (State.calendarMonth < 0) {
+          State.calendarMonth = 11;
+          State.calendarYear--;
+        }
+        this.renderCalendar();
+      },
+
+      nextMonth() {
+        State.calendarMonth++;
+        if (State.calendarMonth > 11) {
+          State.calendarMonth = 0;
+          State.calendarYear++;
+        }
+        this.renderCalendar();
+      },
+
+      goToToday() {
+        const today = new Date();
+        State.calendarYear = today.getFullYear();
+        State.calendarMonth = today.getMonth();
+        State.selectedCalendarDate = this.formatDateKey(today.getFullYear(), today.getMonth(), today.getDate());
+        this.renderCalendar();
+        this.renderSelectedDateDetails();
+      },
+
+      selectDate(dateStr) {
+        State.selectedCalendarDate = dateStr;
+        this.renderCalendar();
+        this.renderSelectedDateDetails();
+      },
+
+      renderCalendar() {
+        const year = State.calendarYear;
+        const month = State.calendarMonth;
+        const heading = document.getElementById('calendar-month-heading');
+        if (heading) {
+          const monthName = new Date(year, month, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+          heading.textContent = monthName;
+        }
+
+        const container = document.getElementById('calendar-days-container');
+        if (!container) return;
+
+        const firstDayIndex = new Date(year, month, 1).getDay(); // 0 is Sun
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const prevMonthDays = new Date(year, month, 0).getDate();
+
+        const todayObj = new Date();
+        const todayStr = this.formatDateKey(todayObj.getFullYear(), todayObj.getMonth(), todayObj.getDate());
+
+        let cellsHtml = '';
+
+        // Previous month filler days
+        for (let i = firstDayIndex - 1; i >= 0; i--) {
+          const dayNum = prevMonthDays - i;
+          const prevMonthIndex = month === 0 ? 11 : month - 1;
+          const prevYear = month === 0 ? year - 1 : year;
+          const dateStr = this.formatDateKey(prevYear, prevMonthIndex, dayNum);
+          cellsHtml += this.buildDayCell(dayNum, dateStr, true, false);
+        }
+
+        // Current month days
+        for (let day = 1; day <= daysInMonth; day++) {
+          const dateStr = this.formatDateKey(year, month, day);
+          const isToday = dateStr === todayStr;
+          cellsHtml += this.buildDayCell(day, dateStr, false, isToday);
+        }
+
+        // Next month filler days (to make total multiple of 7)
+        const totalRendered = firstDayIndex + daysInMonth;
+        const remaining = (7 - (totalRendered % 7)) % 7;
+        for (let i = 1; i <= remaining; i++) {
+          const nextMonthIndex = month === 11 ? 0 : month + 1;
+          const nextYear = month === 11 ? year + 1 : year;
+          const dateStr = this.formatDateKey(nextYear, nextMonthIndex, i);
+          cellsHtml += this.buildDayCell(i, dateStr, true, false);
+        }
+
+        container.innerHTML = cellsHtml;
+      },
+
+      buildDayCell(dayNum, dateStr, isOtherMonth, isToday) {
+        const isSelected = State.selectedCalendarDate === dateStr;
+        const plan = State.calendarPlans[dateStr];
+        const outfit = plan ? State.outfits.find(o => o.id === plan.outfitId) : null;
+
+        let outfitBadgeHtml = '';
+        if (outfit) {
+          const itemsObj = outfit.items || {};
+          const firstPieceId = [itemsObj.tops, itemsObj.dresses, itemsObj.outerwear, itemsObj.bottoms, itemsObj.shoes].find(Boolean);
+          const firstPiece = firstPieceId ? State.getItem(firstPieceId) : null;
+          const thumbSrc = firstPiece ? firstPiece.imageData : '';
+
+          outfitBadgeHtml = `
+            <div class="cal-outfit-mini-badge" title="${WardrobeUI.escapeHtml(outfit.title)}">
+              ${thumbSrc ? `<img src="${thumbSrc}" class="cal-mini-thumb" alt="">` : '✨'}
+              <span>${WardrobeUI.escapeHtml(outfit.title)}</span>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="cal-cell ${isOtherMonth ? 'is-other-month' : ''} ${isToday ? 'is-today' : ''} ${isSelected ? 'is-selected' : ''} ${outfit ? 'has-outfit' : ''}"
+               onclick="CalendarUI.selectDate('${dateStr}')">
+            <span class="cal-day-num">${dayNum}</span>
+            ${outfitBadgeHtml}
+          </div>
+        `;
+      },
+
+      renderSelectedDateDetails() {
+        const container = document.getElementById('calendar-selected-content');
+        const textEl = document.getElementById('calendar-selected-date-text');
+        if (!container || !textEl) return;
+
+        if (!State.selectedCalendarDate) {
+          textEl.textContent = 'Select a Date';
+          container.innerHTML = '<p style="font-size:0.85rem; color:var(--brown-500);">Click any day on the calendar to view or schedule an outfit.</p>';
+          return;
+        }
+
+        const [y, m, d] = State.selectedCalendarDate.split('-').map(Number);
+        const dateObj = new Date(y, m - 1, d);
+        const dateDisplay = dateObj.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+        textEl.textContent = dateDisplay;
+
+        const plan = State.calendarPlans[State.selectedCalendarDate];
+        const outfit = plan ? State.outfits.find(o => o.id === plan.outfitId) : null;
+
+        if (outfit) {
+          const itemsObj = outfit.items || {};
+          const itemIds = [itemsObj.outerwear, itemsObj.tops, itemsObj.bottoms, itemsObj.dresses, itemsObj.shoes, itemsObj.accessories].filter(Boolean);
+          const pieces = itemIds.map(id => State.getItem(id)).filter(Boolean);
+
+          container.innerHTML = `
+            <div>
+              <div class="look-collage-preview" style="height: 180px; margin-bottom: 1rem;">
+                ${pieces.length > 0 ? pieces.slice(0, 6).map(piece => `
+                  <div class="look-preview-item">
+                    <img src="${piece.imageData}" alt="${WardrobeUI.escapeHtml(piece.name)}">
+                  </div>
+                `).join('') : `
+                  <div style="grid-column: span 3; grid-row: span 2; display:flex; align-items:center; justify-content:center; font-size:0.8rem; color:var(--brown-500);">
+                    (Pieces removed from wardrobe)
+                  </div>
+                `}
+              </div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--brown-900); margin-bottom: 0.25rem;">
+                ${WardrobeUI.escapeHtml(outfit.title)}
+              </h4>
+              <div style="margin-bottom: 1.25rem;">
+                <span class="badge badge-lavender">${outfit.mood || 'Planned Look'}</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                <button class="btn btn-secondary btn-sm" onclick="LooksUI.loadOutfitToStudio('${outfit.id}')">
+                  <span>🎨 Wear in Studio</span>
+                </button>
+                <button class="btn btn-primary btn-sm" onclick="CalendarUI.openAssignModal()">
+                  <span>🔄 Change Planned Outfit</span>
+                </button>
+                <button class="btn btn-secondary btn-sm" style="color:var(--danger); border-color: rgba(217,83,79,0.3);" onclick="CalendarUI.removeOutfitFromDate()">
+                  <span>🗑️ Remove from Schedule</span>
+                </button>
+              </div>
+            </div>
+          `;
+        } else {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 1.5rem 0.5rem;">
+              <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🧺</div>
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--brown-900);">No outfit planned</h4>
+              <p style="font-size: 0.82rem; color: var(--brown-500); margin-bottom: 1.25rem;">
+                Keep your style effortless by scheduling one of your saved looks for this day.
+              </p>
+              <button class="btn btn-primary btn-sm" onclick="CalendarUI.openAssignModal()">
+                <span>📅 Schedule an Outfit</span>
+              </button>
+            </div>
+          `;
+        }
+      },
+
+      openAssignModal() {
+        if (!State.selectedCalendarDate) {
+          App.showToast('Please select a date on the calendar first!', 'warning');
+          return;
+        }
+
+        const subtitle = document.getElementById('assign-modal-date-subtitle');
+        const [y, m, d] = State.selectedCalendarDate.split('-').map(Number);
+        const dateObj = new Date(y, m - 1, d);
+        if (subtitle) {
+          subtitle.textContent = `Choose a saved look to wear on ${dateObj.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}:`;
+        }
+
+        const list = document.getElementById('assign-outfit-picker-list');
+        if (!list) return;
+
+        if (State.outfits.length === 0) {
+          list.innerHTML = `
+            <div style="text-align: center; padding: 2rem 1rem; color: var(--brown-700);">
+              <p style="margin-bottom: 1rem;">You don't have any saved outfits yet!</p>
+              <button class="btn btn-primary btn-sm" onclick="App.closeModals(); App.navigateTo('studio');">
+                <span>🎨 Go to Mix & Match Studio</span>
+              </button>
+            </div>
+          `;
+        } else {
+          list.innerHTML = State.outfits.map(outfit => {
+            const itemsObj = outfit.items || {};
+            const itemIds = [itemsObj.outerwear, itemsObj.tops, itemsObj.bottoms, itemsObj.dresses, itemsObj.shoes, itemsObj.accessories].filter(Boolean);
+            const pieces = itemIds.map(id => State.getItem(id)).filter(Boolean);
+
+            return `
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:0.6rem 0.75rem; border:1.5px solid var(--brown-200); border-radius:var(--radius-md); background:var(--bg-card); cursor:pointer; gap:0.75rem;"
+                   onclick="CalendarUI.assignOutfitToDate('${outfit.id}')">
+                <div style="display:flex; align-items:center; gap:0.6rem; overflow:hidden;">
+                  <div style="display:flex; gap:2px; width:48px; height:48px; border-radius:4px; overflow:hidden; background:var(--bg-alt); flex-shrink:0;">
+                    ${pieces.slice(0, 2).map(p => `<img src="${p.imageData}" style="width:50%; height:100%; object-fit:cover;">`).join('')}
+                  </div>
+                  <div style="overflow:hidden;">
+                    <strong style="display:block; font-size:0.9rem; color:var(--brown-900); white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">
+                      ${WardrobeUI.escapeHtml(outfit.title)}
+                    </strong>
+                    <span class="badge badge-lavender" style="font-size:0.7rem;">${outfit.mood || 'Look'}</span>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-sm" style="flex-shrink:0;">
+                  <span>Schedule</span>
+                </button>
+              </div>
+            `;
+          }).join('');
+        }
+
+        document.getElementById('assign-outfit-modal').classList.add('open');
+      },
+
+      async assignOutfitToDate(outfitId) {
+        if (!State.selectedCalendarDate) return;
+        const dateStr = State.selectedCalendarDate;
+        const plan = {
+          date: dateStr,
+          outfitId: outfitId,
+          createdAt: Date.now()
+        };
+
+        await DB.put('calendar_plans', plan);
+        State.calendarPlans[dateStr] = plan;
+
+        App.closeModals();
+        this.renderCalendar();
+        this.renderSelectedDateDetails();
+        App.updateStats();
+
+        const outfit = State.outfits.find(o => o.id === outfitId);
+        App.showToast(`Scheduled "${outfit ? outfit.title : 'Outfit'}" for ${dateStr} ✨`);
+      },
+
+      async removeOutfitFromDate() {
+        if (!State.selectedCalendarDate) return;
+        const dateStr = State.selectedCalendarDate;
+        if (!State.calendarPlans[dateStr]) return;
+
+        await DB.delete('calendar_plans', dateStr);
+        delete State.calendarPlans[dateStr];
+
+        this.renderCalendar();
+        this.renderSelectedDateDetails();
+        App.updateStats();
+        App.showToast(`Removed scheduled outfit for ${dateStr}`);
+      }
+    };
+
+    // --- 10. MAIN APP CONTROLLER ---
     const App = {
       async init() {
         try {
           await DB.init();
+
+          // Initialize Demo Wardrobe pieces
+          State.demoClothes = DemoWardrobe.getItems();
+
+          // Load personal clothes and outfits from storage
           State.clothes = await DB.getAll('clothing_items');
           State.outfits = await DB.getAll('saved_outfits');
+          const plansList = await DB.getAll('calendar_plans');
+          State.calendarPlans = {};
+          (plansList || []).forEach(p => State.calendarPlans[p.date] = p);
 
-          // Sort by creation desc
+          // Sort personal items by creation desc
           State.clothes.sort((a, b) => b.createdAt - a.createdAt);
           State.outfits.sort((a, b) => b.createdAt - a.createdAt);
+
+          // If personal wardrobe is empty, default to Demo Wardrobe so the app works immediately!
+          if (State.clothes.length === 0) {
+            State.wardrobeSource = 'demo';
+          } else {
+            State.wardrobeSource = 'all';
+          }
 
           // Setup drag and drop listeners
           this.setupDropzone();
 
           // Refresh UI
+          CalendarUI.init();
           this.refreshAllViews();
           Studio.init();
 
-          console.log('Outfit Studio initialized successfully.');
+          console.log('Outfit Studio initialized successfully with Demo Wardrobe.');
         } catch (err) {
           console.error('Initialization error:', err);
           this.showToast('Storage error. Some features may not persist.', 'danger');
         }
+      },
+
+      viewDemoWardrobe() {
+        WardrobeUI.setSource('demo');
+        this.navigateTo('wardrobe');
       },
 
       setupDropzone() {
@@ -4004,6 +6016,12 @@
           btn.classList.toggle('active', btn.dataset.tab === tabId);
         });
 
+        if (tabId === 'calendar') {
+          CalendarUI.init();
+        } else if (tabId === 'favorites') {
+          FavoritesUI.render();
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
       },
 
@@ -4011,36 +6029,51 @@
         this.updateStats();
         WardrobeUI.renderGrid();
         LooksUI.renderGrid();
+        CalendarUI.renderCalendar();
+        CalendarUI.renderSelectedDateDetails();
+        FavoritesUI.render();
         Studio.renderSidebar();
         Studio.renderCanvas();
       },
 
       updateStats() {
-        const totalClothes = State.clothes.length;
+        const personalClothes = State.clothes.length;
         const totalOutfits = State.outfits.length;
 
         // Badges
         const navWardrobe = document.getElementById('nav-wardrobe-count');
         const navLooks = document.getElementById('nav-looks-count');
-        if (navWardrobe) navWardrobe.textContent = totalClothes;
+        const navCalendar = document.getElementById('nav-calendar-count');
+        const navFav = document.getElementById('nav-fav-count');
+
+        if (navWardrobe) navWardrobe.textContent = personalClothes > 0 ? personalClothes : State.demoClothes.length;
         if (navLooks) navLooks.textContent = totalOutfits;
+        if (navCalendar) navCalendar.textContent = Object.keys(State.calendarPlans).length;
+        if (navFav) {
+          const favCount = State.getAllClothes().filter(i => !!i.favorite).length + State.outfits.filter(o => !!o.favorite).length;
+          navFav.textContent = favCount;
+        }
 
         // Home Counters
         const homeClothes = document.getElementById('stat-total-clothes');
+        const homeDemoCount = document.getElementById('stat-demo-clothes-count');
         const homeLooks = document.getElementById('stat-total-looks');
         const homeSlots = document.getElementById('stat-active-slots');
-        if (homeClothes) homeClothes.textContent = totalClothes;
+        
+        if (homeClothes) homeClothes.textContent = personalClothes;
+        if (homeDemoCount) homeDemoCount.textContent = `${State.demoClothes.length} Demo`;
         if (homeLooks) homeLooks.textContent = totalOutfits;
 
         const activeCount = Object.values(State.activeCanvas).filter(Boolean).length;
         if (homeSlots) homeSlots.textContent = `${activeCount} / 6`;
 
-        // Home Breakdown Chips
+        // Home Breakdown Chips (Show breakdown of all accessible clothes)
         const breakdownWrap = document.getElementById('home-category-breakdown');
         if (breakdownWrap) {
+          const allClothes = State.getAllClothes();
           const cats = ['tops', 'bottoms', 'dresses', 'outerwear', 'shoes', 'accessories'];
           breakdownWrap.innerHTML = cats.map(c => {
-            const count = State.clothes.filter(i => i.category === c).length;
+            const count = allClothes.filter(i => i.category === c).length;
             return `<span class="chip-counter">${WardrobeUI.getCategoryIcon(c)} <strong>${count}</strong> ${c}</span>`;
           }).join('');
         }
@@ -4048,8 +6081,13 @@
 
       // --- MOOD STYLIST GENERATOR ---
       generateMoodOutfit(mood) {
-        if (State.clothes.length === 0) {
-          this.showToast('Your wardrobe is empty! Add clothes first.', 'warning');
+        let pool = State.getAvailableClothes(Studio.sourceFilter || 'all');
+        if (pool.length === 0) {
+          pool = State.getAllClothes();
+        }
+
+        if (pool.length === 0) {
+          this.showToast('Your wardrobe is empty! Explore the Demo Wardrobe first.', 'warning');
           return;
         }
 
@@ -4064,9 +6102,9 @@
         // Switch to Studio view
         this.navigateTo('studio');
 
-        // Filter pieces that match the mood, fallback to any available
+        // Filter pieces that match the mood, fallback to any available in category
         const filterMoodOrAll = (cat) => {
-          const inCat = State.clothes.filter(i => i.category === cat);
+          const inCat = pool.filter(i => i.category === cat);
           const moodMatches = inCat.filter(i => i.moods && i.moods.includes(mood));
           return moodMatches.length > 0 ? moodMatches : inCat;
         };
@@ -4121,26 +6159,10 @@
         this.showToast(`Styled an outfit for "${mood}" ✨`);
       },
 
-      // --- SEED STARTER CAPSULE WARDROBE ---
-      async seedSampleWardrobe() {
-        const samples = SampleWardrobe.getStarterItems();
-        let addedCount = 0;
-
-        for (const sample of samples) {
-          const exists = State.clothes.some(c => c.name === sample.name);
-          if (!exists) {
-            await DB.put('clothing_items', sample);
-            State.clothes.unshift(sample);
-            addedCount++;
-          }
-        }
-
-        this.refreshAllViews();
-        if (addedCount > 0) {
-          this.showToast(`Added ${addedCount} capsule wardrobe pieces! Ready to style ✨`);
-        } else {
-          this.showToast('Starter capsule pieces are already in your wardrobe!');
-        }
+      // --- SEED / EXPLORE DEMO WARDROBE ---
+      seedSampleWardrobe() {
+        this.viewDemoWardrobe();
+        this.showToast('Showing the 24-piece Demo Capsule Wardrobe ✨');
       },
 
       // --- MODALS & DIALOGS ---
